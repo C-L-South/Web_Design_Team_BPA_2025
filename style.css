@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+* {
+	margin: 0;
+  	padding: 0;
+}
+body {
+  	background-color: #b0dfe5; 
+	font-family: "Poppins", sans-serif;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+	font-size: 16px;
+
+}
+
+
+.topnav {
+	background-color: white;
+	display: flex;
+	justify-content: space-between;
+	padding: 20px 40px;
+	align-items: center;
+	position: fixed;
+	width: 96%;
+}
+.right {
+	display: flex;
+	gap: 20px;
+	align-items: center;
+}
+.btn {
+  background-color: #fea500;
+  color: white;
+  padding: 8px 24px;
+  border-radius: 24px;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #ffb937;
+}
+.hero-container {
+  width: 100%;
+  height: 1000px;
+  overflow: hidden;
+}
+
+.index_img_1 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+
+}
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 8%; 
+  transform: translateY(-70%); 
+  color: white;
+  text-align: left;
+  max-width: 600px;
+}
+.hero-text h1 {
+  font-size: 64px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.hero-text p {
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+.hero-text a {
+  font-size: 24px;
+  padding: 12px 30px;
+  border-radius: 40px;
+}
+.quote-section {
+  display: flex;
+  height: 1000px; 
+}
+.quote-image {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.quote-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 30% center; 
+}
+
+/* right side text */
+.quote-text {
+  width: 50%;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.quote-text h1 {
+  font-size: 64px;
+  font-weight: 800;
+  margin-top: 200px;
+  margin-bottom: 125px;
+}
+
+.quote {
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.quote-mark {
+  position: absolute;
+  left: 0px;
+  top: -80px;             
+  font-size: 100px;        
+
+}
+.quote-quotes {
+  font-size: 30px;
+
+
+}
+
+.author {
+  font-weight: 700;
+  font-size: 37px;
+  margin-top: 5px;
+  margin-bottom: 100px;
+}
+
