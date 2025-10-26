@@ -1,4 +1,19 @@
-/* Authentication Pages Styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #b0dfe5; 
+    font-family: "Poppins", sans-serif;
+}
+a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+}
 .auth-page {
     display: flex;
     min-height: 100vh;
