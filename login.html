@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - MindScape</title>
     <link rel="stylesheet" href="css/auth.css">
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
 </head>
 <body>
     <div class="auth-page">
@@ -37,12 +39,6 @@
         </div>
     </div>
 
-    <script>
-        // Redirect to home page on form submit
-        document.getElementById('loginForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            window.location.href = 'home.html';
-        });
-    </script>
+    <script src="js/login.js"></script>
 </body>
 </html>
