@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information - MindScape</title>
+    <link rel="stylesheet" href="css/information.css">
+</head>
+<body>
+    <!-- Header Navigation -->
+    <nav class="info-nav">
+        <div class="nav-left">
+            <img src="images/logo.jpg" alt="MindScape" class="nav-logo">
+            <a href="home.html" class="logo-text">MindScape</a>
+        </div>
+        <div class="nav-right">
+            <a href="information.html" class="nav-link active">Information</a>
+            <a href="#resources" class="nav-link">Resources</a>
+            <a href="#settings" class="nav-link">Settings</a>
+            <button id="logoutBtn" class="logout-btn">Log Out</button>
+        </div>
+    </nav>
+
+    <!-- Sub-bar -->
+    <div class="sub-bar">
+        <p>More mental health info can be found at <a href="https://www.nlm.nih.gov/health" target="_blank">https://www.nlm.nih.gov/health</a></p>
+    </div>
+
+    <!-- Main Content Layout -->
+    <div class="info-layout">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <h2 class="sidebar-title">Mental Health Info</h2>
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <h3 class="nav-category">Introduction/Overview</h3>
+                    <ul>
+                        <li><a href="#what-is-mental-health" class="sidebar-link">What is Mental Health?</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3 class="nav-category">Mental Health Conditions</h3>
+                    <ul>
+                        <li><a href="#anxiety-disorders" class="sidebar-link">Anxiety Disorders</a></li>
+                        <li><a href="#depression" class="sidebar-link">Depression</a></li>
+                        <li><a href="#stress" class="sidebar-link">Stress</a></li>
+                        <li><a href="#eating-disorder" class="sidebar-link">Eating Disorder</a></li>
+                        <li><a href="#substance-abuse" class="sidebar-link">Substance Abuse</a></li>
+                        <li><a href="#bipolar-disorder" class="sidebar-link">Bipolar Disorder</a></li>
+                        <li><a href="#ptsd" class="sidebar-link">PTSD</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3 class="nav-category">Signs You Might Need Help</h3>
+                    <ul>
+                        <li><a href="#emotional-signs" class="sidebar-link">Emotional Signs</a></li>
+                        <li><a href="#physical-signs" class="sidebar-link">Physical Signs</a></li>
+                        <li><a href="#behavior-signs" class="sidebar-link">Behavior Signs</a></li>
+                        <li><a href="#cognitive-signs" class="sidebar-link">Cognitive Signs</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3 class="nav-category">Healthy Coping & Self Care</h3>
+                    <ul>
+                        <li><a href="#daily-habits" class="sidebar-link">Daily Mental Health Habits</a></li>
+                        <li><a href="#emotional-wellness" class="sidebar-link">Emotional Wellness</a></li>
+                        <li><a href="#seeking-help" class="sidebar-link">Seeking Help</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <section id="introduction-overview" class="content-section">
+                <h1>Introduction/Overview</h1>
+            </section>
+
+            <section id="what-is-mental-health" class="content-section">
+                <h1>What is Mental Health</h1>
+            </section>
+
+            <section id="mental-health-conditions" class="content-section">
+                <h1>Mental Health Conditions</h1>
+            </section>
+
+            <section id="anxiety-disorders" class="content-section">
+                <h1>Anxiety Disorders</h1>
+            </section>
+
+            <section id="depression" class="content-section">
+                <h1>Depression</h1>
+            </section>
+
+            <section id="stress" class="content-section">
+                <h1>Stress</h1>
+            </section>
+
+            <section id="eating-disorder" class="content-section">
+                <h1>Eating Disorder</h1>
+            </section>
+
+            <section id="substance-abuse" class="content-section">
+                <h1>Substance Abuse</h1>
+            </section>
+
+            <section id="bipolar-disorder" class="content-section">
+                <h1>Bipolar Disorder</h1>
+            </section>
+
+            <section id="ptsd" class="content-section">
+                <h1>PTSD</h1>
+            </section>
+
+            <section id="signs-you-might-need-help" class="content-section">
+                <h1>Signs You Might Need Help</h1>
+            </section>
+
+            <section id="emotional-signs" class="content-section">
+                <h1>Emotional Signs</h1>
+            </section>
+
+            <section id="physical-signs" class="content-section">
+                <h1>Physical Signs</h1>
+            </section>
+
+            <section id="behavior-signs" class="content-section">
+                <h1>Behavior Signs</h1>
+            </section>
+
+            <section id="cognitive-signs" class="content-section">
+                <h1>Cognitive Signs</h1>
+            </section>
+
+            <section id="healthy-coping-self-care" class="content-section">
+                <h1>Healthy Coping & Self Care</h1>
+            </section>
+
+            <section id="daily-habits" class="content-section">
+                <h1>Daily Mental Health Habits</h1>
+            </section>
+
+            <section id="emotional-wellness" class="content-section">
+                <h1>Emotional Wellness</h1>
+            </section>
+
+            <section id="seeking-help" class="content-section">
+                <h1>Seeking Help</h1>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Logout button redirects to login page
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            window.location.href = 'login.html';
+        });
+
+        // Smooth scroll to sections when clicking sidebar links
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
