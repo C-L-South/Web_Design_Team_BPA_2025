@@ -11,6 +11,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
+const db = firebase.firestore();
 
 const form = document.getElementById("signupForm");
 
@@ -29,7 +30,13 @@ form.addEventListener("submit", (e) => {
     auth.createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log("User signed up:", user);
+        console.log("User signed up:", user.uid, user.email);
+        return db.collection("users").doc(user.uid).set({
+          uid: user.uid,
+          email: user.email
+        });
+      })
+      .then(() => {
         alert("Account created!");
         window.location.href = "home.html";
       })
