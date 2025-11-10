@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - MindScape</title>
     <link rel="stylesheet" href="css/home.css">
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+
 </head>
+
 <body>
     <!-- Header Navigation -->
     <nav class="home-nav">
@@ -136,19 +141,6 @@
         </div>
     </footer>
 
-    <script>
-        // Logout button redirects to login page
-        document.getElementById('logoutBtn').addEventListener('click', () => {
-            window.location.href = 'login.html';
-        });
-
-        // Feedback form handler
-        document.getElementById('feedbackForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Thank you for your feedback! We appreciate your input.');
-            document.getElementById('feedbackForm').reset();
-        });
-    </script>
+    <script src="js/home.js"></script>
 </body>
 </html>
-
