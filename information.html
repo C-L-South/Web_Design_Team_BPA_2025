@@ -7,32 +7,8 @@
     <link rel="stylesheet" href="css/information.css">
 </head>
 <body>
-    <!-- Header Navigation -->
-    <nav class="info-nav">
-        <div class="nav-left">
-            <img src="images/Logo.png" alt="MindScape" class="nav-logo">
-            <a href="home.html" class="logo-text">MindScape</a>
-        </div>
-        <div class="nav-right">
-            <a href="information.html" class="nav-link">Information</a>
-            <div class="dropdown">
-                <button class="dropbtn">Resources</button>
-                <div class="dropdown-content">
-                <a href="#resource1">Helpline</a>
-                <a href="#resource2">Appointment Scheduler</a>
-                <a href="#resource3">Forums</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <button class="dropbtn">Settings </button>
-                <div class="dropdown-content">
-                <a href="#setting1">Info</a>
-                <a href="#setting2">Preferences</a>
-                </div>
-            </div>
-            <button id="logoutBtn" class="logout-btn">Log Out</button>
-        </div>
-    </nav>
+    <!-- Navigation will be loaded here -->
+    <div id="nav-container"></div>
 
 
     <!-- Sub-bar -->
@@ -167,10 +143,19 @@
         </main>
     </div>
 
+    <script src="js/navigation.js"></script>
     <script>
-        // Logout button redirects to login page
-        document.getElementById('logoutBtn').addEventListener('click', () => {
-            window.location.href = 'login.html';
+        // Wait for navigation to load before setting up logout
+        document.addEventListener('DOMContentLoaded', function() {
+            // Logout button is handled in navigation.js, but we can override if needed
+            setTimeout(function() {
+                const logoutBtn = document.getElementById('logoutBtn');
+                if (logoutBtn) {
+                    logoutBtn.addEventListener('click', () => {
+                        window.location.href = 'login.html';
+                    });
+                }
+            }, 100);
         });
 
         // Smooth scroll to sections when clicking sidebar links
