@@ -7,7 +7,7 @@
 <body>
 
     <aside>
-        <button>+ Post</button>
+        <button id="newPostButton">+ Post</button>
 
         <nav>
             <h2>Forums</h2>
@@ -23,8 +23,8 @@
 
 
         <section>
-            <form>
-                <input type="search" placeholder="Search...">
+            <form id="searchForm">
+                <input type="search" id="searchInput" placeholder="Search...">
             </form>
         </section>
 
@@ -38,17 +38,15 @@
                         <th>Created By</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td><a href="post.html">Mental Health Tips</a></td>
-                        <td>32 Replies</td>
-                        <td>By User9284</td>
-                    </tr>
+                <tbody id="postsTableBody">
+                    <!--Will be filled by the js-->
                 </tbody>
             </table>
         </section>
 
     </main>
-
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+    <script src="js/forum.js"></script>
 </body>
 </html>
