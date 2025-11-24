@@ -1,0 +1,491 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #E0F2F7;
+    color: #333;
+}
+
+/* Forum Container */
+.forum-container {
+    display: flex;
+    min-height: calc(100vh - 80px);
+    margin-top: 80px;
+}
+
+/* Sidebar */
+.forum-sidebar {
+    width: 160px;
+    background-color: #0080FF;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 80px;
+    bottom: 0;
+    overflow-y: auto;
+}
+
+.post-btn {
+    background-color: #fea500;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 30px;
+}
+
+.post-btn:hover {
+    background-color: #ffb937;
+}
+
+.sidebar-nav {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 15px;
+}
+
+.sidebar-title {
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.sidebar-link {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 0;
+    transition: opacity 0.3s;
+    display: block;
+    width: 100%;
+}
+
+.sidebar-link:hover {
+    opacity: 0.8;
+}
+
+.sidebar-link.active {
+    font-weight: 600;
+}
+
+.sidebar-list {
+    list-style: none;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.sidebar-list li {
+    margin-bottom: 5px;
+}
+
+/* Main Content */
+.forum-main {
+    flex: 1;
+    margin-left: 160px;
+    padding: 30px 40px;
+    background-color: #E0F2F7;
+}
+
+/* Search Section */
+.search-section {
+    margin-bottom: 30px;
+}
+
+.search-container {
+    position: relative;
+    max-width: 600px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-input:focus {
+    outline: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Topics Table */
+.topics-section {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.topics-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.topics-table thead {
+    background-color: #fea500;
+}
+
+.topics-table th {
+    padding: 15px 20px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+}
+
+.col-title {
+    border-radius: 10px 0 0 0;
+}
+
+.col-author {
+    border-radius: 0 10px 0 0;
+}
+
+.topics-table tbody tr {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.topics-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.topics-table td {
+    padding: 18px 20px;
+    font-size: 15px;
+}
+
+.topic-title a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.topic-title a:hover {
+    color: #0080FF;
+}
+
+.topic-replies {
+    color: #666;
+}
+
+.topic-author {
+    color: #666;
+}
+
+/* Post View Styles */
+.post-view {
+    max-width: 800px;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    padding: 8px 12px;
+    border-radius: 50%;
+    background-color: white;
+    transition: background-color 0.3s;
+}
+
+.back-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.post-content {
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post-author {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.post-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.post-description {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.post-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.like-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-family: "Poppins", sans-serif;
+}
+
+.like-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.comment-count {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #666;
+    font-size: 14px;
+}
+
+/* Comment Input */
+.comment-input-section {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comment-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.comment-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid #e6e6e6;
+    border-radius: 25px;
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+    background-color: #f9f9f9;
+}
+
+.comment-input:focus {
+    outline: none;
+    border-color: #0080FF;
+    background-color: white;
+}
+
+.submit-comment-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    flex-shrink: 0;
+}
+
+.submit-comment-btn:hover {
+    background-color: #555;
+}
+
+/* Comments Section */
+.comments-section {
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comments-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.comment {
+    padding: 20px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.comment:last-child {
+    border-bottom: none;
+}
+
+.comment-author {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.comment-text {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+/* Comment article styling (for JS-generated comments) */
+#commentsList article {
+    padding: 20px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+#commentsList article:last-child {
+    border-bottom: none;
+}
+
+#commentsList article h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+#commentsList article p {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+#commentsList article div {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+#commentsList article button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-family: "Poppins", sans-serif;
+}
+
+#commentsList article button:hover {
+    background-color: #f0f0f0;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .forum-sidebar {
+        width: 120px;
+    }
+
+    .forum-main {
+        margin-left: 120px;
+        padding: 20px;
+    }
+
+    .sidebar-title {
+        font-size: 16px;
+    }
+
+    .sidebar-link {
+        font-size: 13px;
+    }
+
+    .post-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .forum-container {
+        flex-direction: column;
+    }
+
+    .forum-sidebar {
+        position: relative;
+        width: 100%;
+        top: 0;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 15px;
+    }
+
+    .sidebar-nav {
+        display: none;
+    }
+
+    .forum-main {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    .topics-table th,
+    .topics-table td {
+        padding: 12px 10px;
+        font-size: 14px;
+    }
+
+    .post-title {
+        font-size: 24px;
+    }
+
+    .post-content {
+        padding: 20px;
+    }
+}
