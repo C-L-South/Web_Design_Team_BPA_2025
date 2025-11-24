@@ -1,52 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Forum Layout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forums - MindScape</title>
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/forum.css">
 </head>
+
 <body>
+    <!-- Navigation will be loaded here -->
+    <div id="nav-container"></div>
 
-    <aside>
-        <button id="newPostButton">+ Post</button>
+    <div class="forum-container">
+        <!-- Sidebar -->
+        <aside class="forum-sidebar">
+            <button id="newPostButton" class="post-btn">+ Post</button>
 
-        <nav>
-            <h2>Forums</h2>
-            <a href="#">My Posts</a>
-            <ul>
-                <li><a href="#">Mental Health Tips</a></li>
-            </ul>
-        </nav>
-    </aside>
+            <nav class="sidebar-nav">
+                <h2 class="sidebar-title">Forums</h2>
+                <a href="#" class="sidebar-link">My Posts</a>
+                <ul id="sidebarTopicsList" class="sidebar-list">
+                    <!-- Will be populated by JavaScript when posts are created -->
+                </ul>
+            </nav>
+        </aside>
 
+        <!-- Main Content -->
+        <main class="forum-main">
+            <!-- Search Section -->
+            <section class="search-section">
+                <form id="searchForm">
+                    <div class="search-container">
+                        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        <input type="search" id="searchInput" class="search-input" placeholder="Search...">
+                    </div>
+                </form>
+            </section>
 
-    <main>
+            <!-- Forum Topics Table -->
+            <section class="topics-section">
+                <table class="topics-table">
+                    <thead>
+                        <tr>
+                            <th class="col-title">Title</th>
+                            <th class="col-replies">Replies</th>
+                            <th class="col-author">Created By</th>
+                        </tr>
+                    </thead>
+                    <tbody id="postsTableBody">
+                        <!-- Will be filled by the js -->
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
 
-
-        <section>
-            <form id="searchForm">
-                <input type="search" id="searchInput" placeholder="Search...">
-            </form>
-        </section>
-
-
-        <section>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Replies</th>
-                        <th>Created By</th>
-                    </tr>
-                </thead>
-                <tbody id="postsTableBody">
-                    <!--Will be filled by the js-->
-                </tbody>
-            </table>
-        </section>
-
-    </main>
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+    <script src="js/navigation.js"></script>
     <script src="js/forum.js"></script>
 </body>
+
 </html>
