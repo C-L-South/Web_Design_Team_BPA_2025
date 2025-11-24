@@ -1,69 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Post View</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post - MindScape</title>
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/forum.css">
 </head>
+
 <body>
+    <!-- Navigation will be loaded here -->
+    <div id="nav-container"></div>
 
-    <!-- Sidebar -->
-    <aside>
-        <button id="newPostButton">+ Post</button>
+    <div class="forum-container">
+        <!-- Sidebar -->
+        <aside class="forum-sidebar">
+            <button id="newPostButton" class="post-btn">+ Post</button>
 
-        <nav>
-            <a href="forum.html">Forums</a>
-            <a href="#">My Posts</a>
+            <nav class="sidebar-nav">
+                <a href="forum.html" class="sidebar-link">Forums</a>
+                <a href="#" class="sidebar-link">My Posts</a>
+                <ul id="sidebarTopicsList" class="sidebar-list">
+                    <!-- Will be populated by JavaScript when posts are created -->
+                </ul>
+            </nav>
+        </aside>
 
-            <ul>
-                <li><a href="#">Mental Health Tips</a></li>
-            </ul>
-        </nav>
-    </aside>
+        <!-- Main Content -->
+        <main class="forum-main post-view">
+            <!-- Back Button -->
+            <a href="forum.html" class="back-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+            </a>
 
-    <main>
+            <!-- Post Content -->
+            <section id="postSection" class="post-content">
+                <p id="postAuthor" class="post-author">User8182</p>
+                <h1 class="post-title"><a id="postTitle" href="#">Mental Health Tips</a></h1>
 
+                <p id="postBody" class="post-description">
+                    Our website is a mental health awareness platform to spread awareness and
+                    information about Mental health. It also allows for people to receive help. Our
+                    website is a mental health awareness platform to spread awareness and
+                    information about Mental health. It also allows for people to receive help.
+                </p>
 
-        <a href="forum.html">← Back</a>
+                <div class="post-actions">
+                    <button id="upvoteButton" class="like-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M7 10v12M21 10l-2 12H7l-2-12h16zM12 3v7" />
+                        </svg>
+                        <span id="postUpvotes">0</span>
+                    </button>
+                    <div class="comment-count">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        <span id="postCommentsCount">0</span>
+                    </div>
+                </div>
+            </section>
 
+            <!-- Comment Input -->
+            <section class="comment-input-section">
+                <form id="commentForm" class="comment-form">
+                    <input type="text" id="commentInput" class="comment-input" placeholder="Post your comment!">
+                    <button type="submit" class="submit-comment-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <circle cx="12" cy="12" r="12" />
+                            <path d="M8 12l4-4 4 4M12 16V8" stroke="white" stroke-width="2" fill="none" />
+                        </svg>
+                    </button>
+                </form>
+            </section>
 
-        <section id="postSection">
-            <p id="postAuthor">User8182</p>
-            <h1><a id="postTitle" href="#">Mental Health Tips</a></h1>
+            <!-- Comments Section -->
+            <section class="comments-section">
+                <h2 class="comments-title">Comments</h2>
+                <div id="commentsList">
+                    <!-- Filled by JS -->
+                </div>
+            </section>
+        </main>
+    </div>
 
-            <p id="postBody">
-                Our website is a mental health awareness platform to spread awareness
-                and information about Mental health. It also allows for people to receive
-                help. Our website is a mental health awareness platform to spread awareness
-                and information about Mental health. It also allows for people to receive help.
-            </p>
-
-            <div>
-                <button id="upvoteButton">↑</button>
-                <span id="postUpvotes">0</span>
-                <p>Comments: <span id="postCommentsCount">0</span></p>
-            </div>
-        </section>
-
-
-        <section>
-            <form id="commentForm">
-                <input type="text" id="commentInput" placeholder="Post your comment">
-                <button type="submit">↑</button>
-            </form>
-        </section>
-
-
-        <section>
-            <h2>Comments</h2>
-            <div id="commentsList">
-                <!-- Filled by JS -->
-            </div>
-        </section>
-
-    </main>
-     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
-
+    <script src="js/navigation.js"></script>
     <script src="js/post.js"></script>
 </body>
+
 </html>
