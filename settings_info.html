@@ -1,45 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>Account Settings</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Settings - MindScape</title>
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/settings_info.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
+  <!-- Navigation will be loaded here -->
+  <div id="nav-container"></div>
 
-<form>
-  <p>Current Username</p>
-  <input type="text">
+  <main class="settings-container">
+    <header class="settings-header">
+      <h1>Account Settings</h1>
+      <p>Update your username, change your password, or permanently delete your account.</p>
+    </header>
 
-  <p>New Username</p>
-  <input type="text">
+    <div class="settings-grid">
+      <!-- Username Section -->
+      <section class="settings-card">
+        <h2>Username</h2>
+        <form onsubmit="event.preventDefault();">
+          <div class="form-group">
+            <label>Current Username</label>
+            <input type="text" class="rounded-input" placeholder="">
+          </div>
+          <div class="form-group">
+            <label>New Username</label>
+            <input type="text" class="rounded-input" placeholder="">
+          </div>
+          <div class="button-container right">
+            <button class="btn btn-blue">Save Username</button>
+          </div>
+        </form>
+      </section>
 
-  <button>Save Username</button>
-</form>
+      <!-- Password Section -->
+      <section class="settings-card">
+        <h2>Password</h2>
+        <form onsubmit="event.preventDefault();">
+          <div class="form-group">
+            <label>New Password</label>
+            <input type="password" class="rounded-input" placeholder="">
+          </div>
+          <div class="form-group">
+            <label class="sub-label">Use at least 8 characters, including a number and a symbol.</label>
+            <label>Confirm Password</label>
+            <input type="password" class="rounded-input" placeholder="">
+          </div>
+          <div class="button-container right">
+            <button class="btn btn-blue">Save Password</button>
+          </div>
+        </form>
+      </section>
 
-<form>
-  <p>New Password</p>
-  <input type="password">
+      <!-- Delete Account Section -->
+      <section class="settings-card">
+        <h2>Delete Account</h2>
+        <p class="warning-text">This action cannot be undone. All of your data and preferences will be permanently
+          removed.</p>
+        <form onsubmit="event.preventDefault();">
+          <div class="form-group">
+            <label>Type Delete to Confirm</label>
+            <input type="text" class="rounded-input" placeholder="">
+          </div>
+          <div class="button-container center">
+            <button class="btn btn-red">Delete</button>
+          </div>
+        </form>
+      </section>
 
-  <p>Confirm Password</p>
-  <input type="password">
+      <!-- Display Name Section -->
+      <section class="settings-card">
+        <h2>Display Name</h2>
+        <form onsubmit="event.preventDefault();">
+          <div class="form-group">
+            <label>Current Display Name</label>
+            <input type="text" class="rounded-input" placeholder="">
+          </div>
+          <div class="form-group">
+            <label>New Display Name</label>
+            <input type="text" class="rounded-input" placeholder="">
+          </div>
+          <div class="button-container right">
+            <button class="btn btn-blue">Save Display Name</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
 
-  <button>Save Password</button>
-</form>
-
-<form>
-  <p>Type "Delete" to confirm</p>
-  <input type="text">
-
-  <button>Delete</button>
-</form>
-<form>
-  <p>New Display Name</p>
-  <input type="text">
-
-  <p>Confirm Display Name</p>
-  <input type="text">
-  <button>Save Display Name</button>
-</form>
-
+  <script src="js/navigation.js"></script>
 </body>
+
 </html>
