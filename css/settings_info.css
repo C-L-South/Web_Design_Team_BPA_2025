@@ -1,0 +1,155 @@
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+body {
+   font-family: 'Poppins', sans-serif;
+   background-color: #E0F2F7;
+   /* Light blue background */
+   margin: 0;
+}
+
+/* Main Container */
+.settings-container {
+   max-width: 1200px;
+   margin: 40px auto 50px;
+   /* Adjusted for body padding */
+   padding: 0 20px;
+}
+
+/* Header */
+.settings-header {
+   margin-bottom: 40px;
+}
+
+.settings-header h1 {
+   font-size: 36px;
+   font-weight: 700;
+   margin-bottom: 10px;
+}
+
+.settings-header p {
+   font-size: 16px;
+   color: #333;
+}
+
+/* Grid Layout */
+.settings-grid {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   gap: 40px;
+   /* Space between columns */
+}
+
+/* Section/Card Styling */
+.settings-card {
+   /* Optional: Add white background if desired, but screenshot looks clean */
+   /* background-color: white; */
+   /* padding: 20px; */
+   /* border-radius: 20px; */
+   display: flex;
+   flex-direction: column;
+}
+
+.settings-card h2 {
+   font-size: 24px;
+   font-weight: 700;
+   margin-bottom: 15px;
+}
+
+/* Form Elements */
+.form-group {
+   margin-bottom: 20px;
+}
+
+.form-group label {
+   display: block;
+   font-size: 16px;
+   font-weight: 500;
+   margin-bottom: 8px;
+   color: #000;
+}
+
+.form-group label.sub-label {
+   font-size: 12px;
+   font-weight: 400;
+   margin-bottom: 8px;
+   color: #333;
+}
+
+.rounded-input {
+   width: 100%;
+   padding: 12px 20px;
+   border: 2px solid #000;
+   border-radius: 50px;
+   /* Pill shape */
+   font-size: 16px;
+   font-family: 'Poppins', sans-serif;
+   background-color: #f9f9f9;
+   outline: none;
+   transition: border-color 0.3s;
+}
+
+.rounded-input:focus {
+   border-color: #0080FF;
+}
+
+.warning-text {
+   font-size: 14px;
+   margin-bottom: 15px;
+   line-height: 1.4;
+}
+
+/* Buttons */
+.button-container {
+   display: flex;
+   margin-top: 10px;
+}
+
+.button-container.right {
+   justify-content: flex-end;
+}
+
+.button-container.center {
+   justify-content: center;
+}
+
+.btn {
+   padding: 10px 30px;
+   border: none;
+   border-radius: 50px;
+   font-size: 16px;
+   font-weight: 600;
+   cursor: pointer;
+   font-family: 'Poppins', sans-serif;
+   color: white;
+   transition: opacity 0.3s;
+}
+
+.btn:hover {
+   opacity: 0.9;
+}
+
+.btn-blue {
+   background-color: #0080FF;
+   /* Bright Blue */
+}
+
+.btn-red {
+   background-color: #FF4D4D;
+   /* Red */
+   padding: 10px 50px;
+   /* Wider delete button */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+   .settings-grid {
+      grid-template-columns: 1fr;
+      /* Stack on mobile */
+      gap: 30px;
+   }
+
+   .settings-header h1 {
+      font-size: 28px;
+   }
+}
