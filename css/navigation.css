@@ -1,0 +1,158 @@
+/* Navigation Styles - Shared across all pages */
+
+/* Body padding for fixed navigation */
+body {
+   padding-top: 80px;
+   /* Space for fixed navigation */
+}
+
+/* Header Navigation */
+.home-nav,
+.info-nav {
+   background-color: white;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 20px 40px;
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   z-index: 1000;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-left {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+}
+
+.nav-logo {
+   width: 40px;
+   height: 40px;
+   object-fit: contain;
+}
+
+.logo-text {
+   font-size: 24px;
+   font-weight: 700;
+   color: #333;
+   text-decoration: none;
+}
+
+.nav-right {
+   display: flex;
+   align-items: center;
+   gap: 30px;
+}
+
+.nav-link {
+   color: #333;
+   text-decoration: none;
+   font-size: 16px;
+   font-weight: 500;
+   transition: color 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+   color: #1E90FF;
+}
+
+.logout-btn {
+   background-color: #fea500;
+   color: white;
+   border: none;
+   padding: 10px 24px;
+   border-radius: 24px;
+   font-size: 16px;
+   font-weight: 600;
+   cursor: pointer;
+   transition: background-color 0.3s;
+   font-family: "Poppins", sans-serif;
+}
+
+.logout-btn:hover {
+   background-color: #ffb937;
+}
+
+/* Dropdown Styles */
+.dropdown {
+   float: left;
+   overflow: hidden;
+}
+
+.dropdown .dropbtn {
+   text-decoration: none;
+   font-size: 16px;
+   font-weight: 500;
+   font-family: "Poppins";
+   transition: color 0.3s;
+   border: none;
+   outline: none;
+   background-color: inherit;
+   padding: 14px 16px;
+   margin: 0;
+   cursor: pointer;
+}
+
+.dropdown .dropbtn:hover {
+   color: #1E90FF;
+}
+
+.dropdown-content {
+   display: none;
+   position: absolute;
+   background-color: #ffffff;
+   min-width: 160px;
+   z-index: 1;
+}
+
+.dropdown-content a {
+   float: none;
+   color: black;
+   font-size: 16px;
+   font-weight: 500;
+   padding: 12px 16px;
+   text-decoration: none;
+   display: block;
+   text-align: left;
+}
+
+.dropdown-content a:hover {
+   background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+   display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+   .nav-right {
+      gap: 15px;
+   }
+
+   .nav-link {
+      font-size: 14px;
+   }
+}
+
+@media (max-width: 768px) {
+
+   .home-nav,
+   .info-nav {
+      padding: 15px 20px;
+   }
+
+   .nav-right {
+      gap: 10px;
+      flex-wrap: wrap;
+   }
+
+   .logout-btn {
+      padding: 8px 16px;
+      font-size: 14px;
+   }
+}
