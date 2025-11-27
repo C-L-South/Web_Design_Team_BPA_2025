@@ -33,7 +33,8 @@ form.addEventListener("submit", (e) => {
         console.log("User signed up:", user.uid, user.email);
         return db.collection("users").doc(user.uid).set({
           uid: user.uid,
-          email: user.email
+          email: user.email,
+          displayName: user.email,
         });
       })
       .then(() => {
@@ -45,4 +46,3 @@ form.addEventListener("submit", (e) => {
         alert(error.message);
       }); 
 });
-
