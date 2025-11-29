@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body {
+   font-family: "Poppins", sans-serif;
+   background-color: #E0F2F7;
+   color: #333;
+   line-height: 1.6;
+}
+
+/* Hero Section */
+.hero-section {
+   padding: 80px 40px;
+   background-color: #B8E6E8;
+   /* Restored original hero background */
+}
+
+.hero-container {
+   max-width: 1200px;
+   margin: 0 auto;
+   display: flex;
+   gap: 80px;
+   /* Increased gap for better separation */
+   align-items: center;
+}
+
+.hero-image {
+   flex: 0 0 450px;
+   height: 350px;
+   /* Slightly taller */
+   border-radius: 20px;
+   /* More rounded */
+   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+   object-fit: cover;
+}
+
+.hero-content {
+   flex: 1;
+}
+
+.hero-content h1 {
+   font-size: 52px;
+   /* Larger title */
+   font-weight: 700;
+   color: #000;
+   margin-bottom: 24px;
+   letter-spacing: -1px;
+}
+
+.hero-content p {
+   font-size: 18px;
+   line-height: 1.8;
+   color: #2C3E50;
+}
+
+/* Contact Section */
+.contact-section {
+   background-color: #0080FF;
+   /* Restored original bright blue */
+   padding: 100px 40px;
+}
+
+.contact-container {
+   max-width: 1200px;
+   margin: 0 auto;
+   display: flex;
+   flex-direction: column;
+   gap: 60px;
+   /* Increased gap */
+}
+
+.contact-content {
+   text-align: center;
+   color: white;
+   max-width: 800px;
+   margin: 0 auto;
+}
+
+.contact-content h2 {
+   font-size: 38px;
+   font-weight: 700;
+   margin-bottom: 24px;
+}
+
+.contact-content p {
+   font-size: 18px;
+   opacity: 0.95;
+}
+
+.contact-buttons {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   gap: 25px;
+   /* Slightly larger gap */
+   max-width: 1000px;
+   /* Wider container */
+   margin: 0 auto;
+   width: 100%;
+}
+
+.contact-btn {
+   background: white;
+   padding: 24px 30px;
+   /* Larger padding */
+   border-radius: 16px;
+   /* More rounded */
+   text-decoration: none;
+   color: #000;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   transition: transform 0.2s ease, box-shadow 0.2s ease;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contact-btn:hover {
+   transform: translateY(-4px);
+   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.contact-btn .btn-content {
+   display: flex;
+   flex-direction: column;
+   gap: 4px;
+}
+
+.contact-btn .btn-title {
+   font-size: 14px;
+   font-weight: 600;
+   color: #666;
+   text-transform: uppercase;
+   letter-spacing: 0.5px;
+}
+
+.contact-btn .btn-label {
+   font-size: 20px;
+   /* Larger text */
+   font-weight: 700;
+   color: #000;
+}
+
+.contact-btn .arrow {
+   font-size: 24px;
+   color: #0080FF;
+   /* Blue arrow */
+   transition: transform 0.2s ease;
+}
+
+.contact-btn:hover .arrow {
+   transform: translateX(5px);
+}
+
+/* Resources Section */
+.resources-section {
+   padding: 100px 40px;
+   background-color: #E0F2F7;
+}
+
+.resources-grid {
+   max-width: 1200px;
+   margin: 0 auto;
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   gap: 40px;
+   /* Wider gap */
+}
+
+.resource-card {
+   background: white;
+   padding: 40px;
+   border-radius: 20px;
+   /* More rounded */
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+   transition: all 0.3s ease;
+   border: none;
+   /* Removed border for cleaner look */
+}
+
+.resource-card:hover {
+   transform: translateY(-5px);
+   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.resource-card h3 {
+   font-size: 22px;
+   font-weight: 700;
+   color: #000;
+   margin-bottom: 16px;
+}
+
+.resource-card p {
+   font-size: 16px;
+   color: #4A5568;
+   line-height: 1.8;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+   .hero-container {
+      flex-direction: column;
+      text-align: center;
+      gap: 40px;
+   }
+
+   .hero-image {
+      flex: none;
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      aspect-ratio: 4/3;
+   }
+
+   .contact-buttons {
+      grid-template-columns: 1fr;
+   }
+
+   .resources-grid {
+      grid-template-columns: 1fr;
+   }
+}
+
+@media (max-width: 768px) {
+
+   .hero-section,
+   .contact-section,
+   .resources-section {
+      padding: 60px 20px;
+   }
+
+   .hero-content h1 {
+      font-size: 36px;
+   }
+
+   .contact-content h2 {
+      font-size: 28px;
+   }
+}
