@@ -1,9 +1,12 @@
-/* Navigation Styles - Shared across all pages */
+/* Reset */
+* {
+   box-sizing: border-box;
+}
 
-/* Body padding for fixed navigation */
 body {
-   padding-top: 80px;
-   /* Space for fixed navigation */
+   margin: 0;
+   padding-top: 80px; /* Space for fixed navigation */
+   font-family: "Poppins", sans-serif;
 }
 
 /* Header Navigation */
@@ -14,14 +17,16 @@ body {
    justify-content: space-between;
    align-items: center;
    padding: 20px 40px;
-   position: fixed;
+   position: fixed;          /* stays at top */
    top: 0;
    left: 0;
+   right: 0;                 /* ensure full width */
    width: 100%;
    z-index: 1000;
    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Left side: logo + text */
 .nav-left {
    display: flex;
    align-items: center;
@@ -41,12 +46,14 @@ body {
    text-decoration: none;
 }
 
+/* Right side: menu + logout */
 .nav-right {
    display: flex;
    align-items: center;
    gap: 30px;
 }
 
+/* Links (if you use .nav-link anywhere) */
 .nav-link {
    color: #333;
    text-decoration: none;
@@ -60,6 +67,7 @@ body {
    color: #1E90FF;
 }
 
+/* Log out button */
 .logout-btn {
    background-color: #fea500;
    color: white;
@@ -70,7 +78,6 @@ body {
    font-weight: 600;
    cursor: pointer;
    transition: background-color 0.3s;
-   font-family: "Poppins", sans-serif;
 }
 
 .logout-btn:hover {
@@ -79,15 +86,16 @@ body {
 
 /* Dropdown Styles */
 .dropdown {
+   position: relative;  /* for absolute dropdown menu positioning */
    float: left;
-   overflow: hidden;
+   overflow: visible;
 }
 
 .dropdown .dropbtn {
    text-decoration: none;
    font-size: 16px;
    font-weight: 500;
-   font-family: "Poppins";
+   font-family: "Poppins", sans-serif;
    transition: color 0.3s;
    border: none;
    outline: none;
@@ -105,8 +113,11 @@ body {
    display: none;
    position: absolute;
    background-color: #ffffff;
-   min-width: 160px;
-   z-index: 1;
+   min-width: 180px;
+   top: 100%;         /* directly under the button */
+   left: 0;
+   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+   z-index: 2000;
 }
 
 .dropdown-content a {
@@ -128,31 +139,76 @@ body {
    display: block;
 }
 
-/* Responsive Design */
+/* --------- Responsive Design --------- */
+
+/* Medium screens: tighten spacing, allow wrapping */
 @media (max-width: 968px) {
-   .nav-right {
-      gap: 15px;
+   .home-nav,
+   .info-nav {
+      padding: 15px 20px;
+      flex-wrap: wrap;
+      row-gap: 10px;
    }
 
-   .nav-link {
+   .nav-right {
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+   }
+
+   .logo-text {
+      font-size: 20px;
+   }
+
+   .dropdown .dropbtn,
+   .logout-btn {
       font-size: 14px;
+      padding: 8px 14px;
    }
 }
 
+/* Small screens: stack logo and menu vertically */
 @media (max-width: 768px) {
 
    .home-nav,
    .info-nav {
-      padding: 15px 20px;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 12px 16px;
+   }
+
+   .nav-left {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
    }
 
    .nav-right {
+      width: 100%;
+      justify-content: flex-start;
       gap: 10px;
       flex-wrap: wrap;
    }
 
+   .dropdown .dropbtn,
    .logout-btn {
-      padding: 8px 16px;
       font-size: 14px;
+      padding: 8px 12px;
+   }
+
+   .dropdown-content {
+      position: static;   /* dropdown will just push content down on mobile */
+      box-shadow: none;
+      margin-top: 4px;
+   }
+
+   .dropdown:hover .dropdown-content {
+      display: none;      /* hover not great on mobile */
+   }
+
+   /* Optional: always show dropdown content on tap-like layout */
+   .dropdown.open .dropdown-content {
+      display: block;
    }
 }
