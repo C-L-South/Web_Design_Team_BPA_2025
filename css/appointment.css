@@ -23,7 +23,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .nav-left {
@@ -111,7 +111,7 @@ body {
     background-color: #ffffff;
     min-width: 160px;
     z-index: 1;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .dropdown-content a {
@@ -149,7 +149,7 @@ body {
     background-color: white;
     padding: 50px 40px;
     border-radius: 15px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .form-title {
@@ -188,18 +188,19 @@ body {
 }
 
 .form-group input {
-    padding: 12px 16px;
-    border: 1px solid #333;
-    border-radius: 8px;
+    padding: 12px 20px;
+    border: 2px solid #000;
+    border-radius: 50px;
     font-size: 16px;
     font-family: "Poppins", sans-serif;
     transition: border-color 0.3s;
-    background-color: white;
+    background-color: #f9f9f9;
+    outline: none;
 }
 
 .form-group input:focus {
-    outline: none;
-    border-color: #1E90FF;
+    border-color: #0080FF;
+    background-color: white;
 }
 
 .calendar-section {
@@ -216,21 +217,22 @@ body {
 }
 
 .calendar-section input[type="date"] {
-    padding: 12px 16px;
-    border: 1px solid #333;
-    border-radius: 8px;
+    padding: 12px 20px;
+    border: 2px solid #000;
+    border-radius: 50px;
     font-size: 16px;
     font-family: "Poppins", sans-serif;
     transition: border-color 0.3s;
-    background-color: white;
+    background-color: #f9f9f9;
     cursor: pointer;
     width: 100%;
     max-width: 300px;
+    outline: none;
 }
 
 .calendar-section input[type="date"]:focus {
-    outline: none;
-    border-color: #1E90FF;
+    border-color: #0080FF;
+    background-color: white;
 }
 
 .submit-btn {
@@ -259,7 +261,7 @@ body {
     background-color: #1E90FF;
     padding: 40px 30px;
     border-radius: 15px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar-title {
@@ -328,4 +330,3 @@ body {
         font-size: 24px;
     }
 }
-
