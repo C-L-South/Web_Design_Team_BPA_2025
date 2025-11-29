@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Appointment Scheduler - MindScape</title>
     <link rel="stylesheet" href="css/appointment.css">
 </head>
+
 <body>
     <!-- Navigation will be loaded here -->
     <div id="nav-container"></div>
@@ -15,7 +17,7 @@
         <!-- Left Panel - Form -->
         <div class="form-panel">
             <h1 class="form-title">Counseling Appointment Scheduler</h1>
-            
+
             <form class="appointment-form" id="appointmentForm">
                 <div class="name-row">
                     <div class="form-group">
@@ -27,22 +29,22 @@
                         <input type="text" id="lastName" name="lastName" required>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="phoneNumber">Phone Number</label>
                     <input type="tel" id="phoneNumber" name="phoneNumber" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" required>
                 </div>
-                
+
                 <div class="calendar-section">
                     <label for="appointmentDate">Choose Date</label>
                     <input type="date" id="appointmentDate" name="appointmentDate" required>
                 </div>
-                
+
                 <button type="submit" class="submit-btn">Submit</button>
             </form>
         </div>
@@ -51,7 +53,9 @@
         <div class="info-sidebar">
             <h2 class="sidebar-title">Counseling Appointment Scheduler Info</h2>
             <p class="sidebar-text">
-                Our website is a mental health awareness platform to spread awareness and information about Mental health. It also allows for people to receive help Our website is a mental health awareness platform to spread awareness and information about Mental health. It also allows for people to receive help.
+                Schedule a confidential counseling session with our licensed mental health professionals. We offer
+                flexible appointment times and a supportive environment to help you on your journey to wellness. Fill
+                out the form to book your appointment, and we'll confirm your session within 24 hours.
             </p>
         </div>
     </div>
@@ -62,4 +66,5 @@
     <script src="js/navigation.js"></script>
     <script src="js/appointment.js"></script>
 </body>
+
 </html>
