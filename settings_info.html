@@ -58,22 +58,6 @@
         </form>
       </section>
 
-      <!-- Delete Account Section -->
-      <section class="settings-card">
-        <h2>Delete Account</h2>
-        <p class="warning-text">This action cannot be undone. All of your data and preferences will be permanently
-          removed.</p>
-        <form onsubmit="event.preventDefault();">
-          <div class="form-group">
-            <label>Type Delete to Confirm</label>
-            <input type="text" class="rounded-input" placeholder="">
-          </div>
-          <div class="button-container center">
-            <button class="btn btn-red">Delete</button>
-          </div>
-        </form>
-      </section>
-
       <!-- Display Name Section -->
       <section class="settings-card">
         <h2>Display Name</h2>
@@ -91,13 +75,29 @@
           </div>
         </form>
       </section>
+
+      <!-- Delete Account Section -->
+      <section class="settings-card">
+        <h2>Delete Account</h2>
+        <p class="warning-text">This action cannot be undone. All of your data and preferences will be permanently
+          removed.</p>
+        <form onsubmit="event.preventDefault();">
+          <div class="form-group">
+            <label>Type Delete to Confirm</label>
+            <input type="text" class="rounded-input" placeholder="">
+          </div>
+          <div class="button-container center">
+            <button class="btn btn-red">Delete</button>
+          </div>
+        </form>
+      </section>
     </div>
   </main>
 
-    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
-    <script src="js/settings_info.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+  <script src="js/settings_info.js"></script>
   <script src="js/navigation.js"></script>
 </body>
 
