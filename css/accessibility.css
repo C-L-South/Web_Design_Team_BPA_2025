@@ -31,12 +31,24 @@ body.access-font-dyslexic {
 }
 
 /* Text Size */
-body.access-text-large * {
-   font-size: 1.1em !important;
+html.text-size-normal {
+   font-size: 100%;
 }
 
-body.access-text-xlarge * {
-   font-size: 1.25em !important;
+html.text-size-large {
+   font-size: 112%;
+}
+
+html.text-size-xlarge {
+   font-size: 125%;
+}
+
+html.text-size-large .radio-label span:last-child {
+   font-size: 1.1rem !important;
+}
+
+html.text-size-xlarge .radio-label span:last-child {
+   font-size: 1.25rem !important;
 }
 
 /* Line Reader - Shades that follow cursor */
@@ -47,10 +59,4 @@ body.access-text-xlarge * {
    background-color: rgba(0, 0, 0, 0.65);
    pointer-events: none;
    z-index: 9999;
-   display: none;
-}
-
-/* Show shades when line reader is active */
-body.access-line-reader-active .line-reader-shade {
-   display: block;
 }
