@@ -116,6 +116,214 @@ body {
 
 .search-icon {
     position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-input:focus {
+    outline: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Topics Table */
+.topics-section {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.topics-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.topics-table thead {
+    background-color: #fea500;
+}
+
+.topics-table th {
+    padding: 15px 20px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+}
+
+.col-title {
+    border-radius: 10px 0 0 0;
+}
+
+.col-author {
+    border-radius: 0 10px 0 0;
+}
+
+.topics-table tbody tr {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.topics-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.topics-table td {
+    padding: 18px 20px;
+    font-size: 15px;
+}
+
+.topic-title a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.topic-title a:hover {
+    color: #0080FF;
+}
+
+.topic-replies {
+    color: #666;
+}
+
+.topic-author {
+    color: #666;
+}
+
+/* Post View Styles */
+.post-view {
+    max-width: 800px;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    padding: 8px 12px;
+    border-radius: 50%;
+    background-color: white;
+    transition: background-color 0.3s;
+}
+
+.back-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.post-content {
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post-author {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.post-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.post-description {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.post-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.like-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-family: "Poppins", sans-serif;
+}
+
+.like-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.comment-count {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #666;
+    font-size: 14px;
+}
+
+/* Comment Input */
+.comment-input-section {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comment-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.comment-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid #e6e6e6;
+    border-radius: 25px;
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+    background-color: #f9f9f9;
+}
+
+.comment-input:focus {
+    outline: none;
+    border-color: #0080FF;
+    background-color: white;
+}
+
+.submit-comment-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
     border-radius: 50%;
     background-color: #333;
     color: white;
