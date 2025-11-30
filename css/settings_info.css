@@ -178,7 +178,34 @@ body {
    background-color: #fce8e6;
    border-left: 4px solid #d93025;
 }
+/* Textboxes in settings page (only text-like inputs) */
+.settings-card .form-group input[type="text"],
+.settings-card .form-group input[type="email"],
+.settings-card .form-group input[type="password"],
+.settings-card .form-group input[type="search"],
+.settings-card .form-group input[type="url"],
+.settings-card .form-group input[type="tel"] {
+    width: 100%;
+    padding: 16px 18px;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    font-size: 18px;
+    font-family: "Poppins", sans-serif;
+    background-color: #f6f6f6;
+    outline: none;
+    transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
 
+.settings-card .form-group input[type="text"]:focus,
+.settings-card .form-group input[type="email"]:focus,
+.settings-card .form-group input[type="password"]:focus,
+.settings-card .form-group input[type="search"]:focus,
+.settings-card .form-group input[type="url"]:focus,
+.settings-card .form-group input[type="tel"]:focus {
+    border-color: #007bff;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 1px rgba(0, 123, 255, 0.15);
+}
 /* Buttons */
 .button-container {
    display: flex;
