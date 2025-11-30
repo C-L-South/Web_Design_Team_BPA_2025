@@ -188,18 +188,18 @@ body {
 }
 
 .form-group input {
-    padding: 12px 20px;
-    border: 2px solid #000;
-    border-radius: 50px;
-    font-size: 16px;
+    padding: 16px 18px;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    font-size: 18px;
     font-family: "Poppins", sans-serif;
-    transition: border-color 0.3s;
-    background-color: #f9f9f9;
+    transition: border-color 0.2s;
+    background-color: #f6f6f6;
     outline: none;
 }
 
 .form-group input:focus {
-    border-color: #0080FF;
+    border-color: #007bff;
     background-color: white;
 }
 
@@ -217,13 +217,13 @@ body {
 }
 
 .calendar-section input[type="date"] {
-    padding: 12px 20px;
-    border: 2px solid #000;
-    border-radius: 50px;
-    font-size: 16px;
+    padding: 16px 18px;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    font-size: 18px;
     font-family: "Poppins", sans-serif;
-    transition: border-color 0.3s;
-    background-color: #f9f9f9;
+    transition: border-color 0.2s;
+    background-color: #f6f6f6;
     cursor: pointer;
     width: 100%;
     max-width: 300px;
@@ -231,7 +231,7 @@ body {
 }
 
 .calendar-section input[type="date"]:focus {
-    border-color: #0080FF;
+    border-color: #007bff;
     background-color: white;
 }
 
