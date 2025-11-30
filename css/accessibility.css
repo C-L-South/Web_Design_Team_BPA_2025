@@ -1,0 +1,56 @@
+/* Accessibility Foundation */
+
+:root {
+   /* Default Values */
+   --access-font-family: 'Poppins', sans-serif;
+   --access-filter: none;
+}
+
+/* Apply Variables to Body */
+body {
+   font-family: var(--access-font-family) !important;
+   filter: var(--access-filter) !important;
+}
+
+/* State Classes - To be toggled by Backend JS */
+
+/* Color Filters */
+body.access-mode-grayscale {
+   filter: grayscale(100%) !important;
+}
+
+/* Exclude images from grayscale filter */
+body.access-mode-grayscale img {
+   filter: grayscale(0%) !important;
+}
+
+/* Font Families */
+body.access-font-dyslexic {
+   --access-font-family: 'OpenDyslexic', 'Comic Sans MS', sans-serif;
+   font-family: 'OpenDyslexic', 'Comic Sans MS', sans-serif !important;
+}
+
+/* Text Size */
+body.access-text-large * {
+   font-size: 1.1em !important;
+}
+
+body.access-text-xlarge * {
+   font-size: 1.25em !important;
+}
+
+/* Line Reader - Shades that follow cursor */
+.line-reader-shade {
+   position: fixed;
+   left: 0;
+   width: 100%;
+   background-color: rgba(0, 0, 0, 0.65);
+   pointer-events: none;
+   z-index: 9999;
+   display: none;
+}
+
+/* Show shades when line reader is active */
+body.access-line-reader-active .line-reader-shade {
+   display: block;
+}

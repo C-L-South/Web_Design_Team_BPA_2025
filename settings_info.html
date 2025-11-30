@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Account Settings - MindScape</title>
-  <link rel="stylesheet" href="css/home.css">
   <link rel="stylesheet" href="css/settings_info.css">
+  <link rel="stylesheet" href="css/accessibility.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
@@ -14,85 +14,181 @@
   <!-- Navigation will be loaded here -->
   <div id="nav-container"></div>
 
-  <main class="settings-container">
-    <header class="settings-header">
-      <h1>Account Settings</h1>
-      <p>Update your username, change your password, or permanently delete your account.</p>
-    </header>
+  <!-- Main Content Layout -->
+  <div class="settings-layout">
+    <!-- Left Sidebar -->
+    <aside class="sidebar">
+      <h2 class="sidebar-title">Settings</h2>
+      <nav class="sidebar-nav">
+        <ul>
+          <li><a href="#account" class="sidebar-link">Account</a></li>
+          <li><a href="#accessibility" class="sidebar-link">Accessibility</a></li>
+        </ul>
+      </nav>
+    </aside>
 
-    <div class="settings-grid">
-      <!-- Username Section -->
-      <section class="settings-card">
-        <h2>Username</h2>
-        <form onsubmit="event.preventDefault();">
-          <div class="form-group">
-            <label>Current Username</label>
-            <input type="text" class="rounded-input" placeholder="">
-          </div>
-          <div class="form-group">
-            <label>New Username</label>
-            <input type="text" class="rounded-input" placeholder="">
-          </div>
-          <div class="button-container right">
-            <button class="btn btn-blue">Save Username</button>
-          </div>
-        </form>
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Account Settings Section -->
+      <section id="account" class="content-section">
+        <h1>Account Settings</h1>
+        <p>Update your username, change your password, or permanently delete your account.</p>
+
+        <div class="settings-grid">
+          <!-- Username Section -->
+          <section class="settings-card">
+            <h2>Username</h2>
+            <form onsubmit="event.preventDefault();">
+              <div class="form-group">
+                <label>Current Username</label>
+                <input type="text" class="rounded-input" placeholder="">
+              </div>
+              <div class="form-group">
+                <label>New Username</label>
+                <input type="text" class="rounded-input" placeholder="">
+              </div>
+              <div class="button-container right">
+                <button class="btn btn-blue">Save Username</button>
+              </div>
+            </form>
+          </section>
+
+          <!-- Password Section -->
+          <section class="settings-card">
+            <h2>Password</h2>
+            <form onsubmit="event.preventDefault();">
+              <div class="form-group">
+                <label>New Password</label>
+                <input type="password" class="rounded-input" placeholder="">
+              </div>
+              <div class="form-group">
+                <label class="sub-label">Use at least 8 characters, including a number and a symbol.</label>
+                <label>Confirm Password</label>
+                <input type="password" class="rounded-input" placeholder="">
+              </div>
+              <div class="button-container right">
+                <button class="btn btn-blue">Save Password</button>
+              </div>
+            </form>
+          </section>
+
+          <!-- Display Name Section -->
+          <section class="settings-card">
+            <h2>Display Name</h2>
+            <form onsubmit="event.preventDefault();">
+              <div class="form-group">
+                <label>Current Display Name</label>
+                <input type="text" class="rounded-input" placeholder="">
+              </div>
+              <div class="form-group">
+                <label>New Display Name</label>
+                <input type="text" class="rounded-input" placeholder="">
+              </div>
+              <div class="button-container right">
+                <button class="btn btn-blue">Save Display Name</button>
+              </div>
+            </form>
+          </section>
+
+          <!-- Delete Account Section -->
+          <section class="settings-card">
+            <h2>Delete Account</h2>
+            <p class="warning-text">This action cannot be undone. All of your data and preferences will be permanently
+              removed.</p>
+            <form onsubmit="event.preventDefault();">
+              <div class="form-group">
+                <label>Type Delete to Confirm</label>
+                <input type="text" class="rounded-input" placeholder="">
+              </div>
+              <div class="button-container center">
+                <button class="btn btn-red">Delete</button>
+              </div>
+            </form>
+          </section>
+        </div>
       </section>
 
-      <!-- Password Section -->
-      <section class="settings-card">
-        <h2>Password</h2>
-        <form onsubmit="event.preventDefault();">
-          <div class="form-group">
-            <label>New Password</label>
-            <input type="password" class="rounded-input" placeholder="">
-          </div>
-          <div class="form-group">
-            <label class="sub-label">Use at least 8 characters, including a number and a symbol.</label>
-            <label>Confirm Password</label>
-            <input type="password" class="rounded-input" placeholder="">
-          </div>
-          <div class="button-container right">
-            <button class="btn btn-blue">Save Password</button>
-          </div>
-        </form>
-      </section>
+      <!-- Accessibility Settings Section -->
+      <section id="accessibility" class="content-section">
+        <h1>Accessibility Preferences</h1>
+        <p>Customize your viewing experience with a line reader, color filters, text size, and font options.</p>
 
-      <!-- Display Name Section -->
-      <section class="settings-card">
-        <h2>Display Name</h2>
-        <form onsubmit="event.preventDefault();">
-          <div class="form-group">
-            <label>Current Display Name</label>
-            <input type="text" class="rounded-input" placeholder="">
-          </div>
-          <div class="form-group">
-            <label>New Display Name</label>
-            <input type="text" class="rounded-input" placeholder="">
-          </div>
-          <div class="button-container right">
-            <button class="btn btn-blue">Save Display Name</button>
-          </div>
-        </form>
-      </section>
+        <div class="settings-grid">
+          <!-- Line Reader -->
+          <section class="settings-card">
+            <h2>Line Reader</h2>
+            <p class="description-text">Follow text line-by-line with a highlighted reading guide that moves with your
+              cursor.</p>
+            <div class="form-group">
+              <label class="toggle-label">
+                <input type="checkbox" class="toggle-input" id="lineReaderToggle">
+                <span class="toggle-slider"></span>
+                <span class="toggle-text">Enable Line Reader</span>
+              </label>
+            </div>
+          </section>
 
-      <!-- Delete Account Section -->
-      <section class="settings-card">
-        <h2>Delete Account</h2>
-        <p class="warning-text">This action cannot be undone. All of your data and preferences will be permanently
-          removed.</p>
-        <form onsubmit="event.preventDefault();">
-          <div class="form-group">
-            <label>Type Delete to Confirm</label>
-            <input type="text" class="rounded-input" placeholder="">
-          </div>
-          <div class="button-container center">
-            <button class="btn btn-red">Delete</button>
-          </div>
-        </form>
+          <!-- Color Filter -->
+          <section class="settings-card">
+            <h2>Color Filter</h2>
+            <p class="description-text">Apply a grayscale filter to reduce eye strain and improve focus.</p>
+            <div class="form-group">
+              <label class="toggle-label">
+                <input type="checkbox" class="toggle-input" id="grayscaleToggle">
+                <span class="toggle-slider"></span>
+                <span class="toggle-text">Enable Grayscale</span>
+              </label>
+            </div>
+          </section>
+
+          <!-- Text Size -->
+          <section class="settings-card">
+            <h2>Text Size</h2>
+            <p class="description-text">Adjust the text size for better readability.</p>
+            <div class="form-group">
+              <div class="radio-group">
+                <label class="radio-label">
+                  <input type="radio" name="textSize" value="normal" checked>
+                  <span class="radio-custom"></span>
+                  <span>Normal</span>
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="textSize" value="large">
+                  <span class="radio-custom"></span>
+                  <span>Large (120%)</span>
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="textSize" value="xlarge">
+                  <span class="radio-custom"></span>
+                  <span>Extra Large (140%)</span>
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <!-- Font Selection -->
+          <section class="settings-card">
+            <h2>Font</h2>
+            <p class="description-text">Choose a font that's easier for you to read.</p>
+            <div class="form-group">
+              <div class="radio-group">
+                <label class="radio-label">
+                  <input type="radio" name="fontFamily" value="normal" checked>
+                  <span class="radio-custom"></span>
+                  <span style="font-family: 'Poppins', sans-serif;">Normal (Poppins)</span>
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="fontFamily" value="opendyslexic">
+                  <span class="radio-custom"></span>
+                  <span style="font-family: 'Comic Sans MS', sans-serif;">OpenDyslexic</span>
+                </label>
+              </div>
+            </div>
+          </section>
+        </div>
       </section>
-    </div>
-  </main>
+    </main>
+  </div>
 
   <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
