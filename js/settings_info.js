@@ -46,7 +46,12 @@ document.addEventListener("DOMContentLoaded", () => {
     displayNameForm.querySelectorAll("input");
   const displayNameSaveBtn = displayNameForm.querySelector("button");
 
-  // Wait for login
+  // Accessibility controls
+  const lineReaderToggle  = document.getElementById("lineReaderToggle");
+  const grayscaleToggle   = document.getElementById("grayscaleToggle");
+  const textSizeRadios    = document.querySelectorAll("input[name='textSize']");
+  const fontFamilyRadios  = document.querySelectorAll("input[name='fontFamily']");
+
   auth.onAuthStateChanged(async (user) => {
     if (!user) {
       window.location.href = "login.html";
@@ -55,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     console.log("Settings page: logged in as", user.uid);
 
-    //Load current profile from Firestore
+    // Load profile
     let userData = {};
     try {
       const snap = await db.collection("users").doc(user.uid).get();
@@ -67,10 +72,38 @@ document.addEventListener("DOMContentLoaded", () => {
     const username    = userData.username || "";
     const displayName = user.displayName || userData.displayName || "";
 
+    // Preferences
+    const globalPrefs = (window.getAccessibilityPrefs?.()) || {
+      lineReader: false,
+      grayscale: false,
+      textSize: "normal",
+      fontFamily: "normal"
+    };
+
+    let prefs = {
+      ...globalPrefs,
+      ...(userData.accessibilityPrefs || {})
+    };
+
     currentUsernameInput.value = username;
     currentDisplayInput.value  = displayName;
 
-    // Save the username
+    if (lineReaderToggle) lineReaderToggle.checked = !!prefs.lineReader;
+    if (grayscaleToggle)  grayscaleToggle.checked  = !!prefs.grayscale;
+
+    textSizeRadios.forEach(r => {
+      r.checked = (r.value === prefs.textSize);
+    });
+
+    fontFamilyRadios.forEach(r => {
+      r.checked = (r.value === prefs.fontFamily);
+    });
+
+    if (window.updateAccessibilityPrefs) {
+      window.updateAccessibilityPrefs(prefs);
+    }
+
+    // Username
     usernameSaveBtn.addEventListener("click", async () => {
       const newUsername = newUsernameInput.value.trim();
       if (!newUsername) {
@@ -83,7 +116,6 @@ document.addEventListener("DOMContentLoaded", () => {
           { username: newUsername },
           { merge: true }
         );
-
         currentUsernameInput.value = newUsername;
         newUsernameInput.value = "";
         alert("Username updated.");
@@ -93,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Save the display name
+    // Display
     displayNameSaveBtn.addEventListener("click", async () => {
       const newDisplayName = newDisplayInput.value.trim();
       if (!newDisplayName) {
@@ -102,10 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       try {
-        // Update Firebase Auth profile
         await user.updateProfile({ displayName: newDisplayName });
-
-        // Also store in Firestore
         await db.collection("users").doc(user.uid).set(
           { displayName: newDisplayName },
           { merge: true }
@@ -120,10 +149,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Save the password
+    // Password
     passwordSaveBtn.addEventListener("click", async () => {
-      const newPw      = newPasswordInput.value;
-      const confirmPw  = confirmPasswordInput.value;
+      const newPw     = newPasswordInput.value;
+      const confirmPw = confirmPasswordInput.value;
 
       if (!newPw || !confirmPw) {
         alert("Please fill out both password fields.");
@@ -157,7 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Delete the account
+    // Delete
     deleteBtn.addEventListener("click", async () => {
       const text = deleteConfirmInput.value.trim();
       if (text.toLowerCase() !== "delete") {
@@ -170,16 +199,13 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       try {
-        // Remove user profile doc (if exists)
         try {
           await db.collection("users").doc(user.uid).delete();
         } catch (innerErr) {
           console.warn("Error deleting user profile doc (ignored):", innerErr);
         }
 
-        // Delete auth user
         await user.delete();
-
         alert("Your account has been deleted.");
         window.location.href = "index.html";
       } catch (err) {
@@ -192,6 +218,53 @@ document.addEventListener("DOMContentLoaded", () => {
           alert("Error deleting account. Please try again.");
         }
       }
+    });
+
+    //Accessibility listeners
+
+    async function persistPrefs() {
+      try {
+        await db.collection("users").doc(user.uid).set(
+          { accessibilityPrefs: prefs },
+          { merge: true }
+        );
+      } catch (err) {
+        console.error("Error saving accessibility prefs:", err);
+      }
+    }
+
+    if (lineReaderToggle) {
+      lineReaderToggle.addEventListener("change", async () => {
+        prefs.lineReader = lineReaderToggle.checked;
+        window.updateAccessibilityPrefs?.({ lineReader: prefs.lineReader });
+        await persistPrefs();
+      });
+    }
+
+    if (grayscaleToggle) {
+      grayscaleToggle.addEventListener("change", async () => {
+        prefs.grayscale = grayscaleToggle.checked;
+        window.updateAccessibilityPrefs?.({ grayscale: prefs.grayscale });
+        await persistPrefs();
+      });
+    }
+
+    textSizeRadios.forEach(radio => {
+      radio.addEventListener("change", async () => {
+        if (!radio.checked) return;
+        prefs.textSize = radio.value;
+        window.updateAccessibilityPrefs?.({ textSize: prefs.textSize });
+        await persistPrefs();
+      });
+    });
+
+    fontFamilyRadios.forEach(radio => {
+      radio.addEventListener("change", async () => {
+        if (!radio.checked) return;
+        prefs.fontFamily = radio.value;
+        window.updateAccessibilityPrefs?.({ fontFamily: prefs.fontFamily });
+        await persistPrefs();
+      });
     });
   });
 });
