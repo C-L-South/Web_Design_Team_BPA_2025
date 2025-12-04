@@ -274,61 +274,92 @@ body {
 }
 
 /* Immediate Help Section */
-.immediate-help-section {
-    background-color: white;
-    padding: 80px 40px;
-}
-
-.help-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    gap: 60px;
-    align-items: center;
-}
-
-.help-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.help-circle-img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-
-    overflow: hidden;
+/* Immediate Help Parallax Section (Remade) */
+.immediate-help-parallax {
+    position: relative;
+    padding: 20vh 40px;
+    background-image: 
+        linear-gradient(
+            to bottom,
+            rgba(15, 42, 71, 0.85) 0%,
+            rgba(15, 42, 71, 0.55) 40%,
+            rgba(223, 243, 252, 0.35) 80%,
+            rgba(223, 243, 252, 0.70) 100%
+        ),
+        url('../images/home/home_img_3.jpg');
+    
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* 🔥 Parallax */
+    color: white;
+    text-align: left;
     display: flex;
     align-items: center;
-    justify-content: center;
-    background-color: #E0F2F7;
+    justify-content: flex-start;
 }
 
-.help-circle-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
+/* Text Container */
+/* Immediate Help Parallax Section */
+.immediate-help-parallax {
+    position: relative;
+    padding: 400px 45px;
+
+    background-image:
+        /* Gradient overlay (scrolls with content — doesn’t shift opacity) */
+        linear-gradient(
+            to bottom,
+            rgba(30, 144, 255, 0.5) 0%,   /* very soft blue */
+            rgba(30, 144, 255, 0.45) 35%,  /* lighter */
+            rgba(30, 144, 255, 0.25) 65%,  /* barely visible */
+            rgba(30, 144, 255, 0.00) 100%  /* fully clear */
+        ),
+        /* Image underneath (fixed for parallax) */
+        url('../images/home/home_img_3.jpg');
+
+    background-size: cover, cover;
+    background-position: center, center;
+    background-repeat: no-repeat;
+
+    /* IMPORTANT: this is the fix */
+    background-attachment: scroll, fixed; 
+    /* gradient scrolls normally, image is fixed */
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
-.help-text {
-    flex: 1;
+/* Text Box */
+.help-content-parallax {
+    max-width: 550px;
+    padding: 40px 30px;
+    background: white;                 /* WHITE BACKGROUND */
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-.help-text h2 {
-    font-size: 36px;
+/* Title */
+.help-content-parallax h2 {
+    font-size: 42px;
     font-weight: 700;
-    color: #fea500;
     margin-bottom: 20px;
+    color: #FEA500;                     /* ORANGE TITLE */
 }
 
-.help-text p {
-    font-size: 16px;
-    color: #333;
-    line-height: 1.6;
+/* Body Text */
+.help-content-parallax p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #333;                        /* BLACK TEXT */
 }
+
+/* Links */
+.help-content-parallax a {
+    color: #1E90FF;                     /* Blue links to match your theme */
+    font-weight: 600;
+    text-decoration: underline;
+}
+
 
 /* Feedback Section */
 .feedback-section {
@@ -540,4 +571,24 @@ body {
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+.home-footer {
+    background-color: #1E90FF;
+    padding: 30px 40px;
+    color: white;
+    position: relative;
+    z-index: 9999;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1); /* 👈 shadow */
+}
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-content p {
+    font-size: 16px;
+    margin: 0;
 }
