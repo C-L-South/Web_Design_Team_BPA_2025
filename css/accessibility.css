@@ -1,6 +1,27 @@
 /* Accessibility Foundation */
 
 :root {
+   /* Golden Ratio Base Sizes */
+   --golden-1: 6.875rem;
+   --golden-2: 4.25rem;
+   --golden-3: 2.625rem;
+   --golden-4: 1.625rem;
+   --golden-5: 1rem;
+   --golden-6: 0.625rem;
+   --golden-7: 0.3875rem;
+
+   /* Text Size Scale Multiplier (1 = 100%) */
+   --text-scale: 1;
+
+   /* Computed Scaled Font Sizes */
+   --font-size-1: calc(var(--golden-1) * var(--text-scale));
+   --font-size-2: calc(var(--golden-2) * var(--text-scale));
+   --font-size-3: calc(var(--golden-3) * var(--text-scale));
+   --font-size-4: calc(var(--golden-4) * var(--text-scale));
+   --font-size-5: calc(var(--golden-5) * var(--text-scale));
+   --font-size-6: calc(var(--golden-6) * var(--text-scale));
+   --font-size-7: calc(var(--golden-7) * var(--text-scale));
+
    /* Default Values */
    --access-font-family: 'Poppins', sans-serif;
    --access-filter: none;
@@ -31,12 +52,16 @@ body.access-font-dyslexic {
 }
 
 /* Text Size */
-body.access-text-large * {
-   font-size: 1.1em !important;
+html.text-size-normal {
+   --text-scale: 1;
 }
 
-body.access-text-xlarge * {
-   font-size: 1.25em !important;
+html.text-size-large {
+   --text-scale: 1.25;
+}
+
+html.text-size-xlarge {
+   --text-scale: 1.5;
 }
 
 /* Line Reader - Shades that follow cursor */
