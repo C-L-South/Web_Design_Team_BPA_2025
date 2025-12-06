@@ -44,21 +44,18 @@ body {
 }
 
 .hero-content h1 {
-   font-size: 52px;
-   /* Larger title */
-   font-weight: 700;
-   color: #000;
-   margin-bottom: 24px;
-   letter-spacing: -1px;
+    font-size: var(--font-size-2);
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 24px;
+    letter-spacing: -1px;
 }
 
 .hero-content p {
-   font-size: 18px;
-   line-height: 1.8;
-   color: #2C3E50;
-}
-
-/* Contact Section */
+    font-size: var(--font-size-5);
+    line-height: 1.8;
+    color: #2C3E50;
+}/* Contact Section */
 .contact-section {
    background-color: #0080FF;
    /* Restored original bright blue */
@@ -82,17 +79,15 @@ body {
 }
 
 .contact-content h2 {
-   font-size: 38px;
-   font-weight: 700;
-   margin-bottom: 24px;
+    font-size: var(--font-size-3);
+    font-weight: 700;
+    margin-bottom: 24px;
 }
 
 .contact-content p {
-   font-size: 18px;
-   opacity: 0.95;
-}
-
-.contact-buttons {
+    font-size: var(--font-size-5);
+    opacity: 0.95;
+}.contact-buttons {
    display: grid;
    grid-template-columns: repeat(2, 1fr);
    gap: 25px;
@@ -130,21 +125,18 @@ body {
 }
 
 .contact-btn .btn-title {
-   font-size: 14px;
-   font-weight: 600;
-   color: #666;
-   text-transform: uppercase;
-   letter-spacing: 0.5px;
+    font-size: var(--font-size-6);
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .contact-btn .btn-label {
-   font-size: 20px;
-   /* Larger text */
-   font-weight: 700;
-   color: #000;
-}
-
-.contact-btn .arrow {
+    font-size: var(--font-size-4);
+    font-weight: 700;
+    color: #000;
+}.contact-btn .arrow {
    font-size: 24px;
    color: #0080FF;
    /* Blue arrow */
@@ -189,20 +181,18 @@ body {
 .resource-card h3 {
    font-size: 22px;
    font-weight: 700;
-   color: #000;
-   margin-bottom: 16px;
+.resource-card h3 {
+    font-size: var(--font-size-4);
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 16px;
 }
 
 .resource-card p {
-   font-size: 16px;
-   color: #4A5568;
-   line-height: 1.8;
-}
-
-/* Responsive Design */
-@media (max-width: 968px) {
-   .hero-container {
-      flex-direction: column;
+    font-size: var(--font-size-5);
+    color: #4A5568;
+    line-height: 1.8;
+}      flex-direction: column;
       text-align: center;
       gap: 40px;
    }
@@ -242,11 +232,13 @@ body {
 }
 .home-footer {
     background-color: #1E90FF;
+.home-footer {
+    background-color: #1E90FF;
     padding: 30px 40px;
     color: white;
     position: relative;
     z-index: 9999;
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1); /* 👈 shadow */
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
 }
 .footer-content {
     max-width: 1200px;
@@ -257,6 +249,6 @@ body {
 }
 
 .footer-content p {
-    font-size: 16px;
+    font-size: var(--font-size-5);
     margin: 0;
 }
