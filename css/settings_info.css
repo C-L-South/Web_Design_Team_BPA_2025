@@ -31,10 +31,10 @@ body {
 }
 
 .sidebar-title {
-    font-size: 32px;
+    font-size: clamp(1.2rem, 2.5vw, 1.75rem);
     font-weight: 700;
     color: white;
-    margin-bottom: 30px;
+    margin-bottom: clamp(20px, 3vw, 30px);
 }
 
 .sidebar-nav {
@@ -54,9 +54,9 @@ body {
 .sidebar-link {
     color: white;
     text-decoration: none;
-    font-size: 16px;
+    font-size: clamp(0.8rem, 1.2vw, 0.95rem);
     font-weight: 400;
-    padding: 12px 0;
+    padding: clamp(8px, 1.5vw, 12px) 0;
     transition: color 0.3s, padding-left 0.3s;
     display: block;
 }
@@ -69,9 +69,10 @@ body {
 /* Main Content Area */
 .main-content {
     width: 66.67%;
-    background-color: white;
-    padding: 60px 50px;
+    background-color: #E0F2F7;
+    padding: clamp(30px, 5vw, 60px) clamp(30px, 5vw, 50px);
     overflow-y: auto;
+    transition: background-color 0.3s ease;
 }
 
 .content-section {
@@ -80,14 +81,14 @@ body {
 }
 
 .content-section h1 {
-    font-size: 36px;
+    font-size: var(--font-size-3);
     font-weight: 700;
     color: #333;
     margin-bottom: 20px;
 }
 
 .content-section > p {
-    font-size: 16px;
+    font-size: var(--font-size-5);
     color: #666;
     margin-bottom: 30px;
     line-height: 1.6;
@@ -103,10 +104,16 @@ body {
 /* Section/Card Styling */
 .settings-card {
     background-color: white;
-    padding: 32px 24px;
-    border: 1px solid #dadce0;
-    border-radius: 8px;
-    margin-bottom: 24px;
+    padding: clamp(20px, 3vw, 32px) clamp(18px, 2.5vw, 24px);
+    border: none;
+    border-radius: 15px;
+    margin-bottom: clamp(16px, 2vw, 24px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.settings-card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Header */
@@ -117,14 +124,14 @@ body {
 }
 
 .settings-header h1 {
-   font-size: 28px;
+   font-size: var(--font-size-4);
    font-weight: 400;
    margin-bottom: 8px;
    color: #202124;
 }
 
 .settings-header p {
-   font-size: 14px;
+   font-size: var(--font-size-6);
    color: #5f6368;
    line-height: 1.6;
 }
@@ -148,10 +155,10 @@ body {
 }
 
 .settings-card h2 {
-   font-size: 16px;
-   font-weight: 500;
-   margin-bottom: 24px;
-   color: #202124;
+   font-size: clamp(1rem, 1.5vw, 1.125rem);
+   font-weight: 600;
+   margin-bottom: clamp(16px, 2vw, 24px);
+   color: #1E90FF;
 }
 
 /* Form Elements */
@@ -165,10 +172,10 @@ body {
 
 .form-group label {
    display: block;
-   font-size: 13px;
+   font-size: clamp(0.85rem, 1.2vw, 0.95rem);
    font-weight: 500;
-   margin-bottom: 8px;
-   color: #5f6368;
+   margin-bottom: clamp(6px, 1vw, 8px);
+   color: #555;
 }
 
 .form-group label.sub-label {
@@ -186,12 +193,12 @@ body {
 .settings-card .form-group input[type="url"],
 .settings-card .form-group input[type="tel"] {
     width: 100%;
-    padding: 16px 18px;
-    border: 1px solid #e6e6e6;
-    border-radius: 10px;
-    font-size: 18px;
+    padding: clamp(12px, 2vw, 16px) clamp(14px, 2.5vw, 18px);
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
     font-family: "Poppins", sans-serif;
-    background-color: #f6f6f6;
+    background-color: #f9f9f9;
     outline: none;
     transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
 }
@@ -202,9 +209,9 @@ body {
 .settings-card .form-group input[type="search"]:focus,
 .settings-card .form-group input[type="url"]:focus,
 .settings-card .form-group input[type="tel"]:focus {
-    border-color: #007bff;
+    border-color: #1E90FF;
     background-color: #ffffff;
-    box-shadow: 0 0 0 1px rgba(0, 123, 255, 0.15);
+    box-shadow: 0 0 0 2px rgba(30, 144, 255, 0.1);
 }
 /* Buttons */
 .button-container {
@@ -223,11 +230,11 @@ body {
 }
 
 .btn {
-   padding: 10px 24px;
+   padding: clamp(9px, 1.5vw, 10px) clamp(18px, 3vw, 24px);
    border: none;
-   border-radius: 4px;
-   font-size: 14px;
-   font-weight: 500;
+   border-radius: 8px;
+   font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+   font-weight: 600;
    cursor: pointer;
    font-family: 'Poppins', sans-serif;
    color: white;
@@ -245,11 +252,11 @@ body {
 }
 
 .btn-blue {
-   background-color: #1a73e8;
+   background-color: #1E90FF;
 }
 
 .btn-blue:hover {
-   background-color: #1765cc;
+   background-color: #1876d2;
 }
 
 .btn-red {
@@ -291,7 +298,7 @@ body {
     color: white;
     position: relative;
     z-index: 9999;
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1); /* 👈 shadow */
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
 }
 .footer-content {
     max-width: 1200px;
@@ -302,6 +309,6 @@ body {
 }
 
 .footer-content p {
-    font-size: 16px;
+    font-size: var(--font-size-5);
     margin: 0;
 }
