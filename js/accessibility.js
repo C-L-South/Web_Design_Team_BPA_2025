@@ -32,7 +32,7 @@ function applyAccessibility(prefsInput) {
 
   const prefs = currentAccessibilityPrefs;
 
-  // Text size
+  // Text size - uses golden ratio scaling
   const root = document.documentElement;
   root.classList.remove("text-size-normal", "text-size-large", "text-size-xlarge");
   root.classList.add(`text-size-${prefs.textSize}`);
@@ -65,6 +65,17 @@ window.getAccessibilityPrefs = function () {
 
 window.updateAccessibilityPrefs = function (partialPrefs) {
   applyAccessibility(partialPrefs || {});
+};
+
+// Convenience functions for text size control
+window.setTextSize = function (size) {
+  if (["normal", "large", "xlarge"].includes(size)) {
+    applyAccessibility({ textSize: size });
+  }
+};
+
+window.getTextSize = function () {
+  return currentAccessibilityPrefs.textSize;
 };
 
 // Line reader

@@ -98,7 +98,8 @@ document.addEventListener('DOMContentLoaded', () => {
           const upvoteWrapper = document.createElement('div');
 
           const upvoteBtn = document.createElement('button');
-          upvoteBtn.textContent = '↑';
+          upvoteBtn.className = 'comment-upvote-btn';
+          upvoteBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="12 19 12 5"></polyline><polyline points="5 12 12 5 19 12"></polyline></svg>';
 
           const upvoteCountSpan = document.createElement('span');
           upvoteCountSpan.textContent = ' ' + (data.upvotes || 0);
