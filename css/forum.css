@@ -15,15 +15,17 @@ body {
 /* Forum Container */
 .forum-container {
     display: flex;
+    flex-direction: row;
     min-height: calc(100vh - 80px);
     margin-top: 0;
+    transition: flex-direction 0.3s ease;
 }
 
 /* Sidebar */
 .forum-sidebar {
-    width: 160px;
+    width: clamp(160px, 20vw, 280px);
     background-color: #1E90FF;
-    padding: 20px 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,20 +33,82 @@ body {
     left: 0;
     top: 80px;
     bottom: 0;
-    overflow-y: auto;
+    z-index: 100;
+    transition: all 0.3s ease;
+}
+
+@supports (max-width: 100vw) {
+    /* For very small screens, convert sidebar to horizontal nav */
+    @media (max-aspect-ratio: 1/1) and (max-height: 600px) {
+        .forum-container {
+            flex-direction: column;
+        }
+
+        .forum-sidebar {
+            position: fixed;
+            width: 100%;
+            top: 80px;
+            left: 0;
+            right: 0;
+            bottom: auto;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            height: auto;
+            padding: clamp(6px, 2vw, 12px);
+            z-index: 99;
+        }
+
+        .sidebar-nav {
+            flex-direction: row;
+            flex: 1;
+            overflow-x: auto;
+            overflow-y: visible;
+            padding: 0 clamp(6px, 1vw, 15px);
+            gap: clamp(3px, 1vw, 8px);
+        }
+
+        .sidebar-title {
+            display: none;
+        }
+
+        .sidebar-list {
+            flex-direction: row;
+            gap: clamp(3px, 1vw, 8px);
+        }
+
+        .sidebar-link {
+            padding: clamp(4px, 1vw, 8px) clamp(6px, 1.5vw, 12px);
+            white-space: nowrap;
+        }
+
+        .post-btn {
+            width: auto;
+            margin: 0 clamp(8px, 1.5vw, 15px) 0 0;
+            padding: clamp(8px, 1vw, 12px) clamp(12px, 2vw, 20px);
+        }
+
+        .forum-main {
+            margin-left: 0;
+            margin-top: clamp(50px, 15vh, 80px);
+            padding: clamp(10px, 2vw, 20px);
+        }
     }
+}
 .post-btn {
     background-color: #fea500;
     color: white;
     border: none;
-    padding: 10px 24px;
+    padding: clamp(8px, 1.5vw, 12px) clamp(16px, 2vw, 20px);
     border-radius: 6px;
-    font-size: 16px;
+    font-size: clamp(0.875rem, 1vw, 1rem);
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s;
     font-family: "Poppins", sans-serif;
-    margin-bottom: 30px;
+    width: calc(100% - clamp(30px, 4vw, 40px));
+    margin: clamp(15px, 3vw, 25px) clamp(15px, 2vw, 20px) 0 clamp(15px, 2vw, 20px);
+    flex-shrink: 0;
 }
 
 .post-btn:hover {
@@ -55,21 +119,31 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    padding: 0 15px;
+    align-items: center;
+    padding: clamp(10px, 2vw, 20px) clamp(12px, 2vw, 20px);
+    gap: clamp(6px, 1.5vw, 10px);
+    overflow-y: auto;
+    flex: 1;
+    transition: all 0.3s ease;
 }
 
 .sidebar-title {
     color: white;
-    font-size: 18px;
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
     font-weight: 600;
-    margin-bottom: 15px;
+    margin-bottom: clamp(6px, 1vw, 10px);
+    text-align: center;
+    transition: font-size 0.3s ease;
+}
+
+.sidebar-nav h2.sidebar-title {
+    font-size: clamp(1rem, 2vw, 1.125rem);
 }
 
 .sidebar-link {
     color: white;
     text-decoration: none;
-    font-size: 14px;
+    font-size: var(--font-size-5);
     font-weight: 500;
     padding: 8px 0;
     transition: opacity 0.3s;
@@ -88,19 +162,24 @@ body {
 .sidebar-list {
     list-style: none;
     width: 100%;
-    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
 }
 
 .sidebar-list li {
-    margin-bottom: 5px;
+    width: 100%;
 }
 
 /* Main Content */
 .forum-main {
     flex: 1;
-    margin-left: 160px;
-    padding: 30px 40px;
+    margin-left: clamp(160px, 20vw, 280px);
+    margin-top: 80px;
+    padding: clamp(15px, 3vw, 40px) clamp(20px, 4vw, 50px);
     background-color: #E0F2F7;
+    transition: margin 0.3s ease;
 }
 
 /* Search Section */
@@ -126,7 +205,7 @@ body {
     padding: 12px 15px 12px 45px;
     border: none;
     border-radius: 25px;
-    font-size: 16px;
+    font-size: var(--font-size-5);
     font-family: "Poppins", sans-serif;
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -141,8 +220,9 @@ body {
 .topics-section {
     background-color: white;
     border-radius: 15px;
-    padding: 20px;
+    padding: 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
 .topics-table {
@@ -157,17 +237,17 @@ body {
 .topics-table th {
     padding: 15px 20px;
     text-align: left;
-    font-size: 16px;
+    font-size: var(--font-size-5);
     font-weight: 600;
     color: white;
 }
 
 .col-title {
-    border-radius: 10px 0 0 0;
+    border-radius: 0;
 }
 
 .col-author {
-    border-radius: 0 10px 0 0;
+    border-radius: 0;
 }
 
 .topics-table tbody tr {
@@ -180,7 +260,7 @@ body {
 
 .topics-table td {
     padding: 18px 20px;
-    font-size: 15px;
+    font-size: var(--font-size-5);
 }
 
 .topic-title a {
@@ -205,6 +285,8 @@ body {
 /* Post View Styles */
 .post-view {
     max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 .back-btn {
@@ -213,7 +295,7 @@ body {
     gap: 5px;
     color: #333;
     text-decoration: none;
-    font-size: 16px;
+    font-size: var(--font-size-5);
     font-weight: 500;
     margin-bottom: 20px;
     padding: 8px 12px;
@@ -235,20 +317,20 @@ body {
 }
 
 .post-author {
-    font-size: 14px;
+    font-size: var(--font-size-6);
     color: #666;
     margin-bottom: 10px;
 }
 
 .post-title {
-    font-size: 28px;
+    font-size: var(--font-size-4);
     font-weight: 700;
     color: #333;
     margin-bottom: 20px;
 }
 
 .post-description {
-    font-size: 16px;
+    font-size: var(--font-size-5);
     color: #555;
     line-height: 1.6;
     margin-bottom: 20px;
@@ -267,7 +349,7 @@ body {
     background: none;
     border: none;
     color: #333;
-    font-size: 14px;
+    font-size: var(--font-size-4);
     font-weight: 500;
     cursor: pointer;
     padding: 5px 10px;
@@ -285,7 +367,7 @@ body {
     align-items: center;
     gap: 6px;
     color: #666;
-    font-size: 14px;
+    font-size: var(--font-size-4);
 }
 
 /* Comment Input */
@@ -308,7 +390,7 @@ body {
     padding: 12px 16px;
     border: 1px solid #e6e6e6;
     border-radius: 25px;
-    font-size: 15px;
+    font-size: var(--font-size-5);
     font-family: "Poppins", sans-serif;
     background-color: #f9f9f9;
 }
@@ -320,22 +402,30 @@ body {
 }
 
 .submit-comment-btn {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border: none;
-    border-radius: 50%;
-    background-color: #333;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #1E90FF 0%, #1873CC 100%);
     color: white;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
     flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(30, 144, 255, 0.3);
+    font-weight: 600;
 }
 
 .submit-comment-btn:hover {
-    background-color: #555;
+    background: linear-gradient(135deg, #1873CC 0%, #1560B0 100%);
+    box-shadow: 0 4px 12px rgba(30, 144, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+.submit-comment-btn:active {
+    transform: translateY(0);
 }
 
 /* Comments Section */
@@ -347,7 +437,7 @@ body {
 }
 
 .comments-title {
-    font-size: 20px;
+    font-size: var(--font-size-4);
     font-weight: 700;
     color: #333;
     margin-bottom: 20px;
@@ -363,14 +453,14 @@ body {
 }
 
 .comment-author {
-    font-size: 16px;
+    font-size: var(--font-size-5);
     font-weight: 600;
     color: #333;
     margin-bottom: 8px;
 }
 
 .comment-text {
-    font-size: 15px;
+    font-size: var(--font-size-5);
     color: #555;
     line-height: 1.5;
     margin-bottom: 10px;
@@ -387,14 +477,14 @@ body {
 }
 
 #commentsList article h3 {
-    font-size: 16px;
+    font-size: var(--font-size-5);
     font-weight: 600;
     color: #333;
     margin-bottom: 8px;
 }
 
 #commentsList article p {
-    font-size: 15px;
+    font-size: var(--font-size-5);
     color: #555;
     line-height: 1.5;
     margin-bottom: 10px;
@@ -413,7 +503,7 @@ body {
     background: none;
     border: none;
     color: #333;
-    font-size: 14px;
+    font-size: var(--font-size-4);
     font-weight: 500;
     cursor: pointer;
     padding: 5px 10px;
@@ -426,67 +516,46 @@ body {
     background-color: #f0f0f0;
 }
 
-/* Responsive Design */
-@media (max-width: 968px) {
-    .forum-sidebar {
-        width: 120px;
-    }
-
-    .forum-main {
-        margin-left: 120px;
-        padding: 20px;
-    }
-
-    .sidebar-title {
-        font-size: 16px;
-    }
-
-    .sidebar-link {
-        font-size: 13px;
-    }
-
-    .post-btn {
-        padding: 8px 16px;
-        font-size: 14px;
-    }
+.comment-upvote-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.2s;
+    font-family: "Poppins", sans-serif;
 }
 
-@media (max-width: 768px) {
-    .forum-container {
-        flex-direction: column;
-    }
+.comment-upvote-btn:hover {
+    color: #1E90FF;
+    background-color: rgba(30, 144, 255, 0.1);
+}
 
-    .forum-sidebar {
-        position: relative;
-        width: 100%;
-        top: 0;
-        flex-direction: row;
-        justify-content: space-around;
-        padding: 15px;
-    }
+/* Dynamic responsive design using CSS clamp and calc - no breakpoints needed */
+.post-content {
+    padding: clamp(12px, 2.5vw, 30px);
+}
 
-    .sidebar-nav {
-        display: none;
-    }
+.topics-section {
+    border-radius: clamp(8px, 1.5vw, 12px);
+}
 
-    .forum-main {
-        margin-left: 0;
-        padding: 15px;
-    }
+.topics-table th,
+.topics-table td {
+    padding: clamp(8px, 1.5vw, 12px);
+}
 
-    .topics-table th,
-    .topics-table td {
-        padding: 12px 10px;
-        font-size: 14px;
-    }
+.search-container {
+    max-width: clamp(250px, 90vw, 600px);
+}
 
-    .post-title {
-        font-size: 24px;
-    }
-
-    .post-content {
-        padding: 20px;
-    }
+.search-input {
+    padding: clamp(10px, 1.5vw, 12px) clamp(12px, 2vw, 15px) clamp(10px, 1.5vw, 12px) clamp(38px, 3vw, 45px);
 }
 .home-footer {
     background-color: #1E90FF;
@@ -505,6 +574,17 @@ body {
 }
 
 .footer-content p {
-    font-size: 16px;
+    font-size: var(--font-size-5);
     margin: 0;
+}
+
+/* No Posts Message */
+.no-posts-message {
+    text-align: center;
+    color: #999;
+    font-size: var(--font-size-4);
+    font-weight: 500;
+    padding: 40px 20px !important;
+    font-style: italic;
+}
 }
