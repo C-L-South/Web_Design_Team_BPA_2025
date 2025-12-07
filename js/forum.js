@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const tr = document.createElement('tr');
       const td = document.createElement('td');
       td.colSpan = 3;
-      td.classList.add('no-posts-message');
       td.textContent = 'No posts yet.';
       tr.appendChild(td);
       postsTableBody.appendChild(tr);
@@ -71,8 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!docs.length) {
       const li = document.createElement("li");
-      li.classList.add("no-posts-message");
       li.textContent = "No posts yet.";
+      li.classList.add("no-posts-message");
       sidebarTopicsList.appendChild(li);
       return;
     }
