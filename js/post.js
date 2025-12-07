@@ -30,15 +30,68 @@ document.addEventListener('DOMContentLoaded', () => {
   const commentInput = document.getElementById('commentInput');
   const commentsList = document.getElementById('commentsList');
   const upvoteButton = document.getElementById('upvoteButton');
-
+  const sidebarTopicsList = document.getElementById('sidebarTopicsList');
   if (!postId) {
-    postBodyEl.textContent = 'Post not found (no id in the URL).';
+    postAuthorEl.textContent = '';
+    postTitleLink.textContent = 'Unavailable';
+    postBodyEl.innerHTML = '<p class="no-posts-message">No post yet.</p>';
     return;
   }
 
   console.log("Loaded post.html with postId:", postId);
 
-  // wait for auth after dom 
+  // Show initial loading state (like forum page)
+  postBodyEl.textContent = 'Loading post...';
+  if (commentsList) {
+    commentsList.innerHTML = '<p class="no-posts-message">Loading comments...</p>';
+  }
+  function renderMyPosts(docs) {
+    if (!sidebarTopicsList) return;
+
+    sidebarTopicsList.innerHTML = "";
+
+    if (!docs.length) {
+      const li = document.createElement("li");
+      li.textContent = "No posts yet.";
+      li.classList.add("no-posts-message");  // ✅ styled text
+      sidebarTopicsList.appendChild(li);
+      return;
+    }
+
+    docs.forEach(doc => {
+      const data = doc.data();
+
+      const li = document.createElement("li");
+      li.classList.add("sidebar-item");
+
+      const link = document.createElement("a");
+      link.href = `post.html?id=${doc.id}`;
+      link.textContent = data.title || "(Untitled post)";
+      link.classList.add("sidebar-link");
+
+      li.appendChild(link);
+      sidebarTopicsList.appendChild(li);
+    });
+  }
+
+  async function loadMyPosts(user) {
+    if (!sidebarTopicsList) return;
+
+    try {
+      const snapshot = await db
+        .collection("posts")
+        .where("createdById", "==", user.uid)
+        .orderBy("createdAt", "desc")
+        .get();
+
+      const myPosts = snapshot.docs;
+      renderMyPosts(myPosts);
+    } catch (err) {
+      console.error("Error loading my posts:", err);
+      sidebarTopicsList.innerHTML = "<li>Error loading your posts.</li>";
+    }
+  }
+
   auth.onAuthStateChanged(user => {
     if (!user) {
       window.location.href = "login.html";
@@ -47,12 +100,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log("Post page: logged in as", user.uid);
 
-    // Load post
+    // -------- Load post data --------
     async function loadPost() {
       try {
         const doc = await db.collection('posts').doc(postId).get();
         if (!doc.exists) {
-          postBodyEl.textContent = 'Post not found.';
+          postAuthorEl.textContent = '';
+          postTitleLink.textContent = 'Unavailable';
+          postBodyEl.innerHTML =
+            '<p class="no-posts-message">No post yet.</p>';
+          upvotesSpan.textContent = '0';
+          commentsCountSpan.textContent = '0';
           return;
         }
 
@@ -68,9 +126,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Load comments
+    // -------- Load comments (with loading + empty state) --------
     async function loadComments() {
       try {
+        // show loading state
+        commentsList.innerHTML = '<p class="no-posts-message">Loading comments...</p>';
+
         const snapshot = await db
           .collection('comments')
           .where('postId', '==', postId)
@@ -83,6 +144,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         commentsList.innerHTML = '';
+
+        if (!docs.length) {
+          // Empty state, same vibe as "No posts yet."
+          commentsList.innerHTML =
+            '<p class="no-posts-message">No comments yet. Be the first to share your thoughts!</p>';
+          commentsCountSpan.textContent = 0;
+
+          // keep post's repliesCount in sync
+          await db.collection('posts').doc(postId).update({
+            repliesCount: 0
+          });
+          return;
+        }
 
         docs.forEach(doc => {
           const data = doc.data();
@@ -98,8 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const upvoteWrapper = document.createElement('div');
 
           const upvoteBtn = document.createElement('button');
-          upvoteBtn.className = 'comment-upvote-btn';
-          upvoteBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="12 19 12 5"></polyline><polyline points="5 12 12 5 19 12"></polyline></svg>';
+          upvoteBtn.textContent = '↑';
 
           const upvoteCountSpan = document.createElement('span');
           upvoteCountSpan.textContent = ' ' + (data.upvotes || 0);
@@ -114,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
               const voteSnap = await voteRef.get();
 
               if (voteSnap.exists) {
-                // if already upvoted,  remove vote
+                // already upvoted -> remove
                 await voteRef.delete();
                 await commentRef.update({
                   upvotes: firebase.firestore.FieldValue.increment(-1)
@@ -124,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   parseInt(upvoteCountSpan.textContent.trim(), 10) || 0;
                 upvoteCountSpan.textContent = ' ' + (current - 1);
               } else {
-                // if have not upvoted, add vote
+                // not yet upvoted -> add
                 await voteRef.set({
                   userId,
                   createdAt: firebase.firestore.FieldValue.serverTimestamp()
@@ -154,18 +227,19 @@ document.addEventListener('DOMContentLoaded', () => {
           commentsList.appendChild(article);
         });
 
-        // Update comments count
+        // Update comments count + post doc
         commentsCountSpan.textContent = docs.length;
         await db.collection('posts').doc(postId).update({
           repliesCount: docs.length
         });
       } catch (err) {
         console.error('Error loading comments:', err);
-        commentsList.innerHTML = '<p>Error loading comments.</p>';
+        commentsList.innerHTML =
+          '<p class="no-posts-message">Error loading comments.</p>';
       }
     }
 
-    // Make a comment
+    // -------- Make a new comment --------
     if (commentForm) {
       commentForm.addEventListener('submit', async e => {
         e.preventDefault();
@@ -193,7 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Post upvote
+    // -------- Post upvote --------
     if (upvoteButton) {
       upvoteButton.addEventListener('click', async () => {
         const userId = user.uid;
@@ -204,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const voteSnap = await voteRef.get();
 
           if (voteSnap.exists) {
-            // remove upvote if already upvoted
+            // remove upvote
             await voteRef.delete();
             await postRef.update({
               upvotes: firebase.firestore.FieldValue.increment(-1)
@@ -213,7 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const current = parseInt(upvotesSpan.textContent, 10) || 0;
             upvotesSpan.textContent = current - 1;
           } else {
-            // add upvote if not already upvoted
+            // add upvote
             await voteRef.set({
               userId,
               createdAt: firebase.firestore.FieldValue.serverTimestamp()
@@ -233,7 +307,9 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
+    // Initial load
     loadPost();
     loadComments();
+    loadMyPosts(user);
   });
 });
