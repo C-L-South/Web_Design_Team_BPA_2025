@@ -39,7 +39,7 @@ body {
 }
 
 .logo-text {
-    font-size: var(--font-size-4);
+    font-size: calc(var(--font-md) * 0.9); /* ~24px */
     font-weight: 700;
     color: #333;
     text-decoration: none;
@@ -54,7 +54,7 @@ body {
 .nav-link {
     color: #333;
     text-decoration: none;
-    font-size: var(--font-size-5);
+    font-size: var(--font-sm); /* 16px */
     font-weight: 500;
     transition: color 0.3s;
 }
@@ -69,7 +69,7 @@ body {
     border: none;
     padding: 10px 24px;
     border-radius: 24px;
-    font-size: var(--font-size-5);
+    font-size: var(--font-sm); /* 16px */
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -88,7 +88,7 @@ body {
 
 .dropdown .dropbtn {
     text-decoration: none;
-    font-size: var(--font-size-5);
+    font-size: var(--font-sm); /* 16px */
     font-weight: 500;
     font-family: "Poppins";
     transition: color 0.3s;
@@ -117,7 +117,7 @@ body {
 .dropdown-content a {
     float: none;
     color: black;
-    font-size: var(--font-size-5);
+    font-size: var(--font-sm); /* 16px */
     font-weight: 500;
     padding: 12px 16px;
     text-decoration: none;
@@ -153,7 +153,7 @@ body {
 }
 
 .form-title {
-    font-size: var(--font-size-3);
+    font-size: calc(var(--font-lg) * 0.85); /* ~36px */
     font-weight: 700;
     color: #1E90FF;
     text-align: center;
@@ -182,7 +182,7 @@ body {
 }
 
 .form-group label {
-    font-size: var(--font-size-5);
+    font-size: var(--font-sm); /* 16px */
     font-weight: 500;
     color: #333;
 }
@@ -191,7 +191,7 @@ body {
     padding: 16px 18px;
     border: 1px solid #e6e6e6;
     border-radius: 10px;
-    font-size: var(--font-size-5);
+    font-size: calc(var(--font-sm) * 1.125); /* ~18px */
     font-family: "Poppins", sans-serif;
     transition: border-color 0.2s;
     background-color: #f6f6f6;
@@ -211,7 +211,7 @@ body {
 }
 
 .calendar-section label {
-    font-size: var(--font-size-5);
+    font-size: var(--font-sm); /* 16px */
     font-weight: 500;
     color: #333;
 }
@@ -220,7 +220,7 @@ body {
     padding: 16px 18px;
     border: 1px solid #e6e6e6;
     border-radius: 10px;
-    font-size: var(--font-size-5);
+    font-size: calc(var(--font-sm) * 1.125); /* ~18px */
     font-family: "Poppins", sans-serif;
     transition: border-color 0.2s;
     background-color: #f6f6f6;
@@ -241,7 +241,7 @@ body {
     padding: 14px 40px;
     border: none;
     border-radius: 8px;
-    font-size: var(--font-size-5);
+    font-size: calc(var(--font-sm) * 1.125); /* ~18px */
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -265,7 +265,7 @@ body {
 }
 
 .sidebar-title {
-    font-size: var(--font-size-4);
+    font-size: calc(var(--font-md) * 1.05); /* ~28px */
     font-weight: 700;
     color: white;
     margin-bottom: 30px;
@@ -273,7 +273,7 @@ body {
 }
 
 .sidebar-text {
-    font-size: var(--font-size-5);
+    font-size: var(--font-sm); /* 16px */
     color: white;
     line-height: 1.8;
     text-align: justify;
@@ -311,11 +311,11 @@ body {
 
     .logout-btn {
         padding: 8px 16px;
-        font-size: 14px;
+        font-size: var(--font-xs); /* ~14px */
     }
 
     .form-title {
-        font-size: 28px;
+        font-size: calc(var(--font-md) * 1.1); /* ~28px */
     }
 
     .form-panel {
@@ -327,9 +327,11 @@ body {
     }
 
     .sidebar-title {
-        font-size: 24px;
+        font-size: calc(var(--font-md) * 0.9); /* ~24px */
     }
 }
+
+/* Footer */
 .home-footer {
     background-color: #1E90FF;
     padding: 30px 40px;
@@ -338,6 +340,7 @@ body {
     z-index: 9999;
     box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1); /* 👈 shadow */
 }
+
 .footer-content {
     max-width: 1200px;
     margin: 0 auto;
@@ -347,6 +350,6 @@ body {
 }
 
 .footer-content p {
-    font-size: 16px;
+    font-size: var(--font-sm); /* 16px */
     margin: 0;
 }
