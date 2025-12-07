@@ -21,7 +21,7 @@ body {
 
 /* Left Sidebar */
 .sidebar {
-    width: 33.33%;
+    width: 20%;
     background-color: #1E90FF;
     padding: 40px 30px;
     overflow-y: auto;
@@ -31,10 +31,10 @@ body {
 }
 
 .sidebar-title {
-    font-size: clamp(1.2rem, 2.5vw, 1.75rem);
+    font-size: calc(var(--font-lg) * 0.75); /* ~32px */
     font-weight: 700;
     color: white;
-    margin-bottom: clamp(20px, 3vw, 30px);
+    margin-bottom: 30px;
 }
 
 .sidebar-nav {
@@ -54,9 +54,9 @@ body {
 .sidebar-link {
     color: white;
     text-decoration: none;
-    font-size: clamp(0.8rem, 1.2vw, 0.95rem);
+    font-size: var(--font-sm); /* 16px */
     font-weight: 400;
-    padding: clamp(8px, 1.5vw, 12px) 0;
+    padding: 12px 0;
     transition: color 0.3s, padding-left 0.3s;
     display: block;
 }
@@ -68,11 +68,10 @@ body {
 
 /* Main Content Area */
 .main-content {
-    width: 66.67%;
-    background-color: #E0F2F7;
-    padding: clamp(30px, 5vw, 60px) clamp(30px, 5vw, 50px);
+    width: 80%;
+    background-color: white;
+    padding: 60px 50px;
     overflow-y: auto;
-    transition: background-color 0.3s ease;
 }
 
 .content-section {
@@ -81,14 +80,14 @@ body {
 }
 
 .content-section h1 {
-    font-size: var(--font-size-3);
+    font-size: calc(var(--font-lg) * 0.85); /* ~36px */
     font-weight: 700;
     color: #333;
     margin-bottom: 20px;
 }
 
 .content-section > p {
-    font-size: var(--font-size-5);
+    font-size: var(--font-sm); /* 16px */
     color: #666;
     margin-bottom: 30px;
     line-height: 1.6;
@@ -104,16 +103,10 @@ body {
 /* Section/Card Styling */
 .settings-card {
     background-color: white;
-    padding: clamp(20px, 3vw, 32px) clamp(18px, 2.5vw, 24px);
-    border: none;
-    border-radius: 15px;
-    margin-bottom: clamp(16px, 2vw, 24px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-}
-
-.settings-card:hover {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    padding: 32px 24px;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    margin-bottom: 24px;
 }
 
 /* Header */
@@ -124,14 +117,14 @@ body {
 }
 
 .settings-header h1 {
-   font-size: var(--font-size-4);
+   font-size: calc(var(--font-md) * 1.1); /* ~28px */
    font-weight: 400;
    margin-bottom: 8px;
    color: #202124;
 }
 
 .settings-header p {
-   font-size: var(--font-size-6);
+   font-size: var(--font-xs); /* ~14px */
    color: #5f6368;
    line-height: 1.6;
 }
@@ -155,10 +148,10 @@ body {
 }
 
 .settings-card h2 {
-   font-size: clamp(1rem, 1.5vw, 1.125rem);
-   font-weight: 600;
-   margin-bottom: clamp(16px, 2vw, 24px);
-   color: #1E90FF;
+   font-size: var(--font-sm); /* 16px */
+   font-weight: 500;
+   margin-bottom: 24px;
+   color: #202124;
 }
 
 /* Form Elements */
@@ -172,10 +165,10 @@ body {
 
 .form-group label {
    display: block;
-   font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+   font-size: calc(var(--font-xs) * 0.93); /* ~13px */
    font-weight: 500;
-   margin-bottom: clamp(6px, 1vw, 8px);
-   color: #555;
+   margin-bottom: 8px;
+   color: #5f6368;
 }
 
 .form-group label.sub-label {
@@ -185,6 +178,7 @@ body {
    background-color: #fce8e6;
    border-left: 4px solid #d93025;
 }
+
 /* Textboxes in settings page (only text-like inputs) */
 .settings-card .form-group input[type="text"],
 .settings-card .form-group input[type="email"],
@@ -193,12 +187,12 @@ body {
 .settings-card .form-group input[type="url"],
 .settings-card .form-group input[type="tel"] {
     width: 100%;
-    padding: clamp(12px, 2vw, 16px) clamp(14px, 2.5vw, 18px);
-    border: 1px solid #e0e0e0;
-    border-radius: 12px;
-    font-size: clamp(0.9rem, 1.2vw, 1rem);
+    padding: 16px 18px;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    font-size: calc(var(--font-sm) * 1.125); /* ~18px */
     font-family: "Poppins", sans-serif;
-    background-color: #f9f9f9;
+    background-color: #f6f6f6;
     outline: none;
     transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
 }
@@ -209,10 +203,11 @@ body {
 .settings-card .form-group input[type="search"]:focus,
 .settings-card .form-group input[type="url"]:focus,
 .settings-card .form-group input[type="tel"]:focus {
-    border-color: #1E90FF;
+    border-color: #007bff;
     background-color: #ffffff;
-    box-shadow: 0 0 0 2px rgba(30, 144, 255, 0.1);
+    box-shadow: 0 0 0 1px rgba(0, 123, 255, 0.15);
 }
+
 /* Buttons */
 .button-container {
    display: flex;
@@ -230,11 +225,11 @@ body {
 }
 
 .btn {
-   padding: clamp(9px, 1.5vw, 10px) clamp(18px, 3vw, 24px);
+   padding: 10px 24px;
    border: none;
-   border-radius: 8px;
-   font-size: clamp(0.85rem, 1.2vw, 0.95rem);
-   font-weight: 600;
+   border-radius: 4px;
+   font-size: var(--font-xs); /* ~14px */
+   font-weight: 500;
    cursor: pointer;
    font-family: 'Poppins', sans-serif;
    color: white;
@@ -252,11 +247,11 @@ body {
 }
 
 .btn-blue {
-   background-color: #1E90FF;
+   background-color: #1a73e8;
 }
 
 .btn-blue:hover {
-   background-color: #1876d2;
+   background-color: #1765cc;
 }
 
 .btn-red {
@@ -276,7 +271,7 @@ body {
    }
 
    .settings-header h1 {
-      font-size: 24px;
+      font-size: calc(var(--font-md) * 0.9); /* ~24px */
    }
 
    .settings-card {
@@ -292,14 +287,16 @@ body {
       width: 100%;
    }
 }
+
 .home-footer {
     background-color: #1E90FF;
     padding: 30px 40px;
     color: white;
     position: relative;
     z-index: 9999;
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1); /* 👈 shadow */
 }
+
 .footer-content {
     max-width: 1200px;
     margin: 0 auto;
@@ -309,6 +306,6 @@ body {
 }
 
 .footer-content p {
-    font-size: var(--font-size-5);
+    font-size: var(--font-sm); /* 16px */
     margin: 0;
 }
