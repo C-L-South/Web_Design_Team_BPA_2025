@@ -1,30 +1,19 @@
 /* Accessibility Foundation */
-
 :root {
-   /* Golden Ratio Base Sizes */
-   --golden-1: 6.875rem;
-   --golden-2: 4.25rem;
-   --golden-3: 2.625rem;
-   --golden-4: 1.625rem;
-   --golden-5: 1rem;
-   --golden-6: 0.625rem;
-   --golden-7: 0.3875rem;
+  --access-font-family: 'Poppins', sans-serif;
+  --access-filter: none;
+}
+:root {
+  --phi: 1.618;
 
-   /* Text Size Scale Multiplier (1 = 100%) */
-   --text-scale: 1;
+  --font-xs: 0.875rem;   /* ~14px */
+  --font-sm: 1rem;       /* 16px  */
+  --font-md: calc(var(--font-sm) * var(--phi));
+  --font-lg: calc(var(--font-md) * var(--phi));
+}
 
-   /* Computed Scaled Font Sizes */
-   --font-size-1: calc(var(--golden-1) * var(--text-scale));
-   --font-size-2: calc(var(--golden-2) * var(--text-scale));
-   --font-size-3: calc(var(--golden-3) * var(--text-scale));
-   --font-size-4: calc(var(--golden-4) * var(--text-scale));
-   --font-size-5: calc(var(--golden-5) * var(--text-scale));
-   --font-size-6: calc(var(--golden-6) * var(--text-scale));
-   --font-size-7: calc(var(--golden-7) * var(--text-scale));
-
-   /* Default Values */
-   --access-font-family: 'Poppins', sans-serif;
-   --access-filter: none;
+html {
+  font-size: 16px;
 }
 
 /* Apply Variables to Body */
@@ -36,13 +25,15 @@ body {
 /* State Classes - To be toggled by Backend JS */
 
 /* Color Filters */
-body.access-mode-grayscale {
-   filter: grayscale(100%) !important;
-}
+body.access-mode-grayscale::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999999;
 
-/* Exclude images from grayscale filter */
-body.access-mode-grayscale img {
-   filter: grayscale(0%) !important;
+  backdrop-filter: grayscale(100%);
+  -webkit-backdrop-filter: grayscale(100%);
 }
 
 /* Font Families */
@@ -52,16 +43,12 @@ body.access-font-dyslexic {
 }
 
 /* Text Size */
-html.text-size-normal {
-   --text-scale: 1;
+body.access-text-large * {
+   font-size: 1.1em !important;
 }
 
-html.text-size-large {
-   --text-scale: 1.25;
-}
-
-html.text-size-xlarge {
-   --text-scale: 1.5;
+body.access-text-xlarge * {
+   font-size: 1.25em !important;
 }
 
 /* Line Reader - Shades that follow cursor */
