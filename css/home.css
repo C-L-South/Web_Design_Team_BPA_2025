@@ -10,8 +10,7 @@ body {
     font-family: "Poppins", sans-serif;
     background-color: #E0F2F7;
     color: #333;
-    padding-top: 80px;
-    /* Space for fixed navigation */
+    padding-top: 80px; /* Space for fixed navigation */
 }
 
 /* Header Navigation */
@@ -42,7 +41,7 @@ body {
 }
 
 .logo-text {
-    font-size: var(--font-size-4);
+    font-size: calc(var(--font-md) * 0.9); /* ~24px */
     font-weight: 700;
     color: #333;
     text-decoration: none;
@@ -57,7 +56,7 @@ body {
 .nav-link {
     color: #333;
     text-decoration: none;
-    font-size: var(--font-size-5);
+    font-size: var(--font-sm);
     font-weight: 500;
     transition: color 0.3s;
 }
@@ -72,7 +71,7 @@ body {
     border: none;
     padding: 10px 24px;
     border-radius: 24px;
-    font-size: var(--font-size-5);
+    font-size: var(--font-sm);
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -102,7 +101,7 @@ body {
 }
 
 .hero-text h1 {
-    font-size: var(--font-size-2);
+    font-size: calc(var(--font-lg) * 1.15); /* ~48px */
     font-weight: 700;
     color: #333;
     margin-bottom: 20px;
@@ -110,7 +109,7 @@ body {
 }
 
 .hero-text p {
-    font-size: var(--font-size-5);
+    font-size: calc(var(--font-sm) * 1.125); /* ~18px */
     color: #555;
     line-height: 1.6;
     margin-bottom: 30px;
@@ -124,7 +123,7 @@ body {
     border-radius: 24px;
     text-decoration: none;
     font-weight: 600;
-    font-size: var(--font-size-5);
+    font-size: var(--font-sm);
     transition: background-color 0.3s;
 }
 
@@ -188,14 +187,14 @@ body {
 }
 
 .feature-card h3 {
-    font-size: var(--font-size-4);
+    font-size: var(--font-md);
     font-weight: 700;
     color: #333;
     margin-bottom: 15px;
 }
 
 .feature-card p {
-    font-size: var(--font-size-5);
+    font-size: var(--font-sm);
     color: #666;
     line-height: 1.6;
     margin-bottom: 25px;
@@ -210,7 +209,7 @@ body {
     border-radius: 24px;
     text-decoration: none;
     font-weight: 600;
-    font-size: var(--font-size-6);
+    font-size: var(--font-sm);
     transition: background-color 0.3s;
 }
 
@@ -218,7 +217,190 @@ body {
     background-color: #ffb937;
 }
 
-/* Responsive Design */
+/* Immediate Help Parallax Section */
+.immediate-help-parallax {
+    position: relative;
+    padding: 400px 45px;
+
+    background-image:
+        /* Gradient overlay */
+        linear-gradient(
+            to bottom,
+            rgba(30, 144, 255, 0.5) 0%,
+            rgba(30, 144, 255, 0.45) 35%,
+            rgba(30, 144, 255, 0.25) 65%,
+            rgba(30, 144, 255, 0.00) 100%
+        ),
+        /* Image underneath */
+        url('../images/home/home_img_3.jpg');
+
+    background-size: cover, cover;
+    background-position: center, center;
+    background-repeat: no-repeat;
+
+    /* gradient scrolls, image fixed */
+    background-attachment: scroll, fixed;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* Text Box */
+.help-content-parallax {
+    max-width: 550px;
+    padding: 40px 30px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Title */
+.help-content-parallax h2 {
+    font-size: var(--font-lg); /* ~42px */
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #FEA500;
+}
+
+/* Body Text */
+.help-content-parallax p {
+    font-size: calc(var(--font-sm) * 1.125); /* ~18px */
+    line-height: 1.7;
+    color: #333;
+}
+
+/* Links inside help box */
+.help-content-parallax a {
+    color: #1E90FF;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+/* Feedback Section */
+.feedback-section {
+    background-color: #E0F2F7;
+    padding: 80px 40px;
+}
+
+.feedback-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.feedback-card {
+    background-color: white;
+    padding: 50px 40px;
+    border-radius: 15px;
+    border: 1px solid #e6e6e6;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-card h2 {
+    font-size: calc(var(--font-lg) * 0.85); /* ~36px */
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.feedback-instruction {
+    font-size: var(--font-sm); /* 16px */
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-group-feedback {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group-feedback label {
+    font-size: var(--font-sm); /* 16px */
+    font-weight: 500;
+    color: #333;
+}
+
+.form-group-feedback input,
+.form-group-feedback textarea {
+    padding: 12px 16px;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    font-size: var(--font-sm); /* 16px */
+    font-family: "Poppins", sans-serif;
+    transition: border-color 0.3s;
+    background-color: #f9f9f9;
+}
+
+.form-group-feedback input:focus,
+.form-group-feedback textarea:focus {
+    outline: none;
+    border-color: #1E90FF;
+    background-color: white;
+}
+
+.form-group-feedback textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.submit-btn {
+    background-color: #fea500;
+    color: white;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: calc(var(--font-sm) * 1.125); /* ~18px */
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: "Poppins", sans-serif;
+    width: 100%;
+    max-width: 200px;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background-color: #ffb937;
+}
+
+/* Footer */
+.home-footer {
+    background-color: #1E90FF;
+    padding: 30px 40px;
+    color: white;
+    position: relative;
+    z-index: 9999;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-content p {
+    font-size: var(--font-sm); /* 16px */
+    margin: 0;
+}
+
+/* Responsive adjustments for new sections */
 @media (max-width: 968px) {
     .hero-content {
         flex-direction: column;
@@ -242,224 +424,14 @@ body {
     }
 
     .nav-link {
-        font-size: 14px;
-    }
-}
-
-@media (max-width: 768px) {
-    .home-nav {
-        padding: 15px 20px;
-    }
-
-    .nav-right {
-        gap: 10px;
-        flex-wrap: wrap;
+        font-size: var(--font-xs); /* ~14px */
     }
 
     .logout-btn {
         padding: 8px 16px;
-        font-size: 14px;
+        font-size: var(--font-xs); /* ~14px */
     }
 
-    .hero-section {
-        padding: 40px 20px;
-    }
-
-    .hero-text h1 {
-        font-size: 36px;
-    }
-
-    .features-section {
-        padding: 60px 20px;
-    }
-}
-
-
-/* Immediate Help Section */
-/* Immediate Help Parallax Section */
-.immediate-help-parallax {
-    position: relative;
-    padding: 50px 20px;
-    min-height: 600px;
-
-    background-image:
-        /* Gradient overlay (scrolls with content — doesn’t shift opacity) */
-        linear-gradient(
-            to bottom,
-            rgba(30, 144, 255, 0.5) 0%,   /* very soft blue */
-            rgba(30, 144, 255, 0.45) 35%,  /* lighter */
-            rgba(30, 144, 255, 0.25) 65%,  /* barely visible */
-            rgba(30, 144, 255, 0.00) 100%  /* fully clear */
-        ),
-        /* Image underneath (fixed for parallax) */
-        url('../images/home/home_img_3.jpg');
-
-    background-size: cover, cover;
-    background-position: center, center;
-    background-repeat: no-repeat;
-
-    /* IMPORTANT: this is the fix */
-    background-attachment: scroll, fixed; 
-    /* gradient scrolls normally, image is fixed */
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Text Box */
-.help-content-parallax {
-    max-width: 750px;
-    width: 90%;
-    padding: 50px 40px;
-    background: white;                 /* WHITE BACKGROUND */
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    text-align: center;
-}
-
-.help-content-parallax h2 {
-    font-size: var(--font-size-2);
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: #FEA500;
-}
-
-/* Body Text */
-.help-content-parallax p {
-    font-size: var(--font-size-5);
-    line-height: 1.7;
-    color: #333;
-    margin-bottom: 15px;
-}
-
-/* Links */
-.help-content-parallax a {
-    color: #1E90FF;                     /* Blue links to match your theme */
-    font-weight: 600;
-    text-decoration: underline;
-}
-
-
-/* Feedback Section */
-.feedback-section {
-    background-color: #E0F2F7;
-    padding: 80px 40px;
-}
-
-.feedback-container {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.feedback-card {
-    background-color: white;
-    padding: 50px 40px;
-    border-radius: 15px;
-    border: 1px solid #e6e6e6;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.feedback-card h2 {
-    font-size: var(--font-size-3);
-    font-weight: 700;
-    color: #333;
-    margin-bottom: 15px;
-}
-
-.feedback-instruction {
-    font-size: var(--font-size-5);
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 30px;
-}
-.feedback-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.form-row {
-    display: flex;
-    gap: 20px;
-}
-
-.form-group-feedback {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.form-group-feedback label {
-    font-size: var(--font-size-5);
-    font-weight: 500;
-    color: #333;
-}
-
-.form-group-feedback input,
-.form-group-feedback textarea {
-    padding: 12px 16px;
-    border: 1px solid #e6e6e6;
-    border-radius: 10px;
-    font-size: var(--font-size-5);
-    font-family: "Poppins", sans-serif;
-    transition: border-color 0.3s;
-    background-color: #f9f9f9;
-}
-.form-group-feedback input:focus,
-.form-group-feedback textarea:focus {
-    outline: none;
-    border-color: #1E90FF;
-    background-color: white;
-}
-
-.form-group-feedback textarea {
-    resize: vertical;
-    min-height: 120px;
-}
-
-.submit-btn {
-    background-color: #fea500;
-    color: white;
-    padding: 14px 30px;
-    border: none;
-    border-radius: 10px;
-    font-size: var(--font-size-5);
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-family: "Poppins", sans-serif;
-    width: 100%;
-    max-width: 200px;
-    margin-top: 10px;
-}
-.submit-btn:hover {
-    background-color: #ffb937;
-}
-
-/* Footer */
-.home-footer {
-    background-color: #1E90FF;
-    padding: 30px 40px;
-    color: white;
-}
-
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.footer-content p {
-    font-size: var(--font-size-5);
-    margin: 0;
-}
-
-/* Responsive adjustments for new sections */
-@media (max-width: 968px) {
     .help-content {
         flex-direction: column;
         text-align: center;
@@ -477,6 +449,26 @@ body {
 }
 
 @media (max-width: 768px) {
+    .home-nav {
+        padding: 15px 20px;
+    }
+
+    .nav-right {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .hero-section {
+        padding: 40px 20px;
+    }
+
+    .hero-text h1 {
+        font-size: calc(var(--font-lg) * 0.85); /* ~36px */
+    }
+
+    .features-section {
+        padding: 60px 20px;
+    }
 
     .immediate-help-section,
     .feedback-section {
@@ -488,18 +480,15 @@ body {
     }
 
     .help-text h2 {
-        font-size: 28px;
+        font-size: calc(var(--font-md) * 1.1); /* ~28px */
     }
 
     .feedback-card h2 {
-        font-size: 28px;
+        font-size: calc(var(--font-md) * 1.1); /* ~28px */
     }
 }
 
-
-
-
-
+/* Dropdown */
 .dropdown {
     float: left;
     overflow: hidden;
@@ -507,7 +496,7 @@ body {
 
 .dropdown .dropbtn {
     text-decoration: none;
-    font-size: 16px;
+    font-size: var(--font-sm); /* 16px */
     font-weight: 500;
     font-family: "Poppins";
     transition: color 0.3s;
@@ -534,7 +523,7 @@ body {
 .dropdown-content a {
     float: none;
     color: black;
-    font-size: 16px;
+    font-size: var(--font-sm); /* 16px */
     font-weight: 500;
     padding: 12px 16px;
     text-decoration: none;
@@ -549,126 +538,4 @@ body {
 .dropdown:hover .dropdown-content {
     display: block;
 }
-.home-footer {
-    background-color: #1E90FF;
-    padding: 30px 40px;
-    color: white;
-    position: relative;
-    z-index: 9999;
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1); /* 👈 shadow */
-}
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
-.footer-content p {
-    font-size: var(--font-size-5);
-    margin: 0;
-}
-
-/* Responsive Design for Immediate Help Section */
-@media (max-width: 1200px) {
-    .help-content-parallax {
-        max-width: 700px;
-        width: 90%;
-        padding: 45px 35px;
-    }
-
-    .help-content-parallax h2 {
-        font-size: var(--font-size-2);
-    }
-
-    .help-content-parallax p {
-        font-size: var(--font-size-5);
-    }
-}
-
-@media (max-width: 900px) {
-    .help-content-parallax {
-        max-width: 600px;
-        width: 85%;
-        padding: 40px 30px;
-    }
-
-    .help-content-parallax h2 {
-        font-size: var(--font-size-3);
-        margin-bottom: 15px;
-    }
-
-    .help-content-parallax p {
-        font-size: var(--font-size-5);
-    }
-}
-
-@media (max-width: 768px) {
-    .immediate-help-parallax {
-        padding: 40px 15px;
-        min-height: 500px;
-    }
-
-    .help-content-parallax {
-        max-width: 550px;
-        width: 90%;
-        padding: 35px 25px;
-    }
-
-    .help-content-parallax h2 {
-        font-size: var(--font-size-4);
-        margin-bottom: 12px;
-    }
-
-    .help-content-parallax p {
-        font-size: var(--font-size-5);
-    }
-}
-
-@media (max-width: 600px) {
-    .immediate-help-parallax {
-        padding: 35px 10px;
-        min-height: 450px;
-    }
-
-    .help-content-parallax {
-        max-width: 100%;
-        width: 95%;
-        padding: 25px 20px;
-    }
-
-    .help-content-parallax h2 {
-        font-size: var(--font-size-4);
-        margin-bottom: 10px;
-    }
-
-    .help-content-parallax p {
-        font-size: var(--font-size-5);
-        margin-bottom: 12px;
-    }
-}
-
-@media (max-width: 480px) {
-    .immediate-help-parallax {
-        padding: 25px 8px;
-        min-height: 400px;
-    }
-
-    .help-content-parallax {
-        max-width: 100%;
-        width: 96%;
-        padding: 20px 15px;
-        border-radius: 15px;
-    }
-
-    .help-content-parallax h2 {
-        font-size: var(--font-size-5);
-        margin-bottom: 8px;
-    }
-
-    .help-content-parallax p {
-        font-size: var(--font-size-5);
-        margin-bottom: 10px;
-    }
-}
