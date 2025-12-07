@@ -16,25 +16,21 @@ body {
 /* Hero Section */
 .hero-section {
    padding: 80px 40px;
-   background-color: #B8E6E8;
-   /* Restored original hero background */
+   background-color: #B8E6E8; /* Restored original hero background */
 }
 
 .hero-container {
    max-width: 1200px;
    margin: 0 auto;
    display: flex;
-   gap: 80px;
-   /* Increased gap for better separation */
+   gap: 80px; /* Increased gap for better separation */
    align-items: center;
 }
 
 .hero-image {
    flex: 0 0 450px;
-   height: 350px;
-   /* Slightly taller */
-   border-radius: 20px;
-   /* More rounded */
+   height: 350px; /* Slightly taller */
+   border-radius: 20px; /* More rounded */
    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
    object-fit: cover;
 }
@@ -44,21 +40,22 @@ body {
 }
 
 .hero-content h1 {
-    font-size: var(--font-size-2);
-    font-weight: 700;
-    color: #000;
-    margin-bottom: 24px;
-    letter-spacing: -1px;
+   font-size: calc(var(--font-lg) * 1.25); /* ≈ 52px */
+   font-weight: 700;
+   color: #000;
+   margin-bottom: 24px;
+   letter-spacing: -1px;
 }
 
 .hero-content p {
-    font-size: var(--font-size-5);
-    line-height: 1.8;
-    color: #2C3E50;
-}/* Contact Section */
+   font-size: calc(var(--font-sm) * 1.125); /* ≈ 18px */
+   line-height: 1.8;
+   color: #2C3E50;
+}
+
+/* Contact Section */
 .contact-section {
-   background-color: #0080FF;
-   /* Restored original bright blue */
+   background-color: #0080FF; /* Restored original bright blue */
    padding: 100px 40px;
 }
 
@@ -67,8 +64,7 @@ body {
    margin: 0 auto;
    display: flex;
    flex-direction: column;
-   gap: 60px;
-   /* Increased gap */
+   gap: 60px; /* Increased gap */
 }
 
 .contact-content {
@@ -79,31 +75,29 @@ body {
 }
 
 .contact-content h2 {
-    font-size: var(--font-size-3);
-    font-weight: 700;
-    margin-bottom: 24px;
+   font-size: calc(var(--font-lg) * 0.9); /* ≈ 38px */
+   font-weight: 700;
+   margin-bottom: 24px;
 }
 
 .contact-content p {
-    font-size: var(--font-size-5);
-    opacity: 0.95;
-}.contact-buttons {
+   font-size: calc(var(--font-sm) * 1.125); /* ≈ 18px */
+   opacity: 0.95;
+}
+
+.contact-buttons {
    display: grid;
    grid-template-columns: repeat(2, 1fr);
-   gap: 25px;
-   /* Slightly larger gap */
-   max-width: 1000px;
-   /* Wider container */
+   gap: 25px; /* Slightly larger gap */
+   max-width: 1000px; /* Wider container */
    margin: 0 auto;
    width: 100%;
 }
 
 .contact-btn {
    background: white;
-   padding: 24px 30px;
-   /* Larger padding */
-   border-radius: 16px;
-   /* More rounded */
+   padding: 24px 30px; /* Larger padding */
+   border-radius: 16px; /* More rounded */
    text-decoration: none;
    color: #000;
    display: flex;
@@ -125,21 +119,22 @@ body {
 }
 
 .contact-btn .btn-title {
-    font-size: var(--font-size-6);
-    font-weight: 600;
-    color: #666;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+   font-size: var(--font-xs); /* ≈ 14px */
+   font-weight: 600;
+   color: #666;
+   text-transform: uppercase;
+   letter-spacing: 0.5px;
 }
 
 .contact-btn .btn-label {
-    font-size: var(--font-size-4);
-    font-weight: 700;
-    color: #000;
-}.contact-btn .arrow {
-   font-size: 24px;
-   color: #0080FF;
-   /* Blue arrow */
+   font-size: calc(var(--font-sm) * 1.25); /* ≈ 20px */
+   font-weight: 700;
+   color: #000;
+}
+
+.contact-btn .arrow {
+   font-size: calc(var(--font-sm) * 1.5); /* ≈ 24px */
+   color: #0080FF; /* Blue arrow */
    transition: transform 0.2s ease;
 }
 
@@ -158,19 +153,16 @@ body {
    margin: 0 auto;
    display: grid;
    grid-template-columns: repeat(2, 1fr);
-   gap: 40px;
-   /* Wider gap */
+   gap: 40px; /* Wider gap */
 }
 
 .resource-card {
    background: white;
    padding: 40px;
-   border-radius: 20px;
-   /* More rounded */
+   border-radius: 20px; /* More rounded */
    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
    transition: all 0.3s ease;
-   border: none;
-   /* Removed border for cleaner look */
+   border: none; /* Removed border for cleaner look */
 }
 
 .resource-card:hover {
@@ -179,20 +171,22 @@ body {
 }
 
 .resource-card h3 {
-   font-size: 22px;
+   font-size: calc(var(--font-md) * 0.85); /* ≈ 22px */
    font-weight: 700;
-.resource-card h3 {
-    font-size: var(--font-size-4);
-    font-weight: 700;
-    color: #000;
-    margin-bottom: 16px;
+   color: #000;
+   margin-bottom: 16px;
 }
 
 .resource-card p {
-    font-size: var(--font-size-5);
-    color: #4A5568;
-    line-height: 1.8;
-}      flex-direction: column;
+   font-size: var(--font-sm); /* 16px */
+   color: #4A5568;
+   line-height: 1.8;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+   .hero-container {
+      flex-direction: column;
       text-align: center;
       gap: 40px;
    }
@@ -223,23 +217,24 @@ body {
    }
 
    .hero-content h1 {
-      font-size: 36px;
+      font-size: calc(var(--font-lg) * 0.85); /* ≈ 36px */
    }
 
    .contact-content h2 {
-      font-size: 28px;
+      font-size: calc(var(--font-md) * 1.1); /* ≈ 28px */
    }
 }
-.home-footer {
-    background-color: #1E90FF;
+
+/* Footer */
 .home-footer {
     background-color: #1E90FF;
     padding: 30px 40px;
     color: white;
     position: relative;
     z-index: 9999;
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1); /* 👈 shadow */
 }
+
 .footer-content {
     max-width: 1200px;
     margin: 0 auto;
@@ -249,6 +244,6 @@ body {
 }
 
 .footer-content p {
-    font-size: var(--font-size-5);
+    font-size: var(--font-sm); /* 16px */
     margin: 0;
 }
