@@ -35,6 +35,10 @@ form.addEventListener("submit", (e) => {
           uid: user.uid,
           email: user.email,
           displayName: user.email,
+          grayscale: false,
+          lineReader: false,
+          textSize: "normal",
+          fontFamily: "normal",
         });
       })
       .then(() => {
