@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-
+:root {
+  --phi: 1.618;
+  --font-xs: 0.875rem;                           /* ~14px  */
+  --font-sm: 1rem;                               /* 16px   */
+  --font-md: calc(var(--font-sm) * var(--phi));  /* ~26px  */
+  --font-lg: calc(var(--font-md) * var(--phi));  /* ~42px  */
+}
 * {
     margin: 0;
     padding: 0;
@@ -9,11 +15,13 @@ body {
     background-color: #b0dfe5; 
     font-family: "Poppins", sans-serif;
 }
+
 a {
     text-decoration: none;
     color: black;
-    font-size: var(--font-size-5);
+    font-size: var(--font-sm); /* 16px */
 }
+
 .auth-page {
     display: flex;
     min-height: 100vh;
@@ -22,11 +30,11 @@ a {
 
 .auth-left {
     flex: 1;
-    position: relative; /* for absolute-positioned logo */
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 24px; /* reduced padding to lessen white space */
+    padding: 24px;
 }
 
 .auth-right {
@@ -55,7 +63,7 @@ a {
 }
 
 .logo-container a {
-    font-size: var(--font-size-4);
+    font-size: calc(var(--font-md) * 1.1); /* ~28px */
     font-weight: 700;
     color: #111;
     margin: 0;
@@ -63,15 +71,15 @@ a {
 
 .auth-form-container {
     width: 100%;
-    max-width: 520px; /* larger form width */
+    max-width: 520px;
     background: #ffffff;
-    padding: 28px; /* reduce white space inside card */
+    padding: 28px;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.06);
 }
 
 .auth-form-container h2 {
-    font-size: var(--font-size-3);
+    font-size: calc(var(--font-lg) * 0.85); /* ~36px */
     margin: 6px 0 18px;
     color: #222;
 }
@@ -79,7 +87,7 @@ a {
 .auth-form {
     display: flex;
     flex-direction: column;
-    gap: 16px; /* slightly tighter spacing */
+    gap: 16px;
 }
 
 .form-group {
@@ -92,7 +100,7 @@ a {
     padding: 16px 18px;
     border: 1px solid #e6e6e6;
     border-radius: 10px;
-    font-size: var(--font-size-5);
+    font-size: calc(var(--font-sm) * 1.125); /* ~18px */
     transition: border-color 0.2s;
     background-color: #f6f6f6;
 }
@@ -113,7 +121,7 @@ a {
     padding: 16px;
     border: none;
     border-radius: 28px;
-    font-size: var(--font-size-5);
+    font-size: calc(var(--font-sm) * 1.125); /* ~18px */
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.2s, transform 0.08s;
@@ -127,7 +135,7 @@ a {
 .auth-redirect {
     text-align: center;
     margin-top: 18px;
-    font-size: var(--font-size-6);
+    font-size: calc(var(--font-sm) * 0.95); /* ~15px */
     color: #555;
 }
 
