@@ -13,17 +13,7 @@ let topShade = null;
 let bottomShade = null;
 let moveHandler = null;
 
-function loadPrefsFromLocal() {
-  try {
-    const raw = localStorage.getItem("accessibilityPrefs");
-    if (!raw) return { ...defaultAccessibilityPrefs };
-    const parsed = JSON.parse(raw);
-    return { ...defaultAccessibilityPrefs, ...parsed };
-  } catch {
-    return { ...defaultAccessibilityPrefs };
-  }
-}
-
+// ---------- Apply prefs to the page (syncs with your CSS) ----------
 function applyAccessibility(prefsInput) {
   currentAccessibilityPrefs = {
     ...currentAccessibilityPrefs,
@@ -31,34 +21,47 @@ function applyAccessibility(prefsInput) {
   };
 
   const prefs = currentAccessibilityPrefs;
+  const body = document.body;
+  if (!body) return;
 
-  // Text size - uses golden ratio scaling
-  const root = document.documentElement;
-  root.classList.remove("text-size-normal", "text-size-large", "text-size-xlarge");
-  root.classList.add(`text-size-${prefs.textSize}`);
-
-  // Font family
-  document.body.classList.toggle(
+  // ----- FONT FAMILY -----
+  // Matches: body.access-font-dyslexic in your CSS
+  body.classList.toggle(
     "access-font-dyslexic",
     prefs.fontFamily === "opendyslexic"
   );
 
-  // Grayscale
-  document.body.classList.toggle(
+  // ----- GRAYSCALE -----
+  // Matches: body.access-mode-grayscale
+  body.classList.toggle(
     "access-mode-grayscale",
     !!prefs.grayscale
   );
 
-  // Line reader
-  if (prefs.lineReader) enableLineReader();
-  else disableLineReader();
+  // ----- TEXT SIZE -----
+  // Matches: body.access-text-large *, body.access-text-xlarge *
+  const root = document.documentElement;
 
-  try {
-    localStorage.setItem("accessibilityPrefs", JSON.stringify(prefs));
-  } catch {
+  if (prefs.textSize === "large") {
+    root.style.fontSize = "18px";
+  } 
+  else if (prefs.textSize === "xlarge") {
+    root.style.fontSize = "20px";
+  } 
+  else {
+    root.style.fontSize = "16px"; // normal default
+  }
+  // "normal" => no extra class
+
+  // ----- LINE READER -----
+  if (prefs.lineReader) {
+    enableLineReader();
+  } else {
+    disableLineReader();
   }
 }
 
+// Expose helpers for other scripts (like settings_info.js)
 window.getAccessibilityPrefs = function () {
   return { ...currentAccessibilityPrefs };
 };
@@ -67,7 +70,6 @@ window.updateAccessibilityPrefs = function (partialPrefs) {
   applyAccessibility(partialPrefs || {});
 };
 
-// Convenience functions for text size control
 window.setTextSize = function (size) {
   if (["normal", "large", "xlarge"].includes(size)) {
     applyAccessibility({ textSize: size });
@@ -78,26 +80,27 @@ window.getTextSize = function () {
   return currentAccessibilityPrefs.textSize;
 };
 
-// Line reader
+// ---------- Line reader ----------
 
 function enableLineReader() {
   if (lineReaderOn) return;
   lineReaderOn = true;
 
+  const body = document.body;
+  if (!body) return;
+
+  body.classList.add("access-line-reader-active");
+
   topShade = document.createElement("div");
   bottomShade = document.createElement("div");
 
-  topShade.style.position = bottomShade.style.position = "fixed";
-  topShade.style.left = bottomShade.style.left = "0";
-  topShade.style.width = bottomShade.style.width = "100%";
-  topShade.style.background = bottomShade.style.background = "rgba(0,0,0,0.65)";
-  topShade.style.pointerEvents = bottomShade.style.pointerEvents = "none";
-  topShade.style.zIndex = bottomShade.style.zIndex = "9999";
+  topShade.className = "line-reader-shade";
+  bottomShade.className = "line-reader-shade";
 
-  document.body.appendChild(topShade);
-  document.body.appendChild(bottomShade);
+  body.appendChild(topShade);
+  body.appendChild(bottomShade);
 
-  const H = 40;
+  const H = 40; // height of the reading window
 
   moveHandler = (e) => {
     if (!lineReaderOn) return;
@@ -118,6 +121,11 @@ function disableLineReader() {
   if (!lineReaderOn) return;
   lineReaderOn = false;
 
+  const body = document.body;
+  if (body) {
+    body.classList.remove("access-line-reader-active");
+  }
+
   if (topShade) topShade.remove();
   if (bottomShade) bottomShade.remove();
   topShade = null;
@@ -129,25 +137,47 @@ function disableLineReader() {
   }
 }
 
+// ---------- Init: defaults + Firestore prefs ----------
 function initAccessibility() {
-  const localPrefs = loadPrefsFromLocal();
-  applyAccessibility(localPrefs);
+  // Always start from defaults
+  applyAccessibility(defaultAccessibilityPrefs);
 
-  if (window.auth && window.db && typeof auth.onAuthStateChanged === "function") {
-    auth.onAuthStateChanged(async (user) => {
-      if (!user) return;
-      try {
-        const snap = await db.collection("users").doc(user.uid).get();
-        if (snap.exists && snap.data().accessibilityPrefs) {
-          const firestorePrefs = snap.data().accessibilityPrefs;
-          const merged = { ...localPrefs, ...firestorePrefs };
-          applyAccessibility(merged);
-        }
-      } catch (err) {
-        console.error("Error loading accessibility prefs from Firestore:", err);
-      }
-    });
+  // If Firebase isn't loaded, we can't sync from Firestore
+  if (typeof firebase === "undefined") {
+    console.warn("[accessibility] Firebase not found; using defaults only.");
+    return;
   }
+
+  const auth = firebase.auth();
+  const db   = firebase.firestore();
+
+  if (!auth || !db) {
+    console.warn("[accessibility] auth/db not ready; using defaults.");
+    return;
+  }
+
+  auth.onAuthStateChanged(async (user) => {
+    if (!user) return; // not logged in, keep defaults
+
+    try {
+      const snap = await db.collection("users").doc(user.uid).get();
+      if (!snap.exists) return;
+
+      const data = snap.data();
+
+      const firestorePrefs = {
+        lineReader: typeof data.lineReader === "boolean" ? data.lineReader : defaultAccessibilityPrefs.lineReader,
+        grayscale: typeof data.grayscale === "boolean" ? data.grayscale : defaultAccessibilityPrefs.grayscale,
+        textSize: data.textSize || defaultAccessibilityPrefs.textSize,
+        fontFamily: data.fontFamily || defaultAccessibilityPrefs.fontFamily
+      };
+
+      applyAccessibility(firestorePrefs);
+    } catch (err) {
+      console.error("Error loading accessibility prefs from Firestore:", err);
+    }
+  });
 }
 
 document.addEventListener("DOMContentLoaded", initAccessibility);
+
