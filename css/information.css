@@ -39,7 +39,7 @@ body {
 }
 
 .logo-text {
-    font-size: var(--font-size-4);
+    font-size: calc(var(--font-md) * 0.9); /* ~24px */
     font-weight: 700;
     color: #333;
     text-decoration: none;
@@ -54,7 +54,7 @@ body {
 .nav-link {
     color: #333;
     text-decoration: none;
-    font-size: var(--font-size-5);
+    font-size: var(--font-sm);
     font-weight: 500;
     transition: color 0.3s;
 }
@@ -70,7 +70,7 @@ body {
     border: none;
     padding: 10px 24px;
     border-radius: 24px;
-    font-size: var(--font-size-5);
+    font-size: var(--font-sm);
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -89,7 +89,7 @@ body {
 }
 
 .sub-bar p {
-    font-size: var(--font-size-6);
+    font-size: var(--font-xs);
     color: #555;
     margin: 0;
 }
@@ -121,7 +121,7 @@ body {
 }
 
 .sidebar-title {
-    font-size: var(--font-size-2);
+    font-size: calc(var(--font-lg) * 0.75); /* ~32px */
     font-weight: 700;
     color: white;
     margin-bottom: 30px;
@@ -140,7 +140,7 @@ body {
 }
 
 .nav-category {
-    font-size: var(--font-size-5);
+    font-size: calc(var(--font-sm) * 1.125); /* ~18px */
     font-weight: 700;
     color: white;
     margin-bottom: 5px;
@@ -151,13 +151,12 @@ body {
     padding-left: 0;
     display: flex;
     flex-direction: column;
-    gap: 8px;
 }
 
 .sidebar-link {
     color: white;
     text-decoration: none;
-    font-size: var(--font-size-5);
+    font-size: var(--font-sm);
     font-weight: 400;
     padding: 5px 0;
     transition: color 0.3s, padding-left 0.3s;
@@ -183,10 +182,129 @@ body {
 }
 
 .content-section h1 {
-    font-size: var(--font-size-3);
+    font-size: calc(var(--font-lg) * 0.85); /* ~36px */
     font-weight: 700;
     color: #333;
     margin-bottom: 20px;
+}
+
+/* Dropdown */
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    text-decoration: none;
+    font-size: var(--font-sm);
+    font-weight: 500;
+    font-family: "Poppins";
+    transition: color 0.3s;
+    border: none;
+    outline: none;
+    background-color: inherit;
+    padding: 14px 16px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.dropdown .dropbtn:hover {
+    color: #1E90FF;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 160px;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    font-size: var(--font-sm);
+    font-weight: 500;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Info Image */
+.info-image {
+    margin-bottom: 20px;
+}
+
+.info-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .1);
+}
+
+.source {
+    font-size: calc(var(--font-xs) * 0.95);
+    color: #777;
+    margin-top: 10px;
+}
+
+.source a {
+    color: #1E90FF;
+    text-decoration: none;
+}
+
+.source a:hover {
+    text-decoration: underline;
+}
+
+/* Thumbnail */
+.subtopic-thumb {
+    float: right;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 0 0 12px 16px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.content-section::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* Footer */
+.home-footer {
+    background-color: #1E90FF;
+    padding: 30px 40px;
+    color: white;
+    position: relative;
+    z-index: 9999;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-content p {
+    font-size: var(--font-sm);
+    margin: 0;
 }
 
 /* Responsive Design */
@@ -215,12 +333,12 @@ body {
     }
 
     .nav-link {
-        font-size: 14px;
+        font-size: var(--font-xs);
     }
 
     .logout-btn {
         padding: 8px 16px;
-        font-size: 14px;
+        font-size: var(--font-xs);
     }
 }
 
@@ -230,7 +348,7 @@ body {
     }
 
     .sub-bar p {
-        font-size: 12px;
+        font-size: calc(var(--font-xs) * 0.85);
     }
 
     .sidebar {
@@ -242,114 +360,6 @@ body {
     }
 
     .content-section h1 {
-        font-size: 28px;
+        font-size: calc(var(--font-md) * 1.1); /* ~28px */
     }
-}
-
-
-  .dropdown {
-    float: left;
-    overflow: hidden;
-  }
-  .dropdown .dropbtn {
-    text-decoration: none;
-    font-size: var(--font-size-5);
-    font-weight: 500;
-    font-family: "Poppins";
-    transition: color 0.3s;
-    border: none;
-    outline: none;
-    background-color: inherit;
-    padding: 14px 16px;
-    margin: 0;
-    cursor: pointer;
-  }
-  .dropdown .dropbtn:hover {
-    color: #1E90FF;
-  }
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #ffffff;
-    min-width: 160px;
-    z-index: 1;
-  }
-  .dropdown-content a {
-    float: none;
-    color: black;
-    font-size: var(--font-size-5);
-    font-weight: 500;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-  .dropdown-content a:hover {
-    background-color: #ddd;
-  }
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  .info-image {
-    margin-bottom: 20px;
-}
-
-.info-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    display: block;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, .1);
-}
-
-.source {
-    font-size: 0.85rem;
-    color: #777;
-    margin-top: 10px;
-}
-
-.source a {
-    color: #1E90FF;
-    text-decoration: none;
-}
-
-.source a:hover {
-    text-decoration: underline;
-}
-/* Small square thumbnail image with text wrapping around it */
-.subtopic-thumb {
-    float: right;
-    width: 250px;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin: 0 0 12px 16px; /* space between image and text */
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-}
-
-/* Make sure floated images don't break later sections */
-.content-section::after {
-    content: "";
-    display: block;
-    clear: both;
-}
-.home-footer {
-    background-color: #1E90FF;
-    padding: 30px 40px;
-    color: white;
-    position: relative;
-    z-index: 9999;
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1); /* 👈 shadow */
-}
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.footer-content p {
-    font-size: 16px;
-    margin: 0;
 }
