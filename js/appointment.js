@@ -12,7 +12,15 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    console.log("User is still logged in:", user.email);
 
+  } else {
+    console.log("No user logged in — redirecting");
+    window.location.href = "login.html";
+  }
+});
 document.addEventListener('DOMContentLoaded', function() {
     const appointmentForm = document.getElementById('appointmentForm');
     const appointmentDateInput = document.getElementById('appointmentDate');
