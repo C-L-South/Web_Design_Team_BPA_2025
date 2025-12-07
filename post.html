@@ -17,24 +17,22 @@
     <div class="forum-container">
         <!-- Sidebar -->
         <aside class="forum-sidebar">
-            <button id="newPostButton" class="post-btn">+ Post</button>
+          <button id="newPostButton" class="post-btn">+ Post</button>
 
-            <nav class="sidebar-nav">
-                <a href="forum.html" class="sidebar-link">Forums</a>
-                <a href="#" class="sidebar-link">My Posts</a>
-                <ul id="sidebarTopicsList" class="sidebar-list">
-                    <!-- Will be populated by JavaScript when posts are created -->
-                </ul>
-            </nav>
+          <nav class="sidebar-nav">
+          <h2 class="sidebar-title">Forums</h2>
+          <a href="#" class="sidebar-link" id="myPostsLink">My Posts</a>
+          <ul id="sidebarTopicsList" class="sidebar-list">
+              <!-- JS will fill -->
+          </ul>
+          </nav>
         </aside>
 
         <!-- Main Content -->
         <main class="forum-main post-view">
             <!-- Back Button -->
             <a href="forum.html" class="back-btn">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M19 12H5M12 19l-7-7 7-7" />
-                </svg>
+              <img src="images/post/post_img_3.jpg" alt="Back" class="back-icon">
             </a>
 
             <!-- Post Content -->
@@ -51,18 +49,14 @@
 
                 <div class="post-actions">
                     <button id="upvoteButton" class="like-btn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="12 19 12 5"></polyline>
-                            <polyline points="5 12 12 5 19 12"></polyline>
-                        </svg>
+                        ↑
                         <span id="postUpvotes">0</span>
                     </button>
                     <div class="comment-count">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4v-4H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                        </svg>
-                        <span id="postCommentsCount">0</span>
+                      <img src="images/post/post_img_2.jpg" alt="Comments" class="comment-icon">
+                      <span id="postCommentsCount">0</span>
                     </div>
+
                 </div>
             </section>
 
@@ -70,12 +64,9 @@
             <section class="comment-input-section">
                 <form id="commentForm" class="comment-form">
                     <input type="text" id="commentInput" class="comment-input" placeholder="Post your comment!">
-                    <button type="submit" class="submit-comment-btn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="22" y1="2" x2="11" y2="13"></line>
-                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                        </svg>
-                    </button>
+                      <button type="submit" class="submit-comment-btn">
+                        <img src="images/post/post_img_1.jpg" alt="Submit" class="submit-img">
+                      </button>
                 </form>
             </section>
 
@@ -99,6 +90,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
     <script src="js/navigation.js"></script>
     <script src="js/post.js"></script>
+    <script src="js/accessibility.js"></script>
 </body>
 
 </html>
