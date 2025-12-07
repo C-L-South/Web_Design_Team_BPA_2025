@@ -1,3 +1,5 @@
+// settings_info.js
+
 const firebaseConfig = {
   apiKey: "AIzaSyDncN-lZWQLBa3fkMI3QkAE7CqcA6IK3ss",
   authDomain: "bpa-webdesign-team.firebaseapp.com",
@@ -60,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     console.log("Settings page: logged in as", user.uid);
 
-    // Load profile
+    // ---- Load user doc from Firestore ----
     let userData = {};
     try {
       const snap = await db.collection("users").doc(user.uid).get();
@@ -70,24 +72,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const username    = userData.username || "";
-    const displayName = user.displayName || userData.displayName || "";
+    const displayName = user.displayName || userData.displayName || user.email || "";
 
-    // Preferences
-    const globalPrefs = (window.getAccessibilityPrefs?.()) || {
-      lineReader: false,
-      grayscale: false,
-      textSize: "normal",
-      fontFamily: "normal"
-    };
-
+    // ---- Accessibility prefs: ONLY from Firestore, flat fields ----
     let prefs = {
-      ...globalPrefs,
-      ...(userData.accessibilityPrefs || {})
+      lineReader: typeof userData.lineReader === "boolean" ? userData.lineReader : false,
+      grayscale: typeof userData.grayscale === "boolean" ? userData.grayscale : false,
+      textSize: userData.textSize || "normal",       // "normal" | "large" | "xlarge"
+      fontFamily: userData.fontFamily || "normal"    // "normal" | "opendyslexic"
     };
 
+    // ---- Fill basic profile fields ----
     currentUsernameInput.value = username;
     currentDisplayInput.value  = displayName;
 
+    // ---- Fill accessibility UI from Firestore prefs ----
     if (lineReaderToggle) lineReaderToggle.checked = !!prefs.lineReader;
     if (grayscaleToggle)  grayscaleToggle.checked  = !!prefs.grayscale;
 
@@ -99,11 +98,12 @@ document.addEventListener("DOMContentLoaded", () => {
       r.checked = (r.value === prefs.fontFamily);
     });
 
+    // Apply prefs to the page (if accessibility.js is loaded)
     if (window.updateAccessibilityPrefs) {
       window.updateAccessibilityPrefs(prefs);
     }
 
-    // Username
+    // ---------- Username ----------
     usernameSaveBtn.addEventListener("click", async () => {
       const newUsername = newUsernameInput.value.trim();
       if (!newUsername) {
@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Display
+    // ---------- Display Name ----------
     displayNameSaveBtn.addEventListener("click", async () => {
       const newDisplayName = newDisplayInput.value.trim();
       if (!newDisplayName) {
@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Password
+    // ---------- Password ----------
     passwordSaveBtn.addEventListener("click", async () => {
       const newPw     = newPasswordInput.value;
       const confirmPw = confirmPasswordInput.value;
@@ -186,7 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Delete
+    // ---------- Delete Account ----------
     deleteBtn.addEventListener("click", async () => {
       const text = deleteConfirmInput.value.trim();
       if (text.toLowerCase() !== "delete") {
@@ -199,6 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       try {
+        // Delete user doc (if exists)
         try {
           await db.collection("users").doc(user.uid).delete();
         } catch (innerErr) {
@@ -220,13 +221,18 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    //Accessibility listeners
+    // ---------- Accessibility: save flat fields on user doc ----------
 
     async function persistPrefs() {
       try {
         await db.collection("users").doc(user.uid).set(
-          { accessibilityPrefs: prefs },
-          { merge: true }
+          {
+            lineReader: prefs.lineReader,
+            grayscale:  prefs.grayscale,
+            textSize:   prefs.textSize,
+            fontFamily: prefs.fontFamily
+          },
+          { merge: true } // keep uid, email, displayName, etc
         );
       } catch (err) {
         console.error("Error saving accessibility prefs:", err);
