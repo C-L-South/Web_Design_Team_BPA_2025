@@ -9,178 +9,158 @@ const firebaseConfig = {
   measurementId: "G-2D29B9KZCR"
 };
 
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
-}
+if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 
 const auth = firebase.auth();
 const db = firebase.firestore();
 
-document.addEventListener('DOMContentLoaded', () => {
-  const postsTableBody = document.getElementById('postsTableBody');
-  const searchInput = document.getElementById('searchInput');
-  const newPostButton = document.getElementById('newPostButton');
-  const sidebarTopicsList = document.getElementById("sidebarTopicsList");
+document.addEventListener("DOMContentLoaded", () => {
+  const postsTableBody = document.getElementById("postsTableBody");
+  const searchInput = document.getElementById("searchInput");
+
+  const tabAllPosts = document.getElementById("tabAllPosts");
+  const tabMyPosts = document.getElementById("tabMyPosts");
+
+  const newPostButtonTop = document.getElementById("newPostButtonTop");
 
   let allPosts = [];
   let myPosts = [];
+  let activeTab = "all"; // "all" | "mine"
+
+  function setActiveTab(tab) {
+    activeTab = tab;
+
+    if (tabAllPosts) tabAllPosts.classList.toggle("tab-active", tab === "all");
+    if (tabMyPosts) tabMyPosts.classList.toggle("tab-active", tab === "mine");
+
+    renderCurrent();
+  }
+
+  function getCurrentDocs() {
+    return activeTab === "mine" ? myPosts : allPosts;
+  }
 
   function renderPosts(docs) {
-    postsTableBody.innerHTML = '';
+    postsTableBody.innerHTML = "";
 
     if (!docs.length) {
-      const tr = document.createElement('tr');
-      const td = document.createElement('td');
+      const tr = document.createElement("tr");
+      const td = document.createElement("td");
       td.colSpan = 3;
-      td.textContent = 'No posts yet.';
+      td.textContent = "No posts yet.";
       tr.appendChild(td);
       postsTableBody.appendChild(tr);
       return;
     }
 
-    docs.forEach(doc => {
+    docs.forEach((doc) => {
       const data = doc.data();
 
-      const tr = document.createElement('tr');
+      const tr = document.createElement("tr");
 
-      const titleTd = document.createElement('td');
-      const link = document.createElement('a');
+      const titleTd = document.createElement("td");
+      const link = document.createElement("a");
       link.href = `post.html?id=${doc.id}`;
-      link.textContent = data.title || '(Untitled post)';
+      link.textContent = data.title || "(Untitled post)";
       titleTd.appendChild(link);
 
-      const repliesTd = document.createElement('td');
-      repliesTd.textContent = `${data.repliesCount || 0} Replies`;
+      const upvotesTd = document.createElement("td");
+      upvotesTd.textContent = `${data.upvotes || 0}`;
 
-      const createdByTd = document.createElement('td');
-      createdByTd.textContent = data.createdBy
-        ? `By ${data.createdBy}`
-        : 'By Anonymous';
+      const createdByTd = document.createElement("td");
+      createdByTd.textContent = data.createdBy ? `By ${data.createdBy}` : "By Anonymous";
 
       tr.appendChild(titleTd);
-      tr.appendChild(repliesTd);
+      tr.appendChild(upvotesTd);
       tr.appendChild(createdByTd);
 
       postsTableBody.appendChild(tr);
     });
   }
 
-  function renderMyPosts(docs) {
-    sidebarTopicsList.innerHTML = "";
+  function renderCurrent() {
+    const q = (searchInput?.value || "").trim().toLowerCase();
+    const docs = getCurrentDocs();
 
-    if (!docs.length) {
-      const li = document.createElement("li");
-      li.textContent = "No posts yet.";
-      li.classList.add("no-posts-message");
-      sidebarTopicsList.appendChild(li);
+    if (!q) {
+      renderPosts(docs);
       return;
     }
 
-    docs.forEach(doc => {
-      const data = doc.data();
-
-      const li = document.createElement("li");
-      li.classList.add("sidebar-item");
-
-      const link = document.createElement("a");
-      link.href = `post.html?id=${doc.id}`;
-      link.textContent = data.title || "(Untitled post)";
-      link.classList.add("sidebar-link");
-
-      li.appendChild(link);
-      sidebarTopicsList.appendChild(li);
+    const filtered = docs.filter((doc) => {
+      const d = doc.data();
+      const title = (d.title || "").toLowerCase();
+      const author = (d.createdBy || "").toLowerCase();
+      return title.includes(q) || author.includes(q);
     });
+
+    renderPosts(filtered);
   }
 
   async function loadPosts() {
-    try {
-      const snapshot = await db
-        .collection('posts')
-        .orderBy('createdAt', 'desc')
-        .get();
-
-      allPosts = snapshot.docs;
-      renderPosts(allPosts);
-    } catch (err) {
-      console.error('Error loading posts:', err);
-      postsTableBody.innerHTML =
-        '<tr><td colspan="3">Error loading posts</td></tr>';
-    }
+    const snapshot = await db.collection("posts").orderBy("createdAt", "desc").get();
+    allPosts = snapshot.docs;
   }
 
   async function loadMyPosts(user) {
-    try {
-      const snapshot = await db
-        .collection("posts")
-        .where("createdById", "==", user.uid)
-        .orderBy("createdAt", "desc")
-        .get();
+    const snapshot = await db
+      .collection("posts")
+      .where("createdById", "==", user.uid)
+      .orderBy("createdAt", "desc")
+      .get();
 
-      myPosts = snapshot.docs;
-      renderMyPosts(myPosts);
-    } catch (err) {
-      console.error("Error loading my posts:", err);
-      sidebarTopicsList.innerHTML =
-        "<li>Error loading your posts.</li>";
-    }
+    myPosts = snapshot.docs;
+  }
+
+  async function createPost(user) {
+    const title = prompt("Post title:");
+    if (!title) return;
+
+    const body = prompt("Post content:");
+    if (!body) return;
+
+    const userName = user.displayName || user.email || "Anonymous";
+
+    await db.collection("posts").add({
+      title,
+      body,
+      createdBy: userName,
+      createdById: user.uid,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      repliesCount: 0,
+      upvotes: 0
+    });
+
+    await loadPosts();
+    await loadMyPosts(user);
+    renderCurrent();
+    alert("Post created!");
   }
 
   if (searchInput) {
-    searchInput.addEventListener('input', () => {
-      const q = searchInput.value.trim().toLowerCase();
-
-      const filtered = allPosts.filter(doc => {
-        const d = doc.data();
-        const title = (d.title || '').toLowerCase();
-        const author = (d.createdBy || '').toLowerCase();
-        return title.includes(q) || author.includes(q);
-      });
-
-      renderPosts(filtered);
-    });
+    searchInput.addEventListener("input", renderCurrent);
   }
 
-  // auth after DOM ready
-  auth.onAuthStateChanged(async user => {
+  if (tabAllPosts) tabAllPosts.addEventListener("click", () => setActiveTab("all"));
+  if (tabMyPosts) tabMyPosts.addEventListener("click", () => setActiveTab("mine"));
+
+  auth.onAuthStateChanged(async (user) => {
     if (!user) {
       window.location.href = "login.html";
       return;
     }
 
-    console.log("Forum page: logged in as ", user.uid);
+    try {
+      await loadPosts();
+      await loadMyPosts(user);
+      setActiveTab("all");
 
-    if (newPostButton) {
-      newPostButton.addEventListener('click', async () => {
-        const title = prompt('Post title:');
-        if (!title) return;
-
-        const body = prompt('Post content:');
-        if (!body) return;
-
-        const userName = user.displayName || user.email || 'Anonymous';
-
-        try {
-          await db.collection('posts').add({
-            title,
-            body,
-            createdBy: userName,
-            createdById: user.uid,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            repliesCount: 0,
-            upvotes: 0
-          });
-
-          await loadPosts();
-          await loadMyPosts(user);
-          alert('Post created!');
-        } catch (err) {
-          console.error('Error creating post:', err);
-          alert('Error creating post. Please try again.');
-        }
-      });
+      if (newPostButtonTop) {
+        newPostButtonTop.addEventListener("click", () => createPost(user));
+      }
+    } catch (err) {
+      console.error("Error loading posts:", err);
+      postsTableBody.innerHTML = '<tr><td colspan="3">Error loading posts</td></tr>';
     }
-
-    await loadPosts();
-    await loadMyPosts(user);
   });
 });
