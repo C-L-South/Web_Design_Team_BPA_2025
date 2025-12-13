@@ -37,21 +37,17 @@
       </div>
    </section>
    <div class="forum-container">
-      <!-- Sidebar -->
-      <aside class="forum-sidebar">
-         <button id="newPostButton" class="post-btn">+ Post</button>
-
-         <nav class="sidebar-nav">
-         <h2 class="sidebar-title">Forums</h2>
-         <a href="#" class="sidebar-link" id="myPostsLink">My Posts</a>
-         <ul id="sidebarTopicsList" class="sidebar-list">
-            <!-- JS will fill -->
-         </ul>
-         </nav>
-      </aside>
 
       <!-- Main Content -->
       <main class="forum-main">
+      <div class="forum-topbar">
+      <div class="forum-tabs">
+         <button id="tabAllPosts" class="tab-btn tab-active" type="button">All Posts</button>
+         <button id="tabMyPosts" class="tab-btn" type="button">My Posts</button>
+      </div>
+
+      <button id="newPostButtonTop" class="post-btn" type="button">+ Post</button>
+      </div>
 
 
          <!-- Forum Topics Table -->
@@ -60,7 +56,7 @@
                <thead>
                   <tr>
                      <th class="col-title">Title</th>
-                     <th class="col-replies">Replies</th>
+                     <th class="col-replies">Upvotes</th>
                      <th class="col-author">Created By</th>
                   </tr>
                </thead>
