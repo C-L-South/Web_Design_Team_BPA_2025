@@ -22,32 +22,20 @@ body {
 
 /* Sidebar */
 .forum-sidebar {
-    width: 160px;
-    background-color: #1E90FF;
-    padding: 50px 25px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    overflow-y: auto;
+    display: none;
 }
 
 .post-btn {
-    background-color: #fea500;
-    color: white;
-    border: none;
-    padding: 10px 24px;
-    border-radius: 6px;
-    font-size: var(--font-sm); /* 16px */
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-family: "Poppins", sans-serif;
-    margin-bottom: 30px;
+   background-color: #fea500;
+   color: white;
+   border: none;
+   padding: 10px 24px;
+   border-radius: 24px;
+   font-size: var(--font-sm);  /* 16px */
+   font-weight: 600;
+   cursor: pointer;
+   transition: background-color 0.3s;
+   margin-bottom: 30px;
 }
 
 .post-btn:hover {
@@ -113,7 +101,7 @@ body {
 /* Main Content */
 .forum-main {
     flex: 1;
-    margin-left: 160px;
+    margin-left: 0;
     padding: 30px 40px;
     background-color: #E0F2F7;
 }
@@ -523,4 +511,3 @@ body {
 /* search inside hero stays same */
 .hero-search-form { width: 100%; }
 .hero-search { max-width: 600px; }
-
