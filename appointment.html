@@ -13,52 +13,73 @@
 <body>
     <!-- Navigation will be loaded here -->
     <div id="nav-container"></div>
-
+    <section class="hero">
+        <div class="hero-overlay">
+        <h1>Schedule a Counseling Appointment</h1>
+        <p>
+            MindScape provides compassionate, confidential mental health support.
+            Book a counseling session with our licensed professionals and take the
+            next step toward emotional wellness.
+        </p>
+        </div>
+    </section>
     <!-- Main Content -->
     <div class="appointment-container">
         <!-- Left Panel - Form -->
         <div class="form-panel">
-            <h1 class="form-title">Counseling Appointment Scheduler</h1>
+        <h2 class="form-title">Counseling Appointment Scheduler</h2>
+        <p class="form-subtitle">Schedule a confidential session with a licensed professional.</p>
 
-            <form class="appointment-form" id="appointmentForm">
-                <div class="name-row">
-                    <div class="form-group">
-                        <label for="firstName">First</label>
-                        <input type="text" id="firstName" name="firstName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="lastName">Last</label>
-                        <input type="text" id="lastName" name="lastName" required>
-                    </div>
+        <form class="appointment-form">
+            <!-- Section 1 -->
+            <section class="form-section">
+            <div class="section-head">
+                <h3>Personal information</h3>
+                <p>So we can contact you about your appointment.</p>
+            </div>
+
+            <div class="name-row">
+                <div class="form-group">
+                <label for="first">First</label>
+                <input id="first" type="text" placeholder="First name" />
                 </div>
 
                 <div class="form-group">
-                    <label for="phoneNumber">Phone Number</label>
-                    <input type="tel" id="phoneNumber" name="phoneNumber" required>
+                <label for="last">Last</label>
+                <input id="last" type="text" placeholder="Last name" />
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
+            <div class="form-group">
+                <label for="phone">Phone number</label>
+                <input id="phone" type="tel" placeholder="(xxx) xxx-xxxx" />
+            </div>
+            </section>
 
-                <div class="calendar-section">
-                    <label for="appointmentDate">Choose Date</label>
-                    <input type="date" id="appointmentDate" name="appointmentDate" required>
-                </div>
+            <!-- Section 2 -->
+            <section class="form-section">
+            <div class="section-head">
+                <h3>Appointment details</h3>
+                <p>Pick a date that works best for you.</p>
+            </div>
 
-                <button type="submit" class="submit-btn">Submit</button>
-            </form>
-        </div>
+            <div class="calendar-section">
+                <label for="date">Preferred date</label>
+                <input id="date" type="date" />
+            </div>
 
-        <!-- Right Sidebar -->
-        <div class="info-sidebar">
-            <h2 class="sidebar-title">Counseling Appointment Scheduler Info</h2>
-            <p class="sidebar-text">
-                Schedule a confidential counseling session with our licensed mental health professionals. We offer
-                flexible appointment times and a supportive environment to help you on your journey to wellness. Fill
-                out the form to book your appointment, and we'll confirm your session within 24 hours.
-            </p>
+            <!-- optional: time / notes -->
+            <div class="form-group">
+                <label for="notes">Anything you would like us to know? </label>
+                <input id="notes" type="text" placeholder="e.g., morning sessions preferred" />
+            </div>
+            </section>
+
+            <!-- Footer note + action -->
+            <div class="form-footer">
+            <button class="submit-btn" type="submit">Request appointment</button>
+            </div>
+        </form>
         </div>
     </div>
     <footer class="home-footer">
