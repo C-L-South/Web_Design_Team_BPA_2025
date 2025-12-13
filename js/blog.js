@@ -9,15 +9,51 @@ const firebaseConfig = {
   measurementId: "G-2D29B9KZCR"
 };
 
-firebase.initializeApp(firebaseConfig);
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
+
+const auth = firebase.auth();
 const db = firebase.firestore();
 
-firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    console.log("User is still logged in:", user.email);
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.getElementById("searchInput");
+  const cards = Array.from(document.querySelectorAll(".blog-card"));
 
-  } else {
-    console.log("No user logged in — redirecting");
-    window.location.href = "login.html";
+  auth.onAuthStateChanged((user) => {
+    if (!user) {
+      window.location.href = "login.html";
+    }
+  });
+
+  if (!searchInput || cards.length === 0) return;
+
+  // Pre-index each card for faster searching
+  const index = cards.map((card) => {
+    const title = (card.querySelector(".blog-title")?.textContent || "").toLowerCase();
+    const desc  = (card.querySelector(".blog-description")?.textContent || "").toLowerCase();
+    const date  = (card.querySelector(".blog-date")?.textContent || "").toLowerCase();
+    return { card, haystack: `${title} ${desc} ${date}` };
+  });
+
+  function applySearch(query) {
+    const q = query.trim().toLowerCase();
+
+    index.forEach(({ card, haystack }) => {
+      const match = !q || haystack.includes(q);
+      card.style.display = match ? "" : "none";
+    });
   }
+
+  searchInput.addEventListener("input", () => {
+    applySearch(searchInput.value);
+  });
+
+  // Prevent form submit from reloading page
+  const form = document.getElementById("searchForm");
+  if (form) {
+    form.addEventListener("submit", (e) => e.preventDefault());
+  }
+
+  applySearch(searchInput.value || "");
 });
