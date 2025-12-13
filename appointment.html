@@ -30,56 +30,48 @@
         <h2 class="form-title">Counseling Appointment Scheduler</h2>
         <p class="form-subtitle">Schedule a confidential session with a licensed professional.</p>
 
-        <form class="appointment-form">
-            <!-- Section 1 -->
-            <section class="form-section">
-            <div class="section-head">
-                <h3>Personal information</h3>
-                <p>So we can contact you about your appointment.</p>
-            </div>
-
+        <form id="appointmentForm" class="appointment-form">
+        <section class="form-section">
             <div class="name-row">
-                <div class="form-group">
-                <label for="first">First</label>
-                <input id="first" type="text" placeholder="First name" />
-                </div>
-
-                <div class="form-group">
-                <label for="last">Last</label>
-                <input id="last" type="text" placeholder="Last name" />
-                </div>
+            <div class="form-group">
+                <label for="firstName">First</label>
+                <input id="firstName" type="text" placeholder="First name" />
             </div>
 
             <div class="form-group">
-                <label for="phone">Phone number</label>
-                <input id="phone" type="tel" placeholder="(xxx) xxx-xxxx" />
+                <label for="lastName">Last</label>
+                <input id="lastName" type="text" placeholder="Last name" />
             </div>
-            </section>
-
-            <!-- Section 2 -->
-            <section class="form-section">
-            <div class="section-head">
-                <h3>Appointment details</h3>
-                <p>Pick a date that works best for you.</p>
             </div>
 
+            <div class="form-group">
+            <label for="phoneNumber">Phone number</label>
+            <input id="phoneNumber" type="tel" placeholder="(xxx) xxx-xxxx" />
+            </div>
+
+            <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="you@example.com" />
+            </div>
+        </section>
+
+        <section class="form-section">
             <div class="calendar-section">
-                <label for="date">Preferred date</label>
-                <input id="date" type="date" />
+            <label for="appointmentDate">Preferred date</label>
+            <input id="appointmentDate" type="date" />
             </div>
 
-            <!-- optional: time / notes -->
             <div class="form-group">
-                <label for="notes">Anything you would like us to know? </label>
-                <input id="notes" type="text" placeholder="e.g., morning sessions preferred" />
+            <label for="notes">Anything you would like us to know?</label>
+            <input id="notes" type="text" placeholder="e.g., morning sessions preferred" />
             </div>
-            </section>
+        </section>
 
-            <!-- Footer note + action -->
-            <div class="form-footer">
+        <div class="form-footer">
             <button class="submit-btn" type="submit">Request appointment</button>
-            </div>
+        </div>
         </form>
+
         </div>
     </div>
     <footer class="home-footer">
