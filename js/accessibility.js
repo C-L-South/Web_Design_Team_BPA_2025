@@ -13,6 +13,7 @@ let topShade = null;
 let bottomShade = null;
 let moveHandler = null;
 
+// ---------- Apply prefs to the page (syncs with your CSS) ----------
 function applyAccessibility(prefsInput) {
   currentAccessibilityPrefs = {
     ...currentAccessibilityPrefs,
@@ -23,16 +24,22 @@ function applyAccessibility(prefsInput) {
   const body = document.body;
   if (!body) return;
 
+  // ----- FONT FAMILY -----
+  // Matches: body.access-font-dyslexic in your CSS
   body.classList.toggle(
     "access-font-dyslexic",
     prefs.fontFamily === "opendyslexic"
   );
 
+  // ----- GRAYSCALE -----
+  // Matches: body.access-mode-grayscale
   body.classList.toggle(
     "access-mode-grayscale",
     !!prefs.grayscale
   );
 
+  // ----- TEXT SIZE -----
+  // Matches: body.access-text-large *, body.access-text-xlarge *
   const root = document.documentElement;
 
   if (prefs.textSize === "large") {
@@ -42,9 +49,11 @@ function applyAccessibility(prefsInput) {
     root.style.fontSize = "20px";
   } 
   else {
-    root.style.fontSize = "16px";
+    root.style.fontSize = "16px"; // normal default
   }
+  // "normal" => no extra class
 
+  // ----- LINE READER -----
   if (prefs.lineReader) {
     enableLineReader();
   } else {
@@ -52,6 +61,7 @@ function applyAccessibility(prefsInput) {
   }
 }
 
+// Expose helpers for other scripts (like settings_info.js)
 window.getAccessibilityPrefs = function () {
   return { ...currentAccessibilityPrefs };
 };
@@ -69,6 +79,8 @@ window.setTextSize = function (size) {
 window.getTextSize = function () {
   return currentAccessibilityPrefs.textSize;
 };
+
+// ---------- Line reader ----------
 
 function enableLineReader() {
   if (lineReaderOn) return;
@@ -88,7 +100,7 @@ function enableLineReader() {
   body.appendChild(topShade);
   body.appendChild(bottomShade);
 
-  const H = 40;
+  const H = 40; // height of the reading window
 
   moveHandler = (e) => {
     if (!lineReaderOn) return;
@@ -125,21 +137,27 @@ function disableLineReader() {
   }
 }
 
+// ---------- Init: defaults + Firestore prefs ----------
 function initAccessibility() {
+  // Always start from defaults
   applyAccessibility(defaultAccessibilityPrefs);
 
+  // If Firebase isn't loaded, we can't sync from Firestore
   if (typeof firebase === "undefined") {
     console.warn("[accessibility] Firebase not found; using defaults only.");
     return;
   }
 
   const auth = firebase.auth();
-  const db = firebase.firestore();
+  const db   = firebase.firestore();
 
-  if (!auth || !db) return;
+  if (!auth || !db) {
+    console.warn("[accessibility] auth/db not ready; using defaults.");
+    return;
+  }
 
   auth.onAuthStateChanged(async (user) => {
-    if (!user) return;
+    if (!user) return; // not logged in, keep defaults
 
     try {
       const snap = await db.collection("users").doc(user.uid).get();
@@ -162,4 +180,3 @@ function initAccessibility() {
 }
 
 document.addEventListener("DOMContentLoaded", initAccessibility);
-
