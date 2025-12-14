@@ -28,10 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!searchInput || cards.length === 0) return;
 
+  // Pre-index each card for faster searching
   const index = cards.map((card) => {
     const title = (card.querySelector(".blog-title")?.textContent || "").toLowerCase();
-    const desc = (card.querySelector(".blog-description")?.textContent || "").toLowerCase();
-    const date = (card.querySelector(".blog-date")?.textContent || "").toLowerCase();
+    const desc  = (card.querySelector(".blog-description")?.textContent || "").toLowerCase();
+    const date  = (card.querySelector(".blog-date")?.textContent || "").toLowerCase();
     return { card, haystack: `${title} ${desc} ${date}` };
   });
 
