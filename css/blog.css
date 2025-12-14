@@ -21,9 +21,9 @@ body {
 
 .blog-header {
   margin-bottom: 50px;
-  text-align: center;      /* ✅ centered title/subtitle */
-  border-bottom: none;     /* ✅ remove line separation */
-  padding-bottom: 0;       /* ✅ remove extra space from old line */
+  text-align: center;
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 .blog-title-main {
@@ -41,10 +41,9 @@ body {
   margin-bottom: 22px;     /* ✅ space between subtitle and search */
 }
 
-/* Search under the text */
 .blog-search-form {
   display: flex;
-  justify-content: center; /* ✅ centered search bar */
+  justify-content: center;
 }
 
 .blog-search {
@@ -104,7 +103,7 @@ body {
 }
 
 .blog-date {
-   font-size: calc(var(--font-xs) * 0.95); /* ~13px */
+   font-size: calc(var(--font-xs) * 0.95);
    color: #888;
    margin-bottom: 16px;
    font-weight: 500;
@@ -113,7 +112,7 @@ body {
 }
 
 .blog-description {
-   font-size: calc(var(--font-sm) * 0.95); /* ~15px */
+   font-size: calc(var(--font-sm) * 0.95);
    color: #555;
    line-height: 1.6;
    margin-bottom: 24px;
@@ -123,7 +122,7 @@ body {
 .read-more {
    color: #000;
    text-decoration: none;
-   font-size: var(--font-xs); /* ~14px */
+   font-size: var(--font-xs);
    font-weight: 600;
    display: inline-flex;
    align-items: center;
@@ -137,7 +136,6 @@ body {
    border-bottom-color: #0080FF;
 }
 
-/* Responsive Design */
 @media (max-width: 1024px) {
    .blog-grid {
       grid-template-columns: repeat(2, 1fr);
@@ -151,7 +149,7 @@ body {
    }
 
    .blog-header h1 {
-      font-size: calc(var(--font-lg) * 0.75); /* ~32px */
+      font-size: calc(var(--font-lg) * 0.75);
    }
 
    .blog-grid {
@@ -179,12 +177,9 @@ body {
 }
 
 .footer-content p {
-    font-size: var(--font-sm); /* 16px */
+    font-size: var(--font-sm);
     margin: 0;
 }
-/* ===== Blog Search Bar ===== */
-/* ===== Shared Search Bar (Forum Match) ===== */
-
 .search-container {
     position: relative;
     max-width: 600px;

@@ -13,14 +13,12 @@ body {
     line-height: 1.6;
 }
 
-/* Forum Container */
 .forum-container {
     display: flex;
     min-height: 100vh;
     position: relative;
 }
 
-/* Sidebar */
 .forum-sidebar {
     display: none;
 }
@@ -31,7 +29,7 @@ body {
    border: none;
    padding: 10px 24px;
    border-radius: 24px;
-   font-size: var(--font-sm);  /* 16px */
+   font-size: var(--font-sm);
    font-weight: 600;
    cursor: pointer;
    transition: background-color 0.3s;
@@ -45,7 +43,7 @@ body {
 .no-posts-message {
     color: white;
     text-decoration: none;
-    font-size: var(--font-xs); /* ~14px */
+    font-size: var(--font-xs);
     font-weight: 500;
     padding: 8px 0;
     display: block;
@@ -53,7 +51,6 @@ body {
     font-style: italic;
 }
 
-/* Main Content */
 .forum-main {
     flex: 1;
     margin-left: 0;
@@ -61,7 +58,6 @@ body {
     background-color: #E0F2F7;
 }
 
-/* Search Section */
 .search-section {
     margin-bottom: 30px;
 }
@@ -97,7 +93,6 @@ body {
 
 /* Topics Table */
 .topics-section {
-    background-color: white;
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -171,10 +166,7 @@ body {
     gap: 5px;
     color: #333;
     text-decoration: none;
-    font-size: var(--font-sm); /* 16px */
-    font-weight: 500;
-    margin-bottom: 20px;
-    padding: 8px 12px;
+    font-size: var(--font-sm);
     border-radius: 50%;
     background-color: white;
     transition: background-color 0.3s;
@@ -250,7 +242,6 @@ body {
 .comment-input-section {
     background-color: white;
     border-radius: 15px;
-    padding: 20px;
     margin-bottom: 25px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -286,9 +277,8 @@ body {
 }
 
 .comments-title {
-    font-size: calc(var(--font-sm) * 1.25); /* ~20px */
-    font-weight: 700;
-    color: #333;
+    font-size: calc(var(--font-sm) * 1.25);
+    font-weight: 600;
     margin-bottom: 20px;
 }
 
@@ -315,7 +305,7 @@ body {
     margin-bottom: 10px;
 }
 
-/* Comment article styling (for JS-generated comments) */
+/* Comment article styling for JS-generated content */
 #commentsList article {
     padding: 20px 0;
     border-bottom: 1px solid #f0f0f0;
@@ -326,7 +316,7 @@ body {
 }
 
 #commentsList article h3 {
-    font-size: var(--font-sm); /* 16px */
+    font-size: var(--font-sm);
     font-weight: 600;
     color: #333;
     margin-bottom: 8px;
@@ -352,12 +342,12 @@ body {
     background: none;
     border: none;
     color: #333;
-    font-size: var(--font-xs); /* ~14px */
+    font-size: var(--font-xs);
     font-weight: 500;
     cursor: pointer;
     padding: 5px 10px;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: background-color 0.2s ease;
     font-family: "Poppins", sans-serif;
 }
 
@@ -372,7 +362,7 @@ body {
     color: white;
     position: relative;
     z-index: 9999;
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1); /* 👈 shadow */
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .footer-content {
@@ -384,16 +374,11 @@ body {
 }
 
 .footer-content p {
-    font-size: var(--font-sm); /* 16px */
+    font-size: var(--font-sm);
     margin: 0;
 }
 
-/* Submit comment button */
 .submit-comment-btn {
-    width: 42px;
-    height: 42px;
-    border: none;
-    border-radius: 50%;
     background-color: white;
     cursor: pointer;
     display: flex;
@@ -412,17 +397,13 @@ body {
 
 /* Comment count + icons */
 .comment-count {
+/* Comment count + icons */
+.comment-count {
     display: flex;
     align-items: center;
     gap: 6px;
     color: #666;
-    font-size: var(--font-xs); /* ~14px */
-}
-
-.comment-icon {
-    width: 16px;
-    height: 16px;
-    object-fit: contain;
+    font-size: var(--font-xs);
 }
 
 .back-icon {
@@ -440,31 +421,22 @@ body {
     background-position: center 50%;
     background-repeat: no-repeat;
 }
-
-/* overlay */
-.forum-hero-full::after {
+    position: relative;
+    width: 100%;
+    height: 300px;
     content: "";
     position: absolute;
     inset: 0;
 }
 
-
-
-/* hero inner */
-.forum-hero-inner {
-    position: relative;
-    z-index: 2;
-    height: 100%;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 40px 20px;
+.forum-hero {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-.forum-hero-subtitle {
 
-    margin-bottom: 10px; /* adjust as needed */
+.forum-hero-subtitle {
+    margin-bottom: 10px;
 }
 
 /* search inside hero stays same */

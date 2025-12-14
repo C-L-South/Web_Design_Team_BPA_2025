@@ -148,3 +148,19 @@ a {
 .auth-redirect a:hover {
     text-decoration: underline;
 }
+
+/* Responsive: hide decorative right image on smaller screens */
+@media (max-width: 900px) {
+    .auth-right {
+        display: none;
+    }
+
+    .auth-left {
+        flex: 1 1 100%;
+        padding: 24px; /* keep comfortable spacing */
+    }
+
+    .auth-page {
+        min-height: 100vh; /* ensure full-height layout remains */
+    }
+}

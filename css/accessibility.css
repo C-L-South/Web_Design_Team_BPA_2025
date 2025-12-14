@@ -1,7 +1,45 @@
-/* Accessibility Foundation */
+/* accessibility setup */
 :root {
   --access-font-family: 'Poppins', sans-serif;
   --access-filter: none;
+}
+/* OpenDyslexic font-face declarations
+   Your files are OTFs under css/fonts/; use opentype format.
+   For best performance later, consider adding WOFF2 as well. */
+@font-face {
+   font-family: 'OpenDyslexic';
+   src: local('OpenDyslexic-Regular'),
+      url('fonts/OpenDyslexic-Regular.otf') format('opentype');
+   font-weight: 400;
+   font-style: normal;
+   font-display: swap;
+}
+
+@font-face {
+   font-family: 'OpenDyslexic';
+   src: local('OpenDyslexic-Italic'),
+      url('fonts/OpenDyslexic-Italic.otf') format('opentype');
+   font-weight: 400;
+   font-style: italic;
+   font-display: swap;
+}
+
+@font-face {
+   font-family: 'OpenDyslexic';
+   src: local('OpenDyslexic-Bold'),
+      url('fonts/OpenDyslexic-Bold.otf') format('opentype');
+   font-weight: 700;
+   font-style: normal;
+   font-display: swap;
+}
+
+@font-face {
+   font-family: 'OpenDyslexic';
+   src: local('OpenDyslexic-BoldItalic'),
+      url('fonts/OpenDyslexic-BoldItalic.otf') format('opentype');
+   font-weight: 700;
+   font-style: italic;
+   font-display: swap;
 }
 :root {
   --phi: 1.618;
@@ -16,15 +54,15 @@ html {
   font-size: 16px;
 }
 
-/* Apply Variables to Body */
+/* apply theme to body */
 body {
    font-family: var(--access-font-family) !important;
    filter: var(--access-filter) !important;
 }
 
-/* State Classes - To be toggled by Backend JS */
+/* toggle these with JS to switch modes */
 
-/* Color Filters */
+/* color mode adjustments */
 body.access-mode-grayscale::before {
   content: "";
   position: fixed;
@@ -36,13 +74,13 @@ body.access-mode-grayscale::before {
   -webkit-backdrop-filter: grayscale(100%);
 }
 
-/* Font Families */
+/* font switching */
 body.access-font-dyslexic {
-   --access-font-family: 'OpenDyslexic', 'Comic Sans MS', sans-serif;
-   font-family: 'OpenDyslexic', 'Comic Sans MS', sans-serif !important;
+   --access-font-family: 'OpenDyslexic', sans-serif;
+   font-family: 'OpenDyslexic', sans-serif !important;
 }
 
-/* Text Size */
+/* text scaling */
 body.access-text-large * {
    font-size: 1.1em !important;
 }
@@ -51,7 +89,7 @@ body.access-text-xlarge * {
    font-size: 1.25em !important;
 }
 
-/* Line Reader - Shades that follow cursor */
+/* line reader overlay (follows cursor) */
 .line-reader-shade {
    position: fixed;
    left: 0;
@@ -62,7 +100,7 @@ body.access-text-xlarge * {
    display: none;
 }
 
-/* Show shades when line reader is active */
+/* display when line reader is on */
 body.access-line-reader-active .line-reader-shade {
    display: block;
 }

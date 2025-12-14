@@ -1,15 +1,15 @@
-/* Reset */
+/* baseline reset */
 * {
    box-sizing: border-box;
 }
 
 body {
    margin: 0;
-   padding-top: 80px; /* Space for fixed navigation */
+   padding-top: 80px; /* make room for the nav */
    font-family: "Poppins", sans-serif;
 }
 
-/* Header Navigation */
+/* top nav bar */
 .home-nav,
 .info-nav {
    background-color: white;
@@ -28,7 +28,7 @@ body {
    height: 80px;       /* ✅ keep same height */
 }
 
-/* Left side: logo + text */
+/* left section: logo and text */
 .nav-left {
    display: flex;
    align-items: center;
@@ -48,14 +48,14 @@ body {
    text-decoration: none;
 }
 
-/* Right side: menu + logout */
+/* right section: dropdowns and logout */
 .nav-right {
    display: flex;
    align-items: center;
    gap: 30px;
 }
 
-/* Links (if you use .nav-link anywhere) */
+/* standard nav links */
 .nav-link {
    color: #333;
    text-decoration: none;
@@ -69,7 +69,7 @@ body {
    color: #1E90FF;
 }
 
-/* Log out button */
+/* logout button */
 .logout-btn {
    background-color: #fea500;
    color: white;
@@ -86,10 +86,10 @@ body {
    background-color: #ffb937;
 }
 
-/* Dropdown Styles */
+/* dropdown menus */
 .dropdown {
    position: relative;  /* for absolute dropdown menu positioning */
-   float: left;
+   display: inline-block; /* avoid float-related layout shifts in flex */
    overflow: visible;
 }
 
@@ -105,6 +105,9 @@ body {
    padding: 14px 16px;
    margin: 0;
    cursor: pointer;
+   display: inline-flex;        /* stabilize vertical alignment */
+   align-items: center;         /* center text within the button */
+   line-height: 1;              /* prevent baseline shift on hover */
 }
 
 .dropdown .dropbtn:hover {
@@ -141,9 +144,9 @@ body {
    display: block;
 }
 
-/* --------- Responsive Design --------- */
+/* responsive breakpoints */
 
-/* Medium screens: tighten spacing, allow wrapping */
+/* medium screens: tighter spacing */
 @media (max-width: 968px) {
    .home-nav,
    .info-nav {
@@ -169,7 +172,7 @@ body {
    }
 }
 
-/* Small screens: keep bar height, hide logo area */
+/* small screens: stacked layout */
 @media (max-width: 768px) {
 
    .home-nav,
@@ -178,32 +181,28 @@ body {
       flex-direction: row;    /* ✅ keep single row */
    }
 
-   /* Hide logo + image */
+   /* hide logo on tiny screens */
    .nav-left {
-      display: none;          /* ✅ removes logo + "MindScape" */
+      display: none;
    }
 
    .nav-right {
       width: 100%;
-      justify-content: space-between;
-      gap: 10px;
+      justify-content: space-around;
       flex-wrap: wrap;
    }
 
-   .dropdown .dropbtn,
-   .logout-btn {
+   .dropdown .dropbtn{
       font-size: var(--font-xs);  /* ~14px */
       padding: 8px 10px;
    }
 
+   /* keep dropdowns from shifting the layout */
    .dropdown-content {
-      position: static;
+      position: absolute;
       box-shadow: none;
-      margin-top: 4px;
-   }
-
-   .dropdown:hover .dropdown-content {
-      display: none;
+      top: 100%;
+      left: 0;
    }
 
    .dropdown.open .dropdown-content {
