@@ -11,12 +11,9 @@
 </head>
 
 <body>
-  <!-- Navigation will be loaded here -->
   <div id="nav-container"></div>
 
-  <!-- Main Content Layout -->
   <div class="settings-layout">
-    <!-- Left Sidebar -->
     <aside class="sidebar">
       <h2 class="sidebar-title">Settings</h2>
       <nav class="sidebar-nav">
@@ -27,9 +24,7 @@
       </nav>
     </aside>
 
-    <!-- Main Content Area -->
     <main class="main-content">
-      <!-- Account Settings Section -->
       <section id="account" class="content-section">
         <h1>Account Settings</h1>
         <p>Update your username, change your password, or permanently delete your account.</p>
@@ -37,7 +32,6 @@
         <div class="settings-grid">
           <!-- Username Section -->
           <section class="settings-card">
-            <h2>Username</h2>
             <form onsubmit="event.preventDefault();">
               <div class="form-group">
                 <label>Current Username</label>
@@ -54,8 +48,7 @@
           </section>
 
           <!-- Password Section -->
-          <section class="settings-card">
-            <h2>Password</h2>
+          < <h2>Password</h2>
             <form onsubmit="event.preventDefault();">
               <div class="form-group">
                 <label>New Password</label>
@@ -74,7 +67,6 @@
 
           <!-- Display Name Section -->
           <section class="settings-card">
-            <h2>Display Name</h2>
             <form onsubmit="event.preventDefault();">
               <div class="form-group">
                 <label>Current Display Name</label>
@@ -93,7 +85,6 @@
           <!-- Delete Account Section -->
           <section class="settings-card">
             <h2>Delete Account</h2>
-            <p class="warning-text">This action cannot be undone. All of your data and preferences will be permanently
               removed.</p>
             <form onsubmit="event.preventDefault();">
               <div class="form-group">
@@ -111,13 +102,11 @@
       <!-- Accessibility Settings Section -->
       <section id="accessibility" class="content-section">
         <h1>Accessibility Preferences</h1>
+       section id="accessibility" class="content-section">
+        <h1>Accessibility Preferences</h1>
         <p>Customize your viewing experience with a line reader, color filters, text size, and font options.</p>
 
-        <div class="settings-grid">
-          <!-- Line Reader -->
-          <section class="settings-card">
-            <h2>Line Reader</h2>
-            <p class="description-text">Follow text line-by-line with a highlighted reading guide that moves with your
+        <div class="settings-grid"tion-text">Follow text line-by-line with a highlighted reading guide that moves with your
               cursor.</p>
             <div class="form-group">
               <label class="toggle-label">
@@ -133,7 +122,6 @@
             <h2>Color Filter</h2>
             <p class="description-text">Apply a grayscale filter to reduce eye strain and improve focus.</p>
             <div class="form-group">
-              <label class="toggle-label">
                 <input type="checkbox" class="toggle-input" id="grayscaleToggle">
                 <span class="toggle-slider"></span>
                 <span class="toggle-text">Enable Grayscale</span>
@@ -147,7 +135,6 @@
             <p class="description-text">Adjust the text size for better readability.</p>
             <div class="form-group">
               <div class="radio-group">
-                <label class="radio-label">
                   <input type="radio" name="textSize" value="normal" checked>
                   <span class="radio-custom"></span>
                   <span>Normal</span>
@@ -172,7 +159,6 @@
             <p class="description-text">Choose a font that's easier for you to read.</p>
             <div class="form-group">
               <div class="radio-group">
-                <label class="radio-label">
                   <input type="radio" name="fontFamily" value="normal" checked>
                   <span class="radio-custom"></span>
                   <span style="font-family: 'Poppins', sans-serif;">Normal (Poppins)</span>
