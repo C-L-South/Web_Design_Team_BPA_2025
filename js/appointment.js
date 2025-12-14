@@ -15,6 +15,7 @@ const db = firebase.firestore();
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     console.log("User is still logged in:", user.email);
+
   } else {
     console.log("No user logged in — redirecting");
     window.location.href = "login.html";
@@ -24,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const appointmentForm = document.getElementById('appointmentForm');
     const appointmentDateInput = document.getElementById('appointmentDate');
 
+    // Set minimum date to today (prevents selecting past dates)
     if (appointmentDateInput) {
         const today = new Date();
         const year = today.getFullYear();
