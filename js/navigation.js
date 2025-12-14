@@ -1,3 +1,4 @@
+// Load navigation from separate HTML file
 document.addEventListener('DOMContentLoaded', function() {
     const navContainer = document.getElementById('nav-container');
     
@@ -7,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(html => {
                 navContainer.innerHTML = html;
                 
+                // Set up logout button functionality after navigation is loaded
                 const logoutBtn = document.getElementById('logoutBtn');
                 if (logoutBtn) {
                     logoutBtn.addEventListener('click', function() {
@@ -19,4 +21,3 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 });
-
