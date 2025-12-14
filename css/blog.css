@@ -20,17 +20,36 @@ body {
 }
 
 .blog-header {
-   margin-bottom: 50px;
-   text-align: left;
-   border-bottom: 2px solid #000;
-   padding-bottom: 20px;
+  margin-bottom: 50px;
+  text-align: center;      /* ✅ centered title/subtitle */
+  border-bottom: none;     /* ✅ remove line separation */
+  padding-bottom: 0;       /* ✅ remove extra space from old line */
 }
 
-.blog-header h1 {
-   font-size: var(--font-lg); /* ~42px */
-   font-weight: 700;
-   color: #000;
-   letter-spacing: -0.5px;
+.blog-title-main {
+  font-size: var(--font-lg);
+  font-weight: 700;
+  color: #000;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+}
+
+.blog-subtitle {
+  font-size: var(--font-sm);
+  color: #555;
+  font-weight: 500;
+  margin-bottom: 22px;     /* ✅ space between subtitle and search */
+}
+
+/* Search under the text */
+.blog-search-form {
+  display: flex;
+  justify-content: center; /* ✅ centered search bar */
+}
+
+.blog-search {
+  width: 100%;
+  max-width: 520px;
 }
 
 .blog-grid {
@@ -162,4 +181,41 @@ body {
 .footer-content p {
     font-size: var(--font-sm); /* 16px */
     margin: 0;
+}
+/* ===== Blog Search Bar ===== */
+/* ===== Shared Search Bar (Forum Match) ===== */
+
+.search-container {
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    border: none;
+    border-radius: 25px;
+    font-size: var(--font-sm); /* 16px */
+    font-family: "Poppins", sans-serif;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+.search-input::placeholder {
+    color: #888;
+}
+
+.search-input:focus {
+    outline: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
