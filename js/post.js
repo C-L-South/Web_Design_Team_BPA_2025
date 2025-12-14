@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   console.log("Loaded post.html with postId:", postId);
 
+  // Show initial loading state (like forum page)
   postBodyEl.textContent = 'Loading post...';
   if (commentsList) {
     commentsList.innerHTML = '<p class="no-posts-message">Loading comments...</p>';
@@ -52,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!docs.length) {
       const li = document.createElement("li");
       li.textContent = "No posts yet.";
-      li.classList.add("no-posts-message");
+      li.classList.add("no-posts-message");  // ✅ styled text
       sidebarTopicsList.appendChild(li);
       return;
     }
@@ -99,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log("Post page: logged in as", user.uid);
 
+    // -------- Load post data --------
     async function loadPost() {
       try {
         const doc = await db.collection('posts').doc(postId).get();
@@ -124,8 +126,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
+    // -------- Load comments (with loading + empty state) --------
     async function loadComments() {
       try {
+        // show loading state
         commentsList.innerHTML = '<p class="no-posts-message">Loading comments...</p>';
 
         const snapshot = await db
@@ -142,9 +146,12 @@ document.addEventListener('DOMContentLoaded', () => {
         commentsList.innerHTML = '';
 
         if (!docs.length) {
+          // Empty state, same vibe as "No posts yet."
           commentsList.innerHTML =
             '<p class="no-posts-message">No comments yet. Be the first to share your thoughts!</p>';
           commentsCountSpan.textContent = 0;
+
+          // keep post's repliesCount in sync
           await db.collection('posts').doc(postId).update({
             repliesCount: 0
           });
@@ -175,7 +182,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const userId = user.uid;
             const commentRef = db.collection('comments').doc(doc.id);
             const voteRef = commentRef.collection('commentVotes').doc(userId);
-  try {
+
+            try {
               const voteSnap = await voteRef.get();
 
               if (voteSnap.exists) {
@@ -185,6 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   upvotes: firebase.firestore.FieldValue.increment(-1)
                 });
 
+                const current =
                   parseInt(upvoteCountSpan.textContent.trim(), 10) || 0;
                 upvoteCountSpan.textContent = ' ' + (current - 1);
               } else {
@@ -195,6 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 await commentRef.update({
+                  upvotes: firebase.firestore.FieldValue.increment(1)
                 });
 
                 const current =
@@ -229,6 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
+    // -------- Make a new comment --------
     if (commentForm) {
       commentForm.addEventListener('submit', async e => {
         e.preventDefault();
@@ -256,6 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
+    // -------- Post upvote --------
     if (upvoteButton) {
       upvoteButton.addEventListener('click', async () => {
         const userId = user.uid;
@@ -263,7 +275,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const voteRef = postRef.collection('postVotes').doc(userId);
 
         try {
-    
+          const voteSnap = await voteRef.get();
+
           if (voteSnap.exists) {
             // remove upvote
             await voteRef.delete();
@@ -274,6 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const current = parseInt(upvotesSpan.textContent, 10) || 0;
             upvotesSpan.textContent = current - 1;
           } else {
+            // add upvote
             await voteRef.set({
               userId,
               createdAt: firebase.firestore.FieldValue.serverTimestamp()
@@ -283,6 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
               upvotes: firebase.firestore.FieldValue.increment(1)
             });
 
+            const current = parseInt(upvotesSpan.textContent, 10) || 0;
             upvotesSpan.textContent = current + 1;
           }
         } catch (err) {
@@ -292,6 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
+    // Initial load
     loadPost();
     loadComments();
     loadMyPosts(user);
