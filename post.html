@@ -11,9 +11,11 @@
 </head>
 
 <body>
+    <!-- Navigation will be loaded here -->
     <div id="nav-container"></div>
 
     <div class="forum-container">
+        <!-- Sidebar -->
         <aside class="forum-sidebar">
           <button id="newPostButton" class="post-btn">+ Post</button>
 
@@ -26,13 +28,16 @@
           </nav>
         </aside>
 
+        <!-- Main Content -->
         <main class="forum-main post-view">
+            <!-- Back Button -->
             <a href="forum.html" class="back-btn">
               <img src="images/post/post_img_3.jpg" alt="Back" class="back-icon">
             </a>
 
             <!-- Post Content -->
             <section id="postSection" class="post-content">
+                <p id="postAuthor" class="post-author">User8182</p>
                 <h1 class="post-title"><a id="postTitle" href="#">Mental Health Tips</a></h1>
 
                 <p id="postBody" class="post-description">
@@ -56,6 +61,7 @@
             </section>
 
             <!-- Comment Input -->
+            <section class="comment-input-section">
                 <form id="commentForm" class="comment-form">
                     <input type="text" id="commentInput" class="comment-input" placeholder="Post your comment!">
                       <button type="submit" class="submit-comment-btn">
@@ -66,11 +72,13 @@
 
             <!-- Comments Section -->
             <section class="comments-section">
-             section class="comments-section">
                 <h2 class="comments-title">Comments</h2>
-                <div id="commentsList"></div>
+                <div id="commentsList">
+                    <!-- Filled by JS -->
+                </div>
             </section>
         </main>
+    </div>
     <footer class="home-footer">
         <div class="footer-content">
             <p>Contact Us: Codyli9219@gmail.com</p>
