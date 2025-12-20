@@ -8,7 +8,7 @@
 
 body {
     font-family: "Poppins", sans-serif;
-    background-color: #E0F2F7;
+    background-color: #EDF3FB;
     color: #333;
     line-height: 1.6;
 }
@@ -58,7 +58,7 @@ body {
     flex: 1;
     margin-left: 0;
     padding: 30px 40px;
-    background-color: #E0F2F7;
+    background-color: #EDF3FB;
 }
 
 /* Search Section */
@@ -160,10 +160,6 @@ body {
     color: #666;
 }
 
-/* Post View */
-.post-view {
-    max-width: 800px;
-}
 
 .back-btn {
     display: inline-flex;
@@ -201,7 +197,7 @@ body {
 .post-title {
     font-size: calc(var(--font-md) * 1.1); /* ~28px */
     font-weight: 700;
-    color: #333;
+    color: #1E90FF;
     margin-bottom: 20px;
 }
 
@@ -517,4 +513,17 @@ body {
     padding: 12px 32px;
     font-size: 16px;
     align-self: flex-start; /* left aligned under search */
+}
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+a {
+  color: #1E90FF;
 }
