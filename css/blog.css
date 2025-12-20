@@ -8,7 +8,7 @@
 
 body {
    font-family: "Poppins", sans-serif;
-   background-color: #E0F2F7;
+   background-color: #EDF3FB;
    color: #333;
    min-height: 100vh;
 }
@@ -186,13 +186,6 @@ body {
     width: 100%;
 }
 
-.search-icon {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #666;
-}
 
 .search-input {
     width: 100%;
@@ -214,3 +207,50 @@ body {
     outline: none;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
+
+
+
+
+.blog-search-form {
+  display: flex;
+  justify-content: center;
+}
+
+.blog-search {
+  width: 100%;
+  max-width: 520px;
+}
+
+.search-container {
+  position: relative;
+  width: 100%;
+}
+
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 15px 12px 45px;
+  border: none;
+  border-radius: 25px;
+  font-size: var(--font-sm);
+  font-family: "Poppins", sans-serif;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  color: #333;
+}
+
+.search-input:focus {
+  outline: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
