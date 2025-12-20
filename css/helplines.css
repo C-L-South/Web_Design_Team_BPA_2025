@@ -8,7 +8,7 @@
 
 body {
    font-family: "Poppins", sans-serif;
-   background-color: #E0F2F7;
+   background-color: #EDF3FB;
    color: #333;
    line-height: 1.6;
 }
@@ -16,7 +16,7 @@ body {
 /* Hero Section */
 .hero-section {
    padding: 80px 40px;
-   background-color: #E0F2F7; /* Restored original hero background */
+   background-color: #EDF3FB; /* Restored original hero background */
 }
 
 .hero-container {
@@ -138,50 +138,127 @@ body {
    transition: transform 0.2s ease;
 }
 
-.contact-btn:hover .arrow {
-   transform: translateX(5px);
-}
-
 /* Resources Section */
-.resources-section {
-   padding: 100px 40px;
-   background-color: #E0F2F7;
+/* =========================
+   Resources: Image Panels
+========================= */
+
+.resources-section{
+  width: 100%;
 }
 
-.resources-grid {
-   max-width: 1200px;
-   margin: 0 auto;
-   display: grid;
-   grid-template-columns: repeat(2, 1fr);
-   gap: 40px; /* Wider gap */
+/* stack panels vertically */
+.resources-grid{
+  display: flex;
+  flex-direction: column;
 }
 
-.resource-card {
-   background: white;
-   padding: 40px;
-   border-radius: 20px; /* More rounded */
-   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-   transition: all 0.3s ease;
-   border: none; /* Removed border for cleaner look */
+/* each resource gets its own “screen” */
+.resource-panel{
+  min-height: 70vh;              /* adjust: 60vh / 80vh / 100vh */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(24px, 5vw, 64px);
+  position: relative;
+  overflow: hidden;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* optional parallax feel */
+  background-attachment: fixed;
 }
 
-.resource-card:hover {
-   transform: translateY(-5px);
-   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+/* dark overlay so card text stays readable */
+.resource-panel::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
 
-.resource-card h3 {
-   font-size: calc(var(--font-md) * 0.85); /* ≈ 22px */
-   font-weight: 700;
-   color: #000;
-   margin-bottom: 16px;
+/* assign background images in CSS (filler paths) */
+.resource-panel:nth-child(1){
+    background-image:
+        /* Gradient overlay */
+        linear-gradient(
+            to bottom,
+            rgba(30, 144, 255, 0.5) 0%,
+            rgba(30, 144, 255, 0.45) 35%,
+            rgba(30, 144, 255, 0.25) 65%,
+            rgba(30, 144, 255, 0.00) 100%
+        ),
+        /* Image underneath */
+        url('../images/helpline/helpline_img_2.jpg');
+}
+.resource-panel:nth-child(2){
+    background-image:
+        /* Gradient overlay */
+        linear-gradient(
+            to bottom,
+            rgba(30, 144, 255, 0.5) 0%,
+            rgba(30, 144, 255, 0.45) 35%,
+            rgba(30, 144, 255, 0.25) 65%,
+            rgba(30, 144, 255, 0.00) 100%
+        ),
+        /* Image underneath */
+        url('../images/helpline/helpline_img_3.jpg');
+}
+.resource-panel:nth-child(3){
+    background-image:
+        /* Gradient overlay */
+        linear-gradient(
+            to bottom,
+            rgba(30, 144, 255, 0.5) 0%,
+            rgba(30, 144, 255, 0.45) 35%,
+            rgba(30, 144, 255, 0.25) 65%,
+            rgba(30, 144, 255, 0.00) 100%
+        ),
+        /* Image underneath */
+        url('../images/helpline/helpline_img_4.jpg');
+}
+.resource-panel:nth-child(4){
+    background-image:
+        /* Gradient overlay */
+        linear-gradient(
+            to bottom,
+            rgba(30, 144, 255, 0.5) 0%,
+            rgba(30, 144, 255, 0.45) 35%,
+            rgba(30, 144, 255, 0.25) 65%,
+            rgba(30, 144, 255, 0.00) 100%
+        ),
+        /* Image underneath */
+        url('../images/helpline/helpline_img_5.jpg');
 }
 
-.resource-card p {
-   font-size: var(--font-sm); /* 16px */
-   color: #4A5568;
-   line-height: 1.8;
+/* the card sits above the image */
+.resource-card{
+  width: min(860px, 100%);
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(218,220,224,0.95);
+  border-radius: 14px;
+  padding: clamp(18px, 3vw, 34px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.20);
+  position: relative;
+  z-index: 1;
 }
+
+.resource-card h3{
+  font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+  font-weight: 700;
+  color: #202124;
+  margin-bottom: 10px;
+}
+
+.resource-card p{
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #3c4043;
+}
+
+
 
 /* Responsive Design */
 @media (max-width: 968px) {
@@ -208,22 +285,7 @@ body {
    }
 }
 
-@media (max-width: 768px) {
 
-   .hero-section,
-   .contact-section,
-   .resources-section {
-      padding: 60px 20px;
-   }
-
-   .hero-content h1 {
-      font-size: calc(var(--font-lg) * 0.85); /* ≈ 36px */
-   }
-
-   .contact-content h2 {
-      font-size: calc(var(--font-md) * 1.1); /* ≈ 28px */
-   }
-}
 
 /* Footer */
 .home-footer {
