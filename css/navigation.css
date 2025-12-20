@@ -5,9 +5,10 @@
 
 body {
    margin: 0;
-   padding-top: 80px; /* make room for the nav */
-   font-family: "Poppins", sans-serif;
+   padding-top: 80px;
+   font-family: var(--access-font-family, "Poppins"), sans-serif;
 }
+
 
 /* top nav bar */
 .home-nav,
@@ -97,7 +98,7 @@ body {
    text-decoration: none;
    font-size: var(--font-sm);   /* 16px */
    font-weight: 500;
-   font-family: "Poppins", sans-serif;
+   font-family: inherit;
    transition: color 0.3s;
    border: none;
    outline: none;
