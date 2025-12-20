@@ -17,7 +17,7 @@ html { scroll-behavior: smooth; }
 --------------------------------*/
 body{
   font-family: "Poppins", sans-serif;
-  background-color: #E0F2F7;
+  background-color: #EDF3FB;
   color: #202124;
   min-height: 100vh;
   font-size: var(--font-sm);
@@ -31,8 +31,11 @@ body{
   height: 600px; /* a bit taller */
   background-image:
     linear-gradient(
-      rgba(0,0,0,0.25),
-      rgba(0,0,0,0.25)
+        to bottom,
+        rgba(30, 144, 255, 0.3) 0%,
+        rgba(30, 144, 255, 0.2) 35%,
+        rgba(30, 144, 255, 0.2) 65%,
+        rgba(30, 144, 255, 0.2) 100%
     ),
     url("../images/appointment/appointment_img_1.jpg");
   background-size: cover;
@@ -243,10 +246,10 @@ body{
    Primary Button (more spacing)
 --------------------------------*/
 .submit-btn{
-  background-color: #1a73e8;
+  background-color: #fea500;
   color: #ffffff;
   border: none;
-  border-radius: 0.6rem;
+  border-radius: 24px;
   height: 3rem;                 /* taller */
   padding: 0 1.75rem;           /* wider */
   font-size: var(--font-sm);
@@ -263,10 +266,7 @@ body{
 }
 
 .submit-btn:hover{
-  filter: brightness(0.98);
-  box-shadow:
-    0 1px 2px rgba(60, 64, 67, 0.20),
-    0 2px 8px rgba(60, 64, 67, 0.16);
+    background-color: #ffb937;
 }
 
 .submit-btn:active{
