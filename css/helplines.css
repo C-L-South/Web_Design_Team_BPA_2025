@@ -5,7 +5,9 @@
    padding: 0;
    box-sizing: border-box;
 }
-
+html{
+  scroll-behavior: smooth;
+}
 body {
    font-family: "Poppins", sans-serif;
    background-color: #EDF3FB;
@@ -40,7 +42,7 @@ body {
 }
 
 .hero-content h1 {
-   font-size: calc(var(--font-lg) * 1.25); /* ≈ 52px */
+   font-size: var(--font-lg);
    font-weight: 700;
    color: #000;
    margin-bottom: 24px;
@@ -138,151 +140,130 @@ body {
    transition: transform 0.2s ease;
 }
 
-/* Resources Section */
 /* =========================
-   Resources: Image Panels
+   Resources – Separate Card + Image
 ========================= */
 
 .resources-section{
-  width: 100%;
+  padding: 80px 40px;
+  background: #EDF3FB;
 }
 
-/* stack panels vertically */
-.resources-grid{
+.resources-container{
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
+  gap: 32px;
 }
 
-/* each resource gets its own “screen” */
-.resource-panel{
-  min-height: 70vh;              /* adjust: 60vh / 80vh / 100vh */
-  display: flex;
+/* Row layout */
+.resource-row{
+  display: grid;
+  grid-template-columns: 0.8fr 2fr;
   align-items: center;
-  justify-content: center;
-  padding: clamp(24px, 5vw, 64px);
   position: relative;
+}
+
+/* TEXT CARD */
+.resource-text{
+  background: #ffffff;
+  color: #000;
+  border-radius: 24px;
+  padding: 48px 44px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  position: relative;
+  z-index: 2;
+
+  margin-right: -50px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+}
+
+.resource-text h3{
+  font-size: var(--font-lg);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.resource-text p{
+  font-size: var(--font-sm);
+  line-height: 1.8;
+  opacity: 0.9;
+  max-width: 36ch;
+}
+.resource-btn{
+  width: fit-content !important;
+  padding: 12px 30px;
+  border-radius: 9999px; 
+  text-decoration: none;
+  font-weight: 700;
+  font-size: var(--font-sm);
+  color: #ffffff;
+  background-color: #fea500;
+  border: none;
+  margin-top: var(--font-md);
+}
+
+.resource-btn:hover{
+   background-color: #ffb937;
+}
+
+
+
+
+
+/* IMAGE CARD */
+.resource-image{
+  border-radius: 24px;
   overflow: hidden;
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  /* optional parallax feel */
-  background-attachment: fixed;
-}
-
-/* dark overlay so card text stays readable */
-.resource-panel::before{
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-/* assign background images in CSS (filler paths) */
-.resource-panel:nth-child(1){
-    background-image:
-        /* Gradient overlay */
-        linear-gradient(
-            to bottom,
-            rgba(30, 144, 255, 0.5) 0%,
-            rgba(30, 144, 255, 0.45) 35%,
-            rgba(30, 144, 255, 0.25) 65%,
-            rgba(30, 144, 255, 0.00) 100%
-        ),
-        /* Image underneath */
-        url('../images/helpline/helpline_img_2.jpg');
-}
-.resource-panel:nth-child(2){
-    background-image:
-        /* Gradient overlay */
-        linear-gradient(
-            to bottom,
-            rgba(30, 144, 255, 0.5) 0%,
-            rgba(30, 144, 255, 0.45) 35%,
-            rgba(30, 144, 255, 0.25) 65%,
-            rgba(30, 144, 255, 0.00) 100%
-        ),
-        /* Image underneath */
-        url('../images/helpline/helpline_img_3.jpg');
-}
-.resource-panel:nth-child(3){
-    background-image:
-        /* Gradient overlay */
-        linear-gradient(
-            to bottom,
-            rgba(30, 144, 255, 0.5) 0%,
-            rgba(30, 144, 255, 0.45) 35%,
-            rgba(30, 144, 255, 0.25) 65%,
-            rgba(30, 144, 255, 0.00) 100%
-        ),
-        /* Image underneath */
-        url('../images/helpline/helpline_img_4.jpg');
-}
-.resource-panel:nth-child(4){
-    background-image:
-        /* Gradient overlay */
-        linear-gradient(
-            to bottom,
-            rgba(30, 144, 255, 0.5) 0%,
-            rgba(30, 144, 255, 0.45) 35%,
-            rgba(30, 144, 255, 0.25) 65%,
-            rgba(30, 144, 255, 0.00) 100%
-        ),
-        /* Image underneath */
-        url('../images/helpline/helpline_img_5.jpg');
-}
-
-/* the card sits above the image */
-.resource-card{
-  width: min(860px, 100%);
-  background: rgba(255,255,255,0.92);
-  border: 1px solid rgba(218,220,224,0.95);
-  border-radius: 14px;
-  padding: clamp(18px, 3vw, 34px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.20);
+  background: #ddd;
   position: relative;
   z-index: 1;
 }
 
-.resource-card h3{
-  font-size: clamp(1.2rem, 2.4vw, 1.6rem);
-  font-weight: 700;
-  color: #202124;
-  margin-bottom: 10px;
+.resource-image img{
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  object-fit: cover;
+  display: block;
+}
+/* Alternate layout: image left, text right */
+.resource-row:nth-child(even){
+  grid-template-columns: 2fr 0.8fr;
 }
 
-.resource-card p{
-  font-size: 1rem;
-  line-height: 1.7;
-  color: #3c4043;
+.resource-row:nth-child(even) .resource-image{
+  order: 1;
 }
 
+.resource-row:nth-child(even) .resource-text{
+  order: 2;
+  margin-right: 0;
+  margin-left: -50px; /* overlap from the other side */
+}
+
+/* =========================
+   RESOURCES – RESPONSIVE (FULL)
+========================= */
+@media (max-width: 960px){
+  /* hide image */
+  .resource-image{ display: none !important; }
+
+  /* collapse to one column */
+  .resource-row{ grid-template-columns: 1fr !important; }
+
+  /* STOP overflow/clipping */
+  .resource-text{
+    margin: 0 !important;          /* kills the overlap */
+  }
 
 
-/* Responsive Design */
-@media (max-width: 968px) {
-   .hero-container {
-      flex-direction: column;
-      text-align: center;
-      gap: 40px;
-   }
-
-   .hero-image {
-      flex: none;
-      width: 100%;
-      max-width: 500px;
-      height: auto;
-      aspect-ratio: 4/3;
-   }
-
-   .contact-buttons {
-      grid-template-columns: 1fr;
-   }
-
-   .resources-grid {
-      grid-template-columns: 1fr;
-   }
 }
 
 
@@ -309,3 +290,4 @@ body {
     font-size: var(--font-sm); /* 16px */
     margin: 0;
 }
+
