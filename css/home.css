@@ -12,7 +12,9 @@ body {
     color: #333;
     padding-top: 80px; /* Space for fixed navigation */
 }
-
+html {
+  scroll-behavior: smooth;
+}
 
 
 /* Hero Section */
@@ -478,4 +480,3 @@ body {
 .dropdown:hover .dropdown-content {
     display: block;
 }
-
