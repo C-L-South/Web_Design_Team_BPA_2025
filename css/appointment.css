@@ -1,20 +1,9 @@
-/* Import Poppins font */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
-/* ------------------------------
-   Base / Reset
---------------------------------*/
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
-/* ------------------------------
-   Type Scale Tokens (keep)
---------------------------------*/
 
-
-/* ------------------------------
-   Body
---------------------------------*/
 body{
   font-family: "Poppins", sans-serif;
   background-color: #EDF3FB;
@@ -23,12 +12,9 @@ body{
   font-size: var(--font-sm);
 }
 
-/* ------------------------------
-   Hero (optional)
---------------------------------*/
 .hero{
   width: 100%;
-  height: 600px; /* a bit taller */
+  height: 600px;
   background-image:
     linear-gradient(
         to bottom,
@@ -66,9 +52,6 @@ body{
   opacity: 0.95;
 }
 
-/* ------------------------------
-   Main Container (more spacing)
---------------------------------*/
 .appointment-container{
   min-height: calc(100vh - 360px);
   width: 100%;
@@ -79,9 +62,8 @@ body{
   padding-top: 0;
 }
 
-/* ------------------------------
-   Card Panel (more padding/margins)
---------------------------------*/
+/*Card Panel*/
+
 .form-panel{
   width: 100%;
   max-width: 980px;
@@ -91,7 +73,6 @@ body{
   box-shadow: none;
   position: relative;
   z-index: 2;
-  /* more breathing room */
   padding: calc(var(--font-lg) * 1.1) calc(var(--font-lg) * 1.05);
   margin: 0 auto;
   display: flex;
@@ -106,20 +87,18 @@ body{
   margin-bottom: calc(var(--font-md) * 0.9);
 }
 
-/* Divider (optional) */
 .form-divider{
   height: 1px;
   background: #dadce0;
   margin-bottom: calc(var(--font-md) * 1.1);
 }
 
-/* ------------------------------
-   Form Layout (more spacing)
---------------------------------*/
+/*Form Layout*/
+
 .appointment-form{
   display: flex;
   flex-direction: column;
-  gap: calc(var(--font-md) * 0.75); /* bigger gaps between sections */
+  gap: calc(var(--font-md) * 0.75);
 }
 
 .name-row{
@@ -142,9 +121,8 @@ body{
   color: #5f6368;
 }
 
-/* ------------------------------
-   Inputs (more padding)
---------------------------------*/
+/*Inputs*/
+
 .form-panel .form-group input,
 .form-panel .calendar-section input[type="date"]{
   width: 100%;
@@ -168,14 +146,13 @@ body{
   color: #9aa0a6;
 }
 
-/* Optional hint text */
 .form-hint{
   font-size: var(--font-xs);
   color: #5f6368;
   line-height: 1.5;
   margin-top: 0.15em;
 }
-/* Subtitle under main title */
+
 .form-subtitle{
   font-size: var(--font-sm);
   color: #5f6368;
@@ -185,18 +162,15 @@ body{
   max-width: 56ch;
 }
 
-/* Gentle sections */
 .form-section{
   padding: calc(var(--font-md) * 0.9) 0;
 }
 
-/* soft divider between sections (not heavy borders) */
 .form-section + .form-section{
   border-top: 1px solid #eceff1;
   margin-top: calc(var(--font-md) * 0.2);
 }
 
-/* Section heading block */
 .section-head{
   margin-bottom: calc(var(--font-sm) * 0.9);
 }
@@ -215,7 +189,6 @@ body{
   max-width: 70ch;
 }
 
-/* Footer area with note + button */
 .form-footer{
   display: flex;
   align-items: center;
@@ -226,10 +199,7 @@ body{
   border-top: 1px solid #eceff1;
 }
 
-
-/* ------------------------------
-   Calendar
---------------------------------*/
+/* Calendar */
 .calendar-section{
   display: flex;
   flex-direction: column;
@@ -242,23 +212,22 @@ body{
   cursor: pointer;
 }
 
-/* ------------------------------
-   Primary Button (more spacing)
---------------------------------*/
+/*Primary Button*/
+
 .submit-btn{
   background-color: #fea500;
   color: #ffffff;
   border: none;
   border-radius: 24px;
-  height: 3rem;                 /* taller */
-  padding: 0 1.75rem;           /* wider */
+  height: 3rem;                
+  padding: 0 1.75rem;         
   font-size: var(--font-sm);
   font-weight: 600;
   font-family: "Poppins", sans-serif;
   cursor: pointer;
   transition: filter 0.15s, box-shadow 0.15s;
 
-  margin: calc(var(--font-md) * 0.9) 0 0 auto; /* more top space */
+  margin: calc(var(--font-md) * 0.9) 0 0 auto;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -275,9 +244,6 @@ body{
     0 4px 12px rgba(60, 64, 67, 0.18);
 }
 
-/* ------------------------------
-   Responsive
---------------------------------*/
 @media (max-width: 900px){
   .form-panel{
     padding: calc(var(--font-lg) * 0.95) calc(var(--font-md) * 1.05);
@@ -305,9 +271,6 @@ body{
   }
 }
 
-/* ------------------------------
-   Footer (optional)
---------------------------------*/
 .home-footer{
   background-color: #1e90ff;
   padding: calc(var(--font-md) * 1.1);
