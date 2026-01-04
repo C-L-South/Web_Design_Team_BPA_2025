@@ -9,11 +9,9 @@
 
 </head>
 <body>
-    <!-- Navigation will be loaded here -->
     <div id="nav-container"></div>
 
 
-    <!-- Main Content Layout -->
     <div class="info-layout">
         <!-- Left Sidebar -->
         <aside class="sidebar">
@@ -60,9 +58,7 @@
             </nav>
         </aside>
 
-        <!-- Main Content Area -->
         <main class="main-content">
-            <!-- Removed: Introduction/Overview section -->
 
             <section id="what-is-mental-health" class="content-section">
                 <h1>What is Mental Health?</h1>
@@ -459,9 +455,7 @@
     </footer>
     <script src="js/navigation.js"></script>
     <script>
-        // Wait for navigation to load before setting up logout
         document.addEventListener('DOMContentLoaded', function() {
-            // Logout button is handled in navigation.js, but we can override if needed
             setTimeout(function() {
                 const logoutBtn = document.getElementById('logoutBtn');
                 if (logoutBtn) {
@@ -471,7 +465,6 @@
                 }
             }, 100);
 
-            // Smooth scroll to sections when clicking sidebar links
             document.querySelectorAll('.sidebar-link').forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
