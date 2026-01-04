@@ -13,7 +13,6 @@ body {
     line-height: 1.6;
 }
 
-/* Forum Container */
 .forum-container {
     display: flex;
     min-height: 100vh;
@@ -31,7 +30,7 @@ body {
    border: none;
    padding: 10px 24px;
    border-radius: 24px;
-   font-size: var(--font-sm);  /* 16px */
+   font-size: var(--font-sm);  
    font-weight: 600;
    cursor: pointer;
    transition: background-color 0.3s;
@@ -45,7 +44,7 @@ body {
 .no-posts-message {
     color: white;
     text-decoration: none;
-    font-size: var(--font-xs); /* ~14px */
+    font-size: var(--font-xs);
     font-weight: 500;
     padding: 8px 0;
     display: block;
@@ -53,7 +52,6 @@ body {
     font-style: italic;
 }
 
-/* Main Content */
 .forum-main {
     flex: 1;
     margin-left: 0;
@@ -61,7 +59,7 @@ body {
     background-color: #EDF3FB;
 }
 
-/* Search Section */
+/* Search */
 .search-section {
     margin-bottom: 30px;
 }
@@ -84,7 +82,7 @@ body {
     padding: 12px 15px 12px 45px;
     border: none;
     border-radius: 25px;
-    font-size: var(--font-sm); /* 16px */
+    font-size: var(--font-sm); 
     font-family: "Poppins", sans-serif;
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -95,7 +93,7 @@ body {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Topics Table */
+/* Topics */
 .topics-section {
     background-color: white;
     border-radius: 15px;
@@ -115,7 +113,7 @@ body {
 .topics-table th {
     padding: 15px 20px;
     text-align: left;
-    font-size: var(--font-sm); /* 16px */
+    font-size: var(--font-sm); 
     font-weight: 600;
     color: white;
 }
@@ -138,7 +136,7 @@ body {
 
 .topics-table td {
     padding: 18px 20px;
-    font-size: calc(var(--font-sm) * 0.95); /* ~15px */
+    font-size: calc(var(--font-sm) * 0.95); 
 }
 
 .topic-title a {
@@ -167,7 +165,7 @@ body {
     gap: 5px;
     color: #333;
     text-decoration: none;
-    font-size: var(--font-sm); /* 16px */
+    font-size: var(--font-sm);
     font-weight: 500;
     margin-bottom: 20px;
     padding: 8px 12px;
@@ -189,20 +187,20 @@ body {
 }
 
 .post-author {
-    font-size: var(--font-xs); /* ~14px */
+    font-size: var(--font-xs); 
     color: #666;
     margin-bottom: 10px;
 }
 
 .post-title {
-    font-size: calc(var(--font-md) * 1.1); /* ~28px */
+    font-size: calc(var(--font-md) * 1.1); 
     font-weight: 700;
     color: #1E90FF;
     margin-bottom: 20px;
 }
 
 .post-description {
-    font-size: var(--font-sm); /* 16px */
+    font-size: var(--font-sm); 
     color: #555;
     line-height: 1.6;
     margin-bottom: 20px;
@@ -221,7 +219,7 @@ body {
     background: none;
     border: none;
     color: #333;
-    font-size: var(--font-xs); /* ~14px */
+    font-size: var(--font-xs); 
     font-weight: 500;
     cursor: pointer;
     padding: 5px 10px;
@@ -239,10 +237,10 @@ body {
     align-items: center;
     gap: 6px;
     color: #666;
-    font-size: var(--font-xs); /* ~14px */
+    font-size: var(--font-xs); 
 }
 
-/* Comment Input */
+/* Posting Comments */
 .comment-input-section {
     background-color: white;
     border-radius: 15px;
@@ -262,7 +260,7 @@ body {
     padding: 12px 16px;
     border: 1px solid #e6e6e6;
     border-radius: 25px;
-    font-size: calc(var(--font-sm) * 0.95); /* ~15px */
+    font-size: calc(var(--font-sm) * 0.95);
     font-family: "Poppins", sans-serif;
     background-color: #f9f9f9;
 }
@@ -282,7 +280,7 @@ body {
 }
 
 .comments-title {
-    font-size: calc(var(--font-sm) * 1.25); /* ~20px */
+    font-size: calc(var(--font-sm) * 1.25); 
     font-weight: 700;
     color: #333;
     margin-bottom: 20px;
@@ -298,20 +296,19 @@ body {
 }
 
 .comment-author {
-    font-size: var(--font-sm); /* 16px */
+    font-size: var(--font-sm);
     font-weight: 600;
     color: #333;
     margin-bottom: 8px;
 }
 
 .comment-text {
-    font-size: calc(var(--font-sm) * 0.95); /* ~15px */
+    font-size: calc(var(--font-sm) * 0.95);
     color: #555;
     line-height: 1.5;
     margin-bottom: 10px;
 }
 
-/* Comment article styling (for JS-generated comments) */
 #commentsList article {
     padding: 20px 0;
     border-bottom: 1px solid #f0f0f0;
@@ -322,14 +319,14 @@ body {
 }
 
 #commentsList article h3 {
-    font-size: var(--font-sm); /* 16px */
+    font-size: var(--font-sm);
     font-weight: 600;
     color: #333;
     margin-bottom: 8px;
 }
 
 #commentsList article p {
-    font-size: calc(var(--font-sm) * 0.95); /* ~15px */
+    font-size: calc(var(--font-sm) * 0.95);
     color: #555;
     line-height: 1.5;
     margin-bottom: 10px;
@@ -348,7 +345,7 @@ body {
     background: none;
     border: none;
     color: #333;
-    font-size: var(--font-xs); /* ~14px */
+    font-size: var(--font-xs);
     font-weight: 500;
     cursor: pointer;
     padding: 5px 10px;
@@ -361,14 +358,13 @@ body {
     background-color: #f0f0f0;
 }
 
-/* Footer */
 .home-footer {
     background-color: #1E90FF;
     padding: 30px 40px;
     color: white;
     position: relative;
     z-index: 9999;
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1); /* 👈 shadow */
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .footer-content {
@@ -380,11 +376,10 @@ body {
 }
 
 .footer-content p {
-    font-size: var(--font-sm); /* 16px */
+    font-size: var(--font-sm);
     margin: 0;
 }
 
-/* Submit comment button */
 .submit-comment-btn {
     width: 42px;
     height: 42px;
@@ -406,13 +401,13 @@ body {
     object-fit: contain;
 }
 
-/* Comment count + icons */
+/* Comment count */
 .comment-count {
     display: flex;
     align-items: center;
     gap: 6px;
     color: #666;
-    font-size: var(--font-xs); /* ~14px */
+    font-size: var(--font-xs);
 }
 
 .comment-icon {
@@ -426,7 +421,7 @@ body {
     height: 16px;
     object-fit: contain;
 }
-/* ===== FULL WIDTH HERO (OUTSIDE MAIN) ===== */
+
 .forum-hero-full {
     position: relative;
     width: 100%;
@@ -437,16 +432,12 @@ body {
     background-repeat: no-repeat;
 }
 
-/* overlay */
 .forum-hero-full::after {
     content: "";
     position: absolute;
     inset: 0;
 }
 
-
-
-/* hero inner */
 .forum-hero-inner {
     position: relative;
     z-index: 2;
@@ -460,10 +451,9 @@ body {
 }
 .forum-hero-subtitle {
 
-    margin-bottom: 10px; /* adjust as needed */
+    margin-bottom: 10px; 
 }
 
-/* search inside hero stays same */
 .hero-search-form { width: 100%; }
 .hero-search { max-width: 600px; }
 .forum-topbar {
@@ -504,7 +494,7 @@ body {
 .forum-topbar {
     display: flex;
     justify-content: flex-start;
-    margin-bottom: 20px; /* space below tabs */
+    margin-bottom: 20px; 
 }
 
 .hero-post-btn {
@@ -512,7 +502,7 @@ body {
     width: fit-content;
     padding: 12px 32px;
     font-size: 16px;
-    align-self: flex-start; /* left aligned under search */
+    align-self: flex-start;
 }
 .search-icon {
   position: absolute;
