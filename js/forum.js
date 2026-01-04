@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let allPosts = [];
   let myPosts = [];
-  let activeTab = "all"; // "all" | "mine"
+  let activeTab = "all";
 
   function setActiveTab(tab) {
     activeTab = tab;
