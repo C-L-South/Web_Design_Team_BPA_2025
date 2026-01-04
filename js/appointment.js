@@ -1,4 +1,3 @@
-// Appointment form handling
 const firebaseConfig = {
   apiKey: "AIzaSyDncN-lZWQLBa3fkMI3QkAE7CqcA6IK3ss",
   authDomain: "bpa-webdesign-team.firebaseapp.com",
@@ -25,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const appointmentForm = document.getElementById('appointmentForm');
     const appointmentDateInput = document.getElementById('appointmentDate');
 
-    // Set minimum date to today (prevents selecting past dates)
     if (appointmentDateInput) {
         const today = new Date();
         const year = today.getFullYear();
