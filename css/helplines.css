@@ -15,24 +15,23 @@ body {
    line-height: 1.6;
 }
 
-/* Hero Section */
 .hero-section {
    padding: 80px 40px;
-   background-color: #EDF3FB; /* Restored original hero background */
+   background-color: #EDF3FB;
 }
 
 .hero-container {
    max-width: 1200px;
    margin: 0 auto;
    display: flex;
-   gap: 80px; /* Increased gap for better separation */
+   gap: 80px; 
    align-items: center;
 }
 
 .hero-image {
    flex: 0 0 450px;
-   height: 350px; /* Slightly taller */
-   border-radius: 20px; /* More rounded */
+   height: 350px; 
+   border-radius: 20px; 
    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
    object-fit: cover;
 }
@@ -50,14 +49,14 @@ body {
 }
 
 .hero-content p {
-   font-size: calc(var(--font-sm) * 1.125); /* ≈ 18px */
+   font-size: calc(var(--font-sm) * 1.125); 
    line-height: 1.8;
    color: #2C3E50;
 }
 
 /* Contact Section */
 .contact-section {
-   background-color: #0080FF; /* Restored original bright blue */
+   background-color: #0080FF;
    padding: 100px 40px;
 }
 
@@ -66,7 +65,7 @@ body {
    margin: 0 auto;
    display: flex;
    flex-direction: column;
-   gap: 60px; /* Increased gap */
+   gap: 60px; 
 }
 
 .contact-content {
@@ -77,29 +76,29 @@ body {
 }
 
 .contact-content h2 {
-   font-size: calc(var(--font-lg) * 0.9); /* ≈ 38px */
+   font-size: calc(var(--font-lg) * 0.9); 
    font-weight: 700;
    margin-bottom: 24px;
 }
 
 .contact-content p {
-   font-size: calc(var(--font-sm) * 1.125); /* ≈ 18px */
+   font-size: calc(var(--font-sm) * 1.125); 
    opacity: 0.95;
 }
 
 .contact-buttons {
    display: grid;
    grid-template-columns: repeat(2, 1fr);
-   gap: 25px; /* Slightly larger gap */
-   max-width: 1000px; /* Wider container */
+   gap: 25px; 
+   max-width: 1000px; 
    margin: 0 auto;
    width: 100%;
 }
 
 .contact-btn {
    background: white;
-   padding: 24px 30px; /* Larger padding */
-   border-radius: 16px; /* More rounded */
+   padding: 24px 30px; 
+   border-radius: 16px; 
    text-decoration: none;
    color: #000;
    display: flex;
@@ -121,7 +120,7 @@ body {
 }
 
 .contact-btn .btn-title {
-   font-size: var(--font-xs); /* ≈ 14px */
+   font-size: var(--font-xs);
    font-weight: 600;
    color: #666;
    text-transform: uppercase;
@@ -129,20 +128,18 @@ body {
 }
 
 .contact-btn .btn-label {
-   font-size: calc(var(--font-sm) * 1.25); /* ≈ 20px */
+   font-size: calc(var(--font-sm) * 1.25); 
    font-weight: 700;
    color: #000;
 }
 
 .contact-btn .arrow {
-   font-size: calc(var(--font-sm) * 1.5); /* ≈ 24px */
-   color: #0080FF; /* Blue arrow */
+   font-size: calc(var(--font-sm) * 1.5);
+   color: #0080FF; 
    transition: transform 0.2s ease;
 }
 
-/* =========================
-   Resources – Separate Card + Image
-========================= */
+/*Resources */
 
 .resources-section{
   padding: 80px 40px;
@@ -157,7 +154,6 @@ body {
   gap: 32px;
 }
 
-/* Row layout */
 .resource-row{
   display: grid;
   grid-template-columns: 0.8fr 2fr;
@@ -165,7 +161,6 @@ body {
   position: relative;
 }
 
-/* TEXT CARD */
 .resource-text{
   background: #ffffff;
   color: #000;
@@ -213,11 +208,6 @@ body {
    background-color: #ffb937;
 }
 
-
-
-
-
-/* IMAGE CARD */
 .resource-image{
   border-radius: 24px;
   overflow: hidden;
@@ -233,7 +223,7 @@ body {
   object-fit: cover;
   display: block;
 }
-/* Alternate layout: image left, text right */
+/* Alternate layout */
 .resource-row:nth-child(even){
   grid-template-columns: 2fr 0.8fr;
 }
@@ -245,37 +235,29 @@ body {
 .resource-row:nth-child(even) .resource-text{
   order: 2;
   margin-right: 0;
-  margin-left: -50px; /* overlap from the other side */
+  margin-left: -50px;
 }
 
-/* =========================
-   RESOURCES – RESPONSIVE (FULL)
-========================= */
+/* Responsiveness */
 @media (max-width: 960px){
-  /* hide image */
   .resource-image{ display: none !important; }
 
-  /* collapse to one column */
   .resource-row{ grid-template-columns: 1fr !important; }
 
-  /* STOP overflow/clipping */
   .resource-text{
-    margin: 0 !important;          /* kills the overlap */
+    margin: 0 !important;    
   }
 
 
 }
 
-
-
-/* Footer */
 .home-footer {
     background-color: #1E90FF;
     padding: 30px 40px;
     color: white;
     position: relative;
     z-index: 9999;
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1); /* 👈 shadow */
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .footer-content {
@@ -287,7 +269,6 @@ body {
 }
 
 .footer-content p {
-    font-size: var(--font-sm); /* 16px */
+    font-size: var(--font-sm);
     margin: 0;
 }
-
