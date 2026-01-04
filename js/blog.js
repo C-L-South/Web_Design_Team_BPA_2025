@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!searchInput || cards.length === 0) return;
 
-  // Pre-index each card for faster searching
   const index = cards.map((card) => {
     const title = (card.querySelector(".blog-title")?.textContent || "").toLowerCase();
     const desc  = (card.querySelector(".blog-description")?.textContent || "").toLowerCase();
@@ -49,7 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
     applySearch(searchInput.value);
   });
 
-  // Prevent form submit from reloading page
   const form = document.getElementById("searchForm");
   if (form) {
     form.addEventListener("submit", (e) => e.preventDefault());
