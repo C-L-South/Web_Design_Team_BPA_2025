@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 :root {
   --phi: 1.618;
-  --font-xs: 0.875rem;                           /* ~14px  */
+  --font-xs: 0.875rem;                           /* 14px  */
   --font-sm: 1rem;                               /* 16px   */
-  --font-md: calc(var(--font-sm) * var(--phi));  /* ~26px  */
-  --font-lg: calc(var(--font-md) * var(--phi));  /* ~42px  */
+  --font-md: calc(var(--font-sm) * var(--phi));  /* 26px  */
+  --font-lg: calc(var(--font-md) * var(--phi));  /* 42px  */
 }
 * {
     margin: 0;
@@ -19,7 +19,7 @@ body {
 a {
     text-decoration: none;
     color: black;
-    font-size: var(--font-sm); /* 16px */
+    font-size: var(--font-sm);
 }
 
 .auth-page {
@@ -45,7 +45,6 @@ a {
     position: relative;
 }
 
-/* Logo placed top-left of the left panel */
 .logo-container {
     position: absolute;
     top: 24px;
@@ -63,7 +62,7 @@ a {
 }
 
 .logo-container a {
-    font-size: calc(var(--font-md) * 1.1); /* ~28px */
+    font-size: calc(var(--font-md) * 1.1); 
     font-weight: 700;
     color: #111;
     margin: 0;
@@ -79,7 +78,7 @@ a {
 }
 
 .auth-form-container h2 {
-    font-size: calc(var(--font-lg) * 0.85); /* ~36px */
+    font-size: calc(var(--font-lg) * 0.85);
     margin: 6px 0 18px;
     color: #222;
 }
@@ -100,7 +99,7 @@ a {
     padding: 16px 18px;
     border: 1px solid #e6e6e6;
     border-radius: 10px;
-    font-size: calc(var(--font-sm) * 1.125); /* ~18px */
+    font-size: calc(var(--font-sm) * 1.125); 
     transition: border-color 0.2s;
     background-color: #f6f6f6;
 }
@@ -121,7 +120,7 @@ a {
     padding: 16px;
     border: none;
     border-radius: 28px;
-    font-size: calc(var(--font-sm) * 1.125); /* ~18px */
+    font-size: calc(var(--font-sm) * 1.125); 
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.2s, transform 0.08s;
@@ -135,7 +134,7 @@ a {
 .auth-redirect {
     text-align: center;
     margin-top: 18px;
-    font-size: calc(var(--font-sm) * 0.95); /* ~15px */
+    font-size: calc(var(--font-sm) * 0.95); 
     color: #555;
 }
 
@@ -149,7 +148,7 @@ a {
     text-decoration: underline;
 }
 
-/* Responsive: hide decorative right image on smaller screens */
+/* Responsiveness */
 @media (max-width: 900px) {
     .auth-right {
         display: none;
@@ -157,10 +156,10 @@ a {
 
     .auth-left {
         flex: 1 1 100%;
-        padding: 24px; /* keep comfortable spacing */
+        padding: 24px;
     }
 
     .auth-page {
-        min-height: 100vh; /* ensure full-height layout remains */
+        min-height: 100vh;
     }
 }
