@@ -1,11 +1,9 @@
-/* accessibility setup */
+
 :root {
   --access-font-family: 'Poppins', sans-serif;
   --access-filter: none;
 }
-/* OpenDyslexic font-face declarations
-   Your files are OTFs under css/fonts/; use opentype format.
-   For best performance later, consider adding WOFF2 as well. */
+/* Font Declarations */ 
 @font-face {
    font-family: 'OpenDyslexic';
    src: local('OpenDyslexic-Regular'),
@@ -60,9 +58,6 @@ body {
    filter: var(--access-filter) !important;
 }
 
-/* toggle these with JS to switch modes */
-
-/* color mode adjustments */
 body.access-mode-grayscale::before {
   content: "";
   position: fixed;
@@ -89,7 +84,7 @@ body.access-text-xlarge * {
    font-size: 1.25em !important;
 }
 
-/* line reader overlay (follows cursor) */
+/* line reader */
 .line-reader-shade {
    position: fixed;
    left: 0;
@@ -100,7 +95,6 @@ body.access-text-xlarge * {
    display: none;
 }
 
-/* display when line reader is on */
 body.access-line-reader-active .line-reader-shade {
    display: block;
 }
