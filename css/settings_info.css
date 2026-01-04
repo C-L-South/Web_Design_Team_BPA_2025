@@ -1,9 +1,5 @@
-/* Import Poppins font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-/* ------------------------------
-   Base / Reset
---------------------------------*/
 * {
     margin: 0;
     padding: 0;
@@ -20,17 +16,12 @@ body {
     color: #333;
 }
 
-/* ------------------------------
-   Layout
---------------------------------*/
 .settings-layout {
     display: flex;
     min-height: calc(100vh - 120px);
 }
 
-/* ------------------------------
-   Sidebar
---------------------------------*/
+/*Sidebar*/
 .sidebar {
     width: 20%;
     background-color: #1E90FF;
@@ -68,9 +59,6 @@ body {
     padding-left: 10px;
 }
 
-/* ------------------------------
-   Main Content
---------------------------------*/
 .main-content {
     width: 80%;
     background-color: #EDF3FB;
@@ -96,9 +84,7 @@ body {
     line-height: 1.6;
 }
 
-/* ------------------------------
-   Settings Cards
---------------------------------*/
+/*Settings Cards-*/
 .settings-grid {
     display: flex;
     flex-direction: column;
@@ -121,9 +107,6 @@ body {
     color: #202124;
 }
 
-/* ------------------------------
-   Form Groups
---------------------------------*/
 .form-group {
     display: flex;
     flex-direction: column;
@@ -137,9 +120,6 @@ body {
     color: #5f6368;
 }
 
-/* ------------------------------
-   TEXTBOX STYLING (FROM FIRST FORM)
---------------------------------*/
 .settings-card .form-group input[type="text"],
 .settings-card .form-group input[type="email"],
 .settings-card .form-group input[type="password"],
@@ -166,9 +146,7 @@ body {
     box-shadow: 0 0 0 0.16rem rgba(26, 115, 232, 0.20);
 }
 
-/* ------------------------------
-   Buttons
---------------------------------*/
+/* Buttons*/
 .button-container {
     display: flex;
     gap: 12px;
@@ -218,9 +196,7 @@ body {
     background-color: #c5221f;
 }
 
-/* ------------------------------
-   Responsive
---------------------------------*/
+/*Responsiveness*/
 @media (max-width: 968px) {
     .settings-layout {
         flex-direction: column;
@@ -252,9 +228,6 @@ body {
     }
 }
 
-/* ------------------------------
-   Footer
---------------------------------*/
 .home-footer {
     background-color: #1E90FF;
     padding: 30px 40px;
