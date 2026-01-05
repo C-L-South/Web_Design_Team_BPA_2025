@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return Array.from(card.querySelectorAll("input"));
   }
 
-  const usernameCard = getCardByTitle("Username");
+  const usernameCard = getCardByTitle("Email");
   const passwordCard = getCardByTitle("Password");
   const displayNameCard = getCardByTitle("Display Name");
   const deleteCard = getCardByTitle("Delete Account");
