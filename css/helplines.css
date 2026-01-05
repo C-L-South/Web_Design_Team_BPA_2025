@@ -272,3 +272,7 @@ body {
     font-size: var(--font-sm);
     margin: 0;
 }
+.footer-content a {
+    color: white;
+    text-decoration: none;
+}
