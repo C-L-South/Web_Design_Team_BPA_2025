@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!newUsername) return alert("Please enter a new username.");
 
       try {
-        await db.collection("users").doc(user.uid).set({ username: newUsername }, { merge: true });
+        await db.collection("users").doc(user.uid).set({ email: newUsername }, { merge: true });
         if (currentUsernameInput) currentUsernameInput.value = newUsername;
         if (newUsernameInput) newUsernameInput.value = "";
         alert("Username updated.");
