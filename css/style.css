@@ -513,3 +513,7 @@ a {
         padding: 24px 18px;
     }
 }
+.footer-content a {
+    color: white;
+    text-decoration: none;
+}
