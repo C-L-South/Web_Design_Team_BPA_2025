@@ -128,18 +128,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     passwordSaveBtn?.addEventListener("click", async () => {
       const newPw = newPasswordInput?.value || "";
-      const confirmPw = confirmPasswordInput?.value || "";
 
-      if (!newPw || !confirmPw) return alert("Please fill out both password fields.");
-      if (newPw !== confirmPw) return alert("Passwords do not match.");
-      if (newPw.length < 8 || !/\d/.test(newPw) || !/[^\w\s]/.test(newPw)) {
-        return alert("Password must be at least 8 characters and include a number and a symbol.");
-      }
+      if (!newPw) return alert("Please fill out the password field.");
 
       try {
         await user.updatePassword(newPw);
         if (newPasswordInput) newPasswordInput.value = "";
-        if (confirmPasswordInput) confirmPasswordInput.value = "";
         alert("Password updated.");
       } catch (err) {
         console.error("Error updating password:", err);
