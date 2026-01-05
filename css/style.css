@@ -283,7 +283,8 @@ a {
 }
 
 .about-image {
-    display: flex;             
+    display: flex;   
+    flex-direction: row;
     gap: 16px;
 }
 
@@ -311,7 +312,13 @@ a {
     color: #444;
     margin-bottom: 16px;
 }
+@media (max-width: 650px) {
+    .about-image {
 
+    flex-direction: column;
+
+    }
+}
 /*Testimonials*/
 
 .testimonials {
