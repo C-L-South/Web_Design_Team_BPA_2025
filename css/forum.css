@@ -517,3 +517,7 @@ body {
 a {
   color: #1E90FF;
 }
+.footer-content a {
+    color: white;
+    text-decoration: none;
+}
