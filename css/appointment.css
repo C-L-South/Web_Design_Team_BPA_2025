@@ -289,3 +289,7 @@ body{
 .footer-content p{
   font-size: var(--font-xs);
 }
+.footer-content a {
+    color: white;
+    text-decoration: none;
+}
