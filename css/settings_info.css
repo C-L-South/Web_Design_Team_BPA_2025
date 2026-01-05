@@ -246,3 +246,7 @@ body {
 .footer-content p {
     font-size: var(--font-sm);
 }
+.footer-content a {
+    color: white;
+    text-decoration: none;
+}
