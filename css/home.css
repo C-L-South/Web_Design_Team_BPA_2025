@@ -498,3 +498,8 @@ html {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+.footer-content a {
+    color: white;
+    text-decoration: none;
+}
