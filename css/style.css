@@ -167,6 +167,19 @@ a {
     border-radius: 30px;
 }
 
+.hero-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 30px;
+    z-index: 1; /* above background image */
+    opacity: 0.9;
+}
+
+.hero-icon img {
+    width: 56px;
+    height: 56px;
+    filter: drop-shadow(0 8px 20px rgba(0,0,0,0.25));
+}
 @media (max-width: 768px) {
     .hero-container {
         justify-content: center;
